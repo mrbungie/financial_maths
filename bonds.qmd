@@ -6,6 +6,14 @@ Bonds are one of the most important financial instruments. Think of a bond as a 
 
 ## What Is a Bond?
 
+::: {.callout-caution icon=true}
+## References
+
+**Book:** Pearson Corporate Finance 6th Edition, Chapter 6 (Valuing Bonds), Page 177, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=177)
+
+**Slide:** Financial Mathematics Slides 1-96, Slides 24-26 (Coupon bonds definition), Page 24, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=24)
+:::
+
 ::: {.callout-note icon=true}
 ## Definition: Bond
 A **bond** is a debt security with the following components:
@@ -38,14 +46,16 @@ Let's start with a basic 3-year bond:
 
 ### Cashflow Table (Bondholder's Perspective)
 
-| Time (years) | Coupon Payment | Principal Repayment | Total Cashflow | Description |
-|--------------|----------------|---------------------|----------------|-------------|
-| 0 | — | —1,000 | −1,000 | Purchase bond |
-| 1 | +50 | 0 | +50 | First coupon |
-| 2 | +50 | 0 | +50 | Second coupon |
-| 3 | +50 | +1,000 | +1,050 | Final coupon + principal |
+| Time (years) | Cashflow | Description |
+|--------------|----------|-------------|
+| 0 | −1,000 | Purchase bond |
+| 1 | +50 | First coupon |
+| 2 | +50 | Second coupon |
+| 3 | +1,050 | Final coupon + face value |
 
 **Calculation**: Annual coupon = Face Value × Coupon Rate = $1,000 × 5\% = $50$
+
+At maturity (Year 3), you receive both the final coupon ($50) and the face value ($1,000) for a total of $1,050.
 
 \FloatBarrier
 
@@ -85,6 +95,14 @@ Let's start with a basic 3-year bond:
 \FloatBarrier
 
 ## Clean Price vs. Dirty Price
+
+::: {.callout-caution icon=true}
+## References
+
+**Book:** Pearson Corporate Finance 6th Edition, Chapter 6 (Bond Pricing), Page 182, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=182)
+
+**Slide:** Financial Mathematics Slides 1-96, Slides 27-29 (Clean vs Dirty Price), Page 27, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=27)
+:::
 
 When bonds are traded between coupon payment dates, we need to account for **accrued interest**.
 

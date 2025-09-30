@@ -6,6 +6,14 @@ Financial mathematics is fundamentally about tracking **money flows over time**.
 
 ## Cashflows: The Building Blocks
 
+::: {.callout-caution icon=true}
+## References
+
+**Book:** Pearson Corporate Finance 6th Edition, Chapter 4 (The Time Value of Money), Page 105, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=105)
+
+**Slide:** Financial Mathematics Slides 1-96, Slides 4-9 (Basic notions - Financial transactions), Page 4, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=4)
+:::
+
 ::: {.callout-note icon="true"}
 ## Definition: Cashflow
 
@@ -115,10 +123,10 @@ Let's see a more realistic scenario: a 3-year loan of \$10,000 with annual payme
 ## Understanding the Table
 
 -   **Time 0**: Borrower receives the loan (+\$10,000 inflow)
--   **Each year**: Borrower makes a payment (outflow), which splits into:
-    -   **Interest**: Cost of borrowing (compensation to lender)
-    -   **Principal**: Reduction in the debt amount
+-   **Each year**: Borrower makes a payment (outflow)
 -   **Outstanding Balance**: What remains to be paid
+
+**Notice**: Each payment can be split into **Interest** and **Principal** components. We'll explore this decomposition in detail in the next section!
 :::
 
 ### Timeline Representation
@@ -155,7 +163,136 @@ Let's see a more realistic scenario: a 3-year loan of \$10,000 with annual payme
 
 \FloatBarrier
 
+## Cashflow Decomposition: Interest vs. Principal
+
+::: {.callout-caution icon=true}
+## References
+
+**Book:** Pearson Corporate Finance 6th Edition, Chapter 4 (Loan Payments), Page 120, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=120)
+
+**Slide:** Financial Mathematics Slides 1-96, Slides 13-16 (Decomposition of payments), Page 13, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=13)
+:::
+
+When you make a loan payment, that single cashflow actually represents **two distinct economic components**. Understanding this decomposition is crucial for financial analysis.
+
+::: {.callout-note icon=true}
+## Definition: Payment Decomposition
+
+Any loan payment can be split into:
+
+$$
+\text{Payment} = \text{Interest} + \text{Principal Repayment}
+$$
+
+**Interest**: The "rent" you pay for using borrowed money (compensation to lender)
+
+**Principal**: The portion that reduces your debt balance
+:::
+
+### The Mechanics of Decomposition
+
+Let's see how this works period by period using our loan example:
+
+**Given**: $10,000 loan at 5% annual interest
+
+#### Year 1 Decomposition
+
+Starting balance: $10,000
+
+$$
+\begin{aligned}
+\text{Interest} &= \text{Balance} \times \text{Rate} = \$10,000 \times 0.05 = \$500 \\
+\text{Payment} &= \$3,500 \\
+\text{Principal} &= \text{Payment} - \text{Interest} = \$3,500 - \$500 = \$3,000 \\
+\text{New Balance} &= \$10,000 - \$3,000 = \$7,000
+\end{aligned}
+$$
+
+#### Year 2 Decomposition
+
+Starting balance: $7,000
+
+$$
+\begin{aligned}
+\text{Interest} &= \$7,000 \times 0.05 = \$350 \\
+\text{Payment} &= \$3,650 \\
+\text{Principal} &= \$3,650 - \$350 = \$3,300 \\
+\text{New Balance} &= \$7,000 - \$3,300 = \$3,700
+\end{aligned}
+$$
+
+#### Year 3 Decomposition
+
+Starting balance: $3,700
+
+$$
+\begin{aligned}
+\text{Interest} &= \$3,700 \times 0.05 = \$185 \\
+\text{Payment} &= \$3,885 \\
+\text{Principal} &= \$3,885 - \$185 = \$3,700 \\
+\text{New Balance} &= \$3,700 - \$3,700 = \$0
+\end{aligned}
+$$
+
+### Visual Decomposition: Stacked Bar Chart
+
+```{=latex}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=0.8]
+% Year 1
+\draw[thick,fill=red!30] (0,0) rectangle (1.5,0.5);
+\node[font=\tiny] at (0.75,0.25) {\$500};
+\draw[thick,fill=blue!30] (0,0.5) rectangle (1.5,3.5);
+\node[font=\small] at (0.75,2) {\$3,000};
+\node[below,font=\small] at (0.75,-0.3) {Year 1};
+
+% Year 2
+\draw[thick,fill=red!30] (2.5,0) rectangle (4,0.35);
+\node[font=\tiny] at (3.25,0.175) {\$350};
+\draw[thick,fill=blue!30] (2.5,0.35) rectangle (4,3.65);
+\node[font=\small] at (3.25,2) {\$3,300};
+\node[below,font=\small] at (3.25,-0.3) {Year 2};
+
+% Year 3
+\draw[thick,fill=red!30] (5,0) rectangle (6.5,0.185);
+\node[font=\tiny] at (5.75,0.09) {\$185};
+\draw[thick,fill=blue!30] (5,0.185) rectangle (6.5,3.885);
+\node[font=\small] at (5.75,2) {\$3,700};
+\node[below,font=\small] at (5.75,-0.3) {Year 3};
+
+% Legend
+\draw[thick,fill=red!30] (8,3) rectangle (8.5,3.3);
+\node[right,font=\small] at (8.6,3.15) {Interest};
+\draw[thick,fill=blue!30] (8,2.5) rectangle (8.5,2.8);
+\node[right,font=\small] at (8.6,2.65) {Principal};
+
+% Y-axis
+\draw[->] (-0.5,0) -- (-0.5,4) node[above,font=\small] {Amount (\$)};
+\foreach \y/\label in {0/0, 1/1000, 2/2000, 3/3000, 4/4000}
+    \node[left,font=\tiny] at (-0.6,\y) {\label};
+\end{tikzpicture}
+\end{figure}
+```
+
+\FloatBarrier
+
+::: {.callout-tip icon=true}
+## Key Observations
+
+1. **Interest decreases** over time (because balance decreases)
+2. **Principal increases** over time (more of each payment goes to debt reduction)
+3. **Total payment changes** each period to maintain the amortization schedule
+4. The **proportions shift**: Early payments are mostly interest, later payments are mostly principal
+:::
+
 ## Investment vs. Financing Cashflows
+
+::: {.callout-caution icon=true}
+## References
+
+**Slide:** Financial Mathematics Slides 1-96, Slides 10-12 (Investment vs Financing patterns), Page 10, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=10)
+:::
 
 Two fundamental patterns emerge in financial mathematics:
 
@@ -273,41 +410,194 @@ Be careful to distinguish:
 
 **Interest earned in year 2** refers to the interval $[1, 2]$, but the **payment at time 2** refers to the instant $t=2$.
 
-## Practical Example: Planning a Project
+## Comprehensive Example: Quarterly Loan Operation
 
-Let's apply these concepts to a realistic business scenario.
+Let's apply **all the concepts** we've learned to analyze a realistic quarterly loan scenario (based on slides 5-9).
 
-**Scenario**: You're evaluating a software project:
+::: {.callout-caution icon=true}
+## References
 
--   **Year 0**: Hire developers, invest \$200,000
--   **Year 1**: Beta launch, invest \$100,000 more
--   **Year 2**: First revenue \$150,000
--   **Year 3**: Mature revenue \$250,000
+**Slide:** Financial Mathematics Slides 1-96, Slides 5-9 (Four-period investment/borrowing operation with decomposition), Page 5, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=5)
+:::
 
-### Cashflow Table (Your Perspective as Investor)
+**Scenario**: You're taking a **quarterly loan** to finance working capital:
 
-| Time | Cashflow | Description          |
-|------|----------|----------------------|
-| 0    | −200,000 | Initial development  |
-| 1    | −100,000 | Continued investment |
-| 2    | +150,000 | First revenue        |
-| 3    | +250,000 | Mature revenue       |
+-   **Loan amount (principal S)**: €1,000
+-   **Repayment**: Equal quarterly installments of €380
+-   **Dates**: 31/12/2024, 31/03/2025, 30/06/2025, 31/09/2025
 
-### Net Position Over Time
+**Question**: In each installment, how much of the payment is interest?
 
-| Time | Cashflow | Cumulative Net |
-|------|----------|----------------|
-| 0    | −200,000 | −200,000       |
-| 1    | −100,000 | −300,000       |
-| 2    | +150,000 | −150,000       |
-| 3    | +250,000 | +100,000       |
+### Step 1: Cashflow Table (Borrower's Perspective)
+
+| Time       | Total Cashflow ($R$) | Type    | Description      |
+|------------|----------------------|---------|------------------|
+| 31/12/2024 | +1,000               | Inflow  | Loan received    |
+| 31/03/2025 | −380                 | Outflow | 1st installment  |
+| 30/06/2025 | −380                 | Outflow | 2nd installment  |
+| 31/09/2025 | −380                 | Outflow | 3rd installment  |
 
 \FloatBarrier
 
-::: {.callout-tip icon="true"}
-## Intuition: The Cumulative View
+### Step 2: Decomposition Table
 
-The **cumulative net** position shows when you "break even" and start being net positive. Here, you need to wait until after year 3 to have a positive net position (ignoring time value of money for now).
+Each payment $R$ splits into **interest portion** $I$ and **principal portion** $C$:
+
+$$
+R_k = I_k + C_k
+$$
+
+Where:
+- $D_k$ = Outstanding debt at beginning of period $k$
+- $R_k$ = Payment (installment) at end of period $k$
+- $I_k$ = Interest portion
+- $C_k$ = Principal portion (capital reduction)
+
+#### Complete Decomposition Table
+
+| Time       | Debt $D_k$ | Payment $R_k$ | Interest $I_k$ | Principal $C_k$ | New Balance |
+|------------|------------|---------------|----------------|-----------------|-------------|
+| 31/12/2024 | 1,000      | —             | —              | —               | 1,000       |
+| 31/03/2025 | 1,000      | 380           | 46.67          | 333.33          | 666.67      |
+| 30/06/2025 | 666.67     | 380           | 46.67          | 333.33          | 333.33      |
+| 31/09/2025 | 333.33     | 380           | 46.67          | 333.33          | 0           |
+
+**Calculation details** (assuming constant period rate):
+
+For each quarter:
+$$
+\begin{aligned}
+I_k &\approx \text{€46.67} \text{ (interest)} \\
+C_k &= 380 - 46.67 = \text{€333.33} \text{ (principal reduction)} \\
+D_{k+1} &= D_k - C_k
+\end{aligned}
+$$
+
+\FloatBarrier
+
+### Step 3: Visual Decomposition (Stacked Bars)
+
+```{=latex}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=0.9]
+% Quarter 1
+\draw[thick,fill=red!40] (0,0) rectangle (1.5,0.47);
+\node[font=\tiny] at (0.75,0.235) {\texteuro 47};
+\draw[thick,fill=blue!50] (0,0.47) rectangle (1.5,4.2);
+\node[font=\small] at (0.75,2.3) {\texteuro 333};
+\node[below,font=\small] at (0.75,-0.3) {Q1};
+\node[above,font=\small] at (0.75,4.4) {\texteuro 380};
+
+% Quarter 2
+\draw[thick,fill=red!40] (2.5,0) rectangle (4,0.47);
+\node[font=\tiny] at (3.25,0.235) {\texteuro 47};
+\draw[thick,fill=blue!50] (2.5,0.47) rectangle (4,4.2);
+\node[font=\small] at (3.25,2.3) {\texteuro 333};
+\node[below,font=\small] at (3.25,-0.3) {Q2};
+\node[above,font=\small] at (3.25,4.4) {\texteuro 380};
+
+% Quarter 3
+\draw[thick,fill=red!40] (5,0) rectangle (6.5,0.47);
+\node[font=\tiny] at (5.75,0.235) {\texteuro 47};
+\draw[thick,fill=blue!50] (5,0.47) rectangle (6.5,4.2);
+\node[font=\small] at (5.75,2.3) {\texteuro 333};
+\node[below,font=\small] at (5.75,-0.3) {Q3};
+\node[above,font=\small] at (5.75,4.4) {\texteuro 380};
+
+% Legend
+\draw[thick,fill=red!40] (8,3.5) rectangle (8.5,3.8);
+\node[right,font=\small] at (8.6,3.65) {Interest ($I_k$)};
+\draw[thick,fill=blue!50] (8,3) rectangle (8.5,3.3);
+\node[right,font=\small] at (8.6,3.15) {Principal ($C_k$)};
+
+% Y-axis
+\draw[->] (-0.7,0) -- (-0.7,4.5) node[above,font=\small] {\texteuro};
+\end{tikzpicture}
+\end{figure}
+```
+
+\FloatBarrier
+
+### Step 4: Timeline with Decomposition
+
+```{=latex}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1.0]
+% Time axis
+\draw[thick,->] (-0.5,0) -- (14,0) node[right] {Time};
+
+% Date markers
+\draw (0,0.1) -- (0,-0.1) node[below,font=\tiny,align=center] {31/12\\2024};
+\draw (4,0.1) -- (4,-0.1) node[below,font=\tiny,align=center] {31/03\\2025};
+\draw (8,0.1) -- (8,-0.1) node[below,font=\tiny,align=center] {30/06\\2025};
+\draw (12,0.1) -- (12,-0.1) node[below,font=\tiny,align=center] {31/09\\2025};
+
+% Inflow at t=0
+\draw[->,green!60!black,ultra thick] (0,-2) -- (0,0.5);
+\node[below,green!60!black,font=\bfseries] at (0,-2) {+\texteuro 1,000};
+\node[below,green!60!black,font=\tiny] at (0,-2.5) {Principal $S$};
+
+% Payment at Q1
+\draw[->,red!70!black,very thick] (4,0.5) -- (4,-1.5);
+\node[above,red!70!black] at (4,0.7) {-\texteuro 380};
+\node[right,font=\tiny,red!70!black] at (4.2,-0.5) {$I_1$: \texteuro 47};
+\node[right,font=\tiny,blue] at (4.2,-0.9) {$C_1$: \texteuro 333};
+
+% Payment at Q2
+\draw[->,red!70!black,very thick] (8,0.5) -- (8,-1.5);
+\node[above,red!70!black] at (8,0.7) {-\texteuro 380};
+\node[right,font=\tiny,red!70!black] at (8.2,-0.5) {$I_2$: \texteuro 47};
+\node[right,font=\tiny,blue] at (8.2,-0.9) {$C_2$: \texteuro 333};
+
+% Payment at Q3
+\draw[->,red!70!black,very thick] (12,0.5) -- (12,-1.5);
+\node[above,red!70!black] at (12,0.7) {-\texteuro 380};
+\node[right,font=\tiny,red!70!black] at (12.2,-0.5) {$I_3$: \texteuro 47};
+\node[right,font=\tiny,blue] at (12.2,-0.9) {$C_3$: \texteuro 333};
+\end{tikzpicture}
+\end{figure}
+```
+
+\FloatBarrier
+
+### Step 5: Pattern Identification
+
+This is a **financing pattern**:
+
+- Initial **inflow** (+€1,000): You receive money
+- Subsequent **outflows** (−€380 each quarter): You pay back
+
+The **opposite perspective** (lender's view) would show an **investment pattern**:
+- Initial outflow (loan disbursement)
+- Subsequent inflows (receiving payments)
+
+### Step 6: Cumulative Net Position
+
+| Time       | Cashflow | Cumulative Net | Status           |
+|------------|----------|----------------|------------------|
+| 31/12/2024 | +1,000   | +1,000         | ✓ Have money     |
+| 31/03/2025 | −380     | +620           | ✓ Still positive |
+| 30/06/2025 | −380     | +240           | ✓ Still positive |
+| 31/09/2025 | −380     | −140           | ✗ Net negative   |
+
+\FloatBarrier
+
+::: {.callout-important icon="true"}
+## Complete Analysis
+
+**Decomposition shows**: Each €380 payment contains approximately €47 interest and €333 principal
+
+**Pattern**: This is financing (borrow now, pay later in installments)
+
+**Cumulative view**: You pay back **€1,140** total for a **€1,000** loan
+
+**True cost**: €1,140 − €1,000 = **€140** in total interest over 3 quarters
+
+**Period rate**: The interest rate per quarter is $i_k = I_k / D_k \approx 46.67 / 1000 = 4.67\%$
+
+**Perspective matters**: From the lender's view, this €140 is their profit!
 :::
 
 ## Summary

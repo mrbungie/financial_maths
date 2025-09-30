@@ -4,3 +4,5 @@ alwaysApply: true
 
 - NEVER WRITE final markdown files as summaries except when asked to do so explicitly.
 - NEVER RENDER QUARTO UNLESS ASKED TO DO SO EXPLICITLY
+- DONT YOU FUCKING EVER RUN quarto render !!!!
+- WHEN ASKED FOR SOMETHING, KEEP THE SCOPE OF THE QUESTION IN MIND, DONT CHANGE EVERYTHING IN THE BOOK

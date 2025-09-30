@@ -6,6 +6,14 @@ Interest rates are the **engine** of financial mathematics. They answer the fund
 
 ## The Time Value of Money
 
+::: {.callout-caution icon=true}
+## References
+
+**Book:** Pearson Corporate Finance 6th Edition, Chapter 4 (Time Value of Money), Page 105, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=105)
+
+**Slide:** Financial Mathematics Slides 1-96, Slides 37-42 (Interest and discount rates introduction), Page 37, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=37)
+:::
+
 ::: {.callout-note icon=true}
 ## Core Principle: Time Value of Money
 **A dollar today is worth more than a dollar tomorrow.**
@@ -168,6 +176,14 @@ $$
 
 ## Effective vs. Nominal Rates
 
+::: {.callout-caution icon=true}
+## References
+
+**Book:** Pearson Corporate Finance 6th Edition, Chapter 5 (Interest Rates - Compounding), Page 149, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=149)
+
+**Slide:** Financial Mathematics Slides 1-96, Slides 60-68 (Effective interest rates and compounding), Page 60, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=60)
+:::
+
 Real-world interest rates come in different flavors depending on **compounding frequency**.
 
 ### Effective Annual Rate (EAR)
@@ -312,6 +328,14 @@ A corporate bond might have:
 **Total rate**: 2% + 3% + 2% + 1% = **8%**
 
 ## Present Value of Annuities
+
+::: {.callout-caution icon=true}
+## References
+
+**Book:** Pearson Corporate Finance 6th Edition, Chapter 4 (Annuities), Page 118, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=118)
+
+**Slide:** Financial Mathematics Slides 1-96, Slides 75-82 (Annuities and perpetuities), Page 75, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=75)
+:::
 
 A common cashflow pattern is an **annuity**: equal payments at regular intervals.
 
