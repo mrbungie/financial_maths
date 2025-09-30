@@ -258,8 +258,42 @@ Without interest, nobody would lend money—there'd be no incentive!
 - Investment A: Pay €960, receive €1,000 → Interest = €40, Rate = 4.167%
 - Investment B: Pay €10,000, receive €10,500 → Interest = €500, Rate = 5%
 
-Investment B has higher absolute interest (€500 > €40) but you can't directly compare them. The **rates** (5% vs 4.167%) tell you that Investment B offers a better return **per euro invested**.
 :::
+### Example: How to Calculate the Interest Rate
+
+To illustrate how to **calculate** an interest rate when you know the cashflows, let's consider a two-period investment. We'll first use variables and then provide a concrete example.
+
+#### Using Variables
+
+Suppose you invest an amount $P_0$ at the start, and receive cashflows at the end of each period. The interest rate for each period is calculated based on the outstanding principal:
+
+| Period | Principal at Start | Interest Earned | Cashflow Received | Principal at End | Interest Rate Calculation |
+|--------|--------------------|-----------------|-------------------|------------------|---------------------------|
+| 1      | $P_0$              | $I_1$           | $C_1$             | $P_1 = P_0 + I_1 - C_1$ | $r_1 = \frac{I_1}{P_0}$ |
+| 2      | $P_1$              | $I_2$           | $C_2$             | $P_2 = P_1 + I_2 - C_2$ | $r_2 = \frac{I_2}{P_1}$ |
+
+The interest rate for period $k$ is calculated as:
+
+$$
+r_k = \frac{I_k}{P_{k-1}}
+$$
+
+where $P_{k-1}$ is the principal outstanding at the start of period $k$, and $I_k$ is the interest earned during that period.
+
+#### Concrete Example
+
+Suppose you invest €1,000 and receive the following cashflows over two periods:
+
+| Period | Principal at Start | Interest Earned | Cashflow Received | Principal at End | Interest Rate |
+|--------|--------------------|-----------------|-------------------|------------------|---------------|
+| 1      | €1,000             | €50             | €100              | €950             | $r_1 = \frac{50}{1000} = 5\%$ |
+| 2      | €950               | €47.50          | €997.50           | €0               | $r_2 = \frac{47.50}{950} = 5\%$ |
+
+In this example:
+
+- **Period 1**: You start with €1,000, earn €50 in interest (5% rate), receive a cashflow of €100, leaving €950 outstanding
+- **Period 2**: You start with €950, earn €47.50 in interest (5% rate), and receive the final cashflow of €997.50, fully settling the investment
+
 
 ## Investment vs. Financing Cashflows
 
@@ -379,6 +413,18 @@ Be careful to distinguish:
 
 **Interest earned in year 2** refers to the interval $[1, 2]$, but the **payment at time 2** refers to the instant $t=2$.
 
+::: {.callout-note icon=true}
+## Day Count Conventions
+
+In practice, calculating time periods requires precise **day count conventions** to determine the exact number of days between dates. Different financial instruments use different conventions:
+
+- **ACT/ACT**: Actual days / Actual days in year (365 or 366)
+- **ACT/360**: Actual days / 360 days per year
+- **30/360**: Assumes 30 days per month
+
+These conventions are particularly important for bonds and accrued interest calculations. For a detailed discussion of day count conventions and their application to bond pricing, see the [Bond Timing Conventions section in Chapter 2: Bonds](bonds.qmd#day-count-conventions).
+:::
+
 ## Comprehensive Example: Four-Period Investment/Borrowing Operation
 
 Let's apply **all the concepts** we've learned to analyze a realistic quarterly loan scenario. This example demonstrates that **there is no unique way** to decompose installments into interest and principal portions—multiple valid decompositions exist.
@@ -430,31 +476,60 @@ D_{30/09} &= D_{30/06} - C_{30/09} = 0
 \end{aligned}
 $$
 
-### Step 3: Complete Decomposition Table
+### Step 3: Complete Decomposition Tables
 
-| Time | Date  | Payment $R$ | Interest $I$ | Principal $C$ | Outstanding Debt $D$ |
-|------|-------|-------------|--------------|---------------|----------------------|
-| 0    | 12/24 | €1,000      | —            | —             | €1,000               |
-| 1    | 03/25 | −€380       | −€46.67      | −€333.33      | €666.67              |
-| 2    | 06/25 | −€380       | −€46.67      | −€333.33      | €333.34              |
-| 3    | 09/25 | −€380       | −€46.66      | −€333.34      | €0                   |
+Since we have not yet established a rule (financial law) for decomposing the installment into principal and interest portions, **both of the following decompositions are equally valid in principle**.
 
-**Note**: $C$ is intended as a partial repayment of the debt, while $I$ remunerates the time value of money.
+#### Decomposition 1
+
+| Time | Date  | Payment $R$ | Interest $I$ | Principal $C$ | Outstanding Debt $D$ | Interest Rate $r$ |
+|------|-------|-------------|--------------|---------------|----------------------|-------------------|
+| 0    | 12/24 | €1,000      | —            | —             | €1,000               | —                 |
+| 1    | 03/25 | −€380       | −€46.67      | −€333.33      | €666.67              | $r_1 = \frac{46.67}{1000} = 4.667\%$ |
+| 2    | 06/25 | −€380       | −€46.67      | −€333.33      | €333.34              | $r_2 = \frac{46.67}{666.67} = 7.00\%$ |
+| 3    | 09/25 | −€380       | −€46.66      | −€333.34      | €0                   | $r_3 = \frac{46.66}{333.34} = 14.00\%$ |
+
+#### Decomposition 2
+
+| Time | Date  | Payment $R$ | Interest $I$ | Principal $C$ | Outstanding Debt $D$ | Interest Rate $r$ |
+|------|-------|-------------|--------------|---------------|----------------------|-------------------|
+| 0    | 12/24 | €1,000      | —            | —             | €1,000               | —                 |
+| 1    | 03/25 | −€370       | −€10         | −€360         | €630                 | $r_1 = \frac{10}{1000} = 1.00\%$ |
+| 2    | 06/25 | −€370       | −€10         | −€360         | €260                 | $r_2 = \frac{10}{630} = 1.587\%$ |
+| 3    | 09/25 | −€380       | −€120        | −€260         | €0                   | $r_3 = \frac{120}{260} = 46.15\%$ |
+
+**Note**: $C$ is intended as a partial repayment of the debt, while $I$ remunerates the time value of money. The interest rate for each period is calculated as:
+
+$$
+r_k = \frac{I_k}{D_{k-1}}
+$$
+
+where $D_{k-1}$ is the outstanding debt at the start of period $k$, and $I_k$ is the interest portion of the payment.
 
 ::: {.callout-warning icon=true}
 ## Important Remark
 
-Since we have not yet established a rule (financial law) for decomposing the installment into principal and interest portions, **other decompositions are equally valid in principle**. The specific split shown here is just one possibility. Later, when we study financial laws, we'll learn how to determine the appropriate decomposition for any given situation.
+These two decompositions show **dramatically different interest rate patterns**:
+
+- **Decomposition 1**: Interest rates increase over time (4.67% → 7% → 14%) as the outstanding principal decreases
+- **Decomposition 2**: Interest rates vary widely (1% → 1.59% → 46.15%), with a very high rate in the final period
+
+Without establishing a **financial law** (a rule for how interest accrues), we cannot determine which decomposition is correct. Later, when we study financial laws, we'll learn how to determine the appropriate decomposition for any given situation based on market conventions and contractual terms.
 :::
 
 \FloatBarrier
 
 ### Step 4: Visual Decomposition (Stacked Bars)
 
+We can visualize both decompositions side by side to see how the interest and principal portions differ:
+
 ```{=latex}
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}[scale=0.9]
+% Decomposition 1 Title
+\node[font=\bfseries] at (2.5,11.5) {Decomposition 1};
+
 % Time 0 - Initial Inflow
 \draw[thick,fill=green!50] (-2.5,0) rectangle (-1,10);
 \node[font=\large] at (-1.75,5) {\texteuro 1{,}000};
@@ -486,27 +561,90 @@ Since we have not yet established a rule (financial law) for decomposing the ins
 \node[above,font=\small] at (5.75,4.4) {-\texteuro 380};
 
 % Legend
-\draw[thick,fill=green!50] (8,4.5) rectangle (8.5,4.8);
-\node[right,font=\small] at (8.6,4.65) {Inflow (Loan)};
-\draw[thick,fill=red!40] (8,3.8) rectangle (8.5,4.1);
-\node[right,font=\small] at (8.6,3.95) {Interest ($I_k$)};
-\draw[thick,fill=blue!50] (8,3.1) rectangle (8.5,3.4);
-\node[right,font=\small] at (8.6,3.25) {Principal ($C_k$)};
+\draw[thick,fill=green!50] (8,9) rectangle (8.5,9.3);
+\node[right,font=\small] at (8.6,9.15) {Inflow (Loan)};
+\draw[thick,fill=red!40] (8,8.3) rectangle (8.5,8.6);
+\node[right,font=\small] at (8.6,8.45) {Interest ($I_k$)};
+\draw[thick,fill=blue!50] (8,7.6) rectangle (8.5,7.9);
+\node[right,font=\small] at (8.6,7.75) {Principal ($C_k$)};
 
 % Y-axis
 \draw[->] (-3.2,0) -- (-3.2,10.5) node[above,font=\small] {\texteuro};
+
+% Decomposition 2 Title
+\node[font=\bfseries] at (2.5,-2) {Decomposition 2};
+
+% Time 0 - Initial Inflow (Decomposition 2)
+\draw[thick,fill=green!50] (-2.5,-12) rectangle (-1,-2);
+\node[font=\large] at (-1.75,-7) {\texteuro 1{,}000};
+\node[below,font=\small] at (-1.75,-12.3) {12/24};
+\node[above,font=\small] at (-1.75,-1.7) {+\texteuro 1{,}000};
+
+% Quarter 1 - Decomposition 2
+\draw[thick,fill=red!40] (0,-12) rectangle (1.5,-11.9);
+\node[font=\tiny] at (0.75,-11.95) {\texteuro 10};
+\draw[thick,fill=blue!50] (0,-11.9) rectangle (1.5,-8.3);
+\node[font=\small] at (0.75,-10.1) {\texteuro 360};
+\node[below,font=\small] at (0.75,-12.3) {03/25};
+\node[above,font=\small] at (0.75,-8) {-\texteuro 370};
+
+% Quarter 2 - Decomposition 2
+\draw[thick,fill=red!40] (2.5,-12) rectangle (4,-11.9);
+\node[font=\tiny] at (3.25,-11.95) {\texteuro 10};
+\draw[thick,fill=blue!50] (2.5,-11.9) rectangle (4,-8.3);
+\node[font=\small] at (3.25,-10.1) {\texteuro 360};
+\node[below,font=\small] at (3.25,-12.3) {06/25};
+\node[above,font=\small] at (3.25,-8) {-\texteuro 370};
+
+% Quarter 3 - Decomposition 2
+\draw[thick,fill=red!40] (5,-12) rectangle (6.5,-10.8);
+\node[font=\small] at (5.75,-11.4) {\texteuro 120};
+\draw[thick,fill=blue!50] (5,-10.8) rectangle (6.5,-8.2);
+\node[font=\small] at (5.75,-9.5) {\texteuro 260};
+\node[below,font=\small] at (5.75,-12.3) {09/25};
+\node[above,font=\small] at (5.75,-7.9) {-\texteuro 380};
+
+% Y-axis for Decomposition 2
+\draw[->] (-3.2,-12) -- (-3.2,-1.5) node[above,font=\small] {\texteuro};
+
 \end{tikzpicture}
 \end{figure}
 ```
+
+::: {.callout-note icon=true}
+## Comparing the Two Decompositions
+
+Notice how the visual representation reveals the fundamental difference:
+
+**Decomposition 1**: 
+
+- Small, consistent interest portions (€47) across all periods
+- Large, consistent principal portions (€333) across all periods
+- Interest represents ~12% of each payment
+
+**Decomposition 2**:
+
+- Very small interest portions (€10) in periods 1-2
+- Large spike in interest (€120) in the final period
+- Equal principal portions in first two periods (€360), then smaller in the final period (€260)
+- Final payment has interest representing ~32% of the payment
+
+The stacked bars clearly show that **Decomposition 2** has an unusual pattern with most interest loaded in the final payment, while **Decomposition 1** distributes interest more evenly.
+:::
 
 \FloatBarrier
 
 ### Step 5: Timeline with Decomposition
 
+We can also visualize both decompositions on timelines to see how the cashflows are split:
+
 ```{=latex}
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}[scale=1.0]
+% Decomposition 1 Title
+\node[font=\bfseries] at (6,2.5) {Decomposition 1};
+
 % Time axis
 \draw[thick,->] (-0.5,0) -- (14,0) node[right] {Time};
 
@@ -538,39 +676,68 @@ Since we have not yet established a rule (financial law) for decomposing the ins
 \node[above,red!70!black] at (12,0.7) {-\texteuro 380};
 \node[right,font=\tiny,red!70!black] at (12.2,-0.5) {$I_3$: \texteuro 47};
 \node[right,font=\tiny,blue] at (12.2,-0.9) {$C_3$: \texteuro 333};
+
+% Decomposition 2 Title
+\node[font=\bfseries] at (6,-3) {Decomposition 2};
+
+% Time axis for Decomposition 2
+\draw[thick,->] (-0.5,-5.5) -- (14,-5.5) node[right] {Time};
+
+% Date markers for Decomposition 2
+\draw (0,-5.4) -- (0,-5.6) node[below,font=\tiny,align=center] {31/12\\2024};
+\draw (4,-5.4) -- (4,-5.6) node[below,font=\tiny,align=center] {31/03\\2025};
+\draw (8,-5.4) -- (8,-5.6) node[below,font=\tiny,align=center] {30/06\\2025};
+\draw (12,-5.4) -- (12,-5.6) node[below,font=\tiny,align=center] {31/09\\2025};
+
+% Inflow at t=0 (Decomposition 2)
+\draw[->,green!60!black,ultra thick] (0,-7.5) -- (0,-5);
+\node[below,green!60!black,font=\bfseries] at (0,-7.5) {+\texteuro 1,000};
+\node[below,green!60!black,font=\tiny] at (0,-8) {Principal $S$};
+
+% Payment at Q1 (Decomposition 2)
+\draw[->,red!70!black,very thick] (4,-5) -- (4,-7);
+\node[above,red!70!black] at (4,-4.8) {-\texteuro 370};
+\node[right,font=\tiny,red!70!black] at (4.2,-6) {$I_1$: \texteuro 10};
+\node[right,font=\tiny,blue] at (4.2,-6.4) {$C_1$: \texteuro 360};
+
+% Payment at Q2 (Decomposition 2)
+\draw[->,red!70!black,very thick] (8,-5) -- (8,-7);
+\node[above,red!70!black] at (8,-4.8) {-\texteuro 370};
+\node[right,font=\tiny,red!70!black] at (8.2,-6) {$I_2$: \texteuro 10};
+\node[right,font=\tiny,blue] at (8.2,-6.4) {$C_2$: \texteuro 360};
+
+% Payment at Q3 (Decomposition 2)
+\draw[->,red!70!black,very thick] (12,-5) -- (12,-7);
+\node[above,red!70!black] at (12,-4.8) {-\texteuro 380};
+\node[right,font=\tiny,red!70!black] at (12.2,-6) {$I_3$: \texteuro 120};
+\node[right,font=\tiny,blue] at (12.2,-6.4) {$C_3$: \texteuro 260};
+
 \end{tikzpicture}
 \end{figure}
 ```
 
-\FloatBarrier
+::: {.callout-note icon=true}
+## Timeline Comparison
 
-### Step 6: Pattern Identification
+The timeline representation makes the differences even clearer:
 
-This is a **financing pattern** from the borrower's perspective:
+**Decomposition 1**: 
 
-- Initial **inflow** (+€1,000): You receive money
-- Subsequent **outflows** (−€380 each quarter): You pay back
+- Equal payments of €380 throughout
+- Consistent interest/principal split at each period
+- Visually balanced decomposition
 
-The **opposite perspective** (lender's view) would show an **investment pattern**:
+**Decomposition 2**:
 
-- Initial **outflow** (−€1,000): Lender pays money
-- Subsequent **inflows** (+€380 each quarter): Lender receives payments
+- Smaller payments (€370) in periods 1-2, then €380 in period 3
+- Interest changes dramatically: €10 → €10 → €120
+- Final period has a much larger interest component relative to principal
+- The visual representation shows how interest is "deferred" to the end
 
-### Step 7: Key Insights
-
-::: {.callout-important icon="true"}
-## Complete Analysis
-
-**Decomposition shows**: Each €380 payment contains approximately €47 interest and €333 principal repayment
-
-**Pattern**: This is financing (borrow now, pay later in installments)
-
-**Total payments**: €380 × 3 = **€1,140**
-
-**Total interest**: €1,140 − €1,000 = **€140** over 3 quarters
-
-**Perspective matters**: From the lender's view, this €140 is their return on investment!
+Both timelines represent the **same total cashflows**, but allocate interest and principal very differently!
 :::
+
+\FloatBarrier
 
 ## Financial Transaction Notation (Lizzi's)
 
@@ -975,6 +1142,58 @@ $$
 \end{figure}
 ```
 
+{{< pagebreak >}}
+
+\FloatBarrier
+
+::: {.callout-note icon=true}
+## Connection: Understanding the Two Decompositions
+
+Remember our earlier example of the €1,000 loan with three repayments? We saw two different decompositions that both represented the **same total cashflows**.
+
+**Decomposition 1**: $\{1000, -380, -380, -380\} / \{0, 1, 2, 3\}$
+
+**Decomposition 2**: $\{1000, -370, -370, -380\} / \{0, 1, 2, 3\}$
+
+Using Lizzi's notation, we can express **why** these are both valid. Each total payment can be decomposed into interest and principal components:
+
+**Decomposition 1**:
+$$
+\begin{aligned}
+\{1000, -380, -380, -380\} / \{0, 1, 2, 3\} &= \{1000, 0, 0, 0\} / \{0, 1, 2, 3\} \\
+&\oplus \{0, -47, -47, -47\} / \{0, 1, 2, 3\} \\
+&\oplus \{0, -333, -333, -333\} / \{0, 1, 2, 3\}
+\end{aligned}
+$$
+
+Where:
+
+- $\{1000, 0, 0, 0\} / \{0, 1, 2, 3\}$ = Loan principal received
+- $\{0, -47, -47, -47\} / \{0, 1, 2, 3\}$ = Interest payments
+- $\{0, -333, -333, -333\} / \{0, 1, 2, 3\}$ = Principal repayments
+
+**Decomposition 2**:
+$$
+\begin{aligned}
+\{1000, -370, -370, -380\} / \{0, 1, 2, 3\} &= \{1000, 0, 0, 0\} / \{0, 1, 2, 3\} \\
+&\oplus \{0, -10, -10, -120\} / \{0, 1, 2, 3\} \\
+&\oplus \{0, -360, -360, -260\} / \{0, 1, 2, 3\}
+\end{aligned}
+$$
+
+Where:
+
+- $\{1000, 0, 0, 0\} / \{0, 1, 2, 3\}$ = Loan principal received
+- $\{0, -10, -10, -120\} / \{0, 1, 2, 3\}$ = Interest payments
+- $\{0, -360, -360, -260\} / \{0, 1, 2, 3\}$ = Principal repayments
+
+**Key insight**: The formal notation shows that both decompositions are valid algebraically — we're simply splitting the same total cashflows differently into interest vs principal components. The $\oplus$ operator demonstrates that when we **sum** the components, we always get back the same total transaction! 
+
+Without a **financial law** (rules for how interest accrues over time), both decompositions are mathematically equivalent. This is why we need to establish conventions and laws — not for mathematical correctness, but for **economic meaning** and market consistency!
+:::
+
+{{< pagebreak >}}
+
 \FloatBarrier
 
 ::: {.callout-tip icon=true}
@@ -990,7 +1209,6 @@ This formal notation $\mathbf{x}/\mathbf{t}$ allows us to:
 
 Think of it as the "algebra of money flows" — just as we can add numbers, we can now add entire cashflow streams!
 :::
-
 
 ## Summary
 
