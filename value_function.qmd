@@ -5,199 +5,278 @@
 
 **Book:** Pearson Corporate Finance 6th Edition, Chapter 3 (Present Value and NPV Decision Rule), Page 74, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=107)
 
-**Slide:** Financial Mathematics Slides 1-96, Slides 33-36 (Value function definition, properties, examples), Page 33, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=33)
+**Slide:** Financial Mathematics Slides 1-96, Slides 34-46 (Value function definition, properties, and relationship with interest rates), Page 34, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=34)
 :::
 
 ## Introduction
 
-So far, we've learned to describe cashflows as discrete events (money at specific times). But to truly understand the **financial state** of a project or investment at *any* point in time, we need a continuous view. This is where the **value function** comes in.
+Suppose we have a financial transaction on two dates, represented as:
+
+$$
+\{-S, S + I\} / \{0, 1\}
+$$
+
+This means that, strictly speaking, the counterparts have agreed to consider the sum $S$ at time 0 **equivalent** to the sum $S + I$ at time 1.
 
 ::: {.callout-tip icon="true"}
-## Intuition: From Snapshots to a Movie
+## Concrete Example: A Simple Loan
 
--   **Cashflow table**: Snapshots at specific moments
--   **Value function**: A continuous movie showing your financial position over time
+Imagine you lend your friend **€1,000 today** (time 0), and they agree to pay you back **€1,050 in one year** (time 1). 
 
-Think of it as tracking your "net worth from this investment" at every instant, not just when money moves.
-:::
+The financial transaction is: $\{-1000, 1050\} / \{0, 1\}$
 
-## The Core Concept
+This contract establishes that:
 
-::: {.callout-caution icon=true}
-## References
+- €1,000 today = €1,050 in one year
+- The interest is €50
+- You both agree these two amounts are "equivalent" given the one-year time difference
 
-**Book:** Pearson Corporate Finance 6th Edition, Chapter 3 (Present Value and NPV Decision Rule), Page 74, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=107)
-
-**Slide:** Financial Mathematics Slides 1-96, Slides 33-36 (Value function definition), Page 33, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=33)
-
-**Slide:** Financial Mathematics Slides 1-96, Slides 38-41 (Value function and cash flows examples), Page 38, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=38)
-
-NOTE: There is nothing about "Value Function" in the book itself, as it is a more complex abstraction than the ones normally used in Finance. It is actually useful notation if you get it (i.e. your background is in engineering, statistics, math, etc), but **just don't bother looking it up online.**
+This equivalence is **not a natural fact**—it's something you both agreed upon when signing the contract.
 :::
 
 ::: {.callout-note icon="true"}
-## Definition: Value Function
+## Key Insight
 
-The **value function** $V(t)$ represents the monetary value of a cashflow stream at time $t$, accounting for all past and future cashflows, adjusted for the time value of money.
+Therefore, the financial contract implicitly states an **intertemporal equivalence law** between sums of money.
+:::
+
+We can record this law in the form of a function of time, defined at times 0 and 1 (the contract execution is possible only at those two dates).
+
+This function of the schedule dates $V(t)$ is called the **value function**.
+
+### Tabular Representation
+
+The tabular representation of the function is:
+
+| $t$ | $V(t)$ |
+|-----|--------|
+| 0   | $S$    |
+| 1   | $S+I$  |
+
+Using our concrete example:
+
+| $t$ (years) | $V(t)$ (€) |
+|-------------|------------|
+| 0           | 1,000      |
+| 1           | 1,050      |
+
+::: {.callout-tip icon="true"}
+## Intuition: What Does the Value Function Really Mean?
+
+Think of the value function as a **"what's it worth?" tracker**:
+
+- **At time 0**: The loan is worth €1,000 (what you just lent out)
+- **At time 1**: The loan is worth €1,050 (what you'll receive, including interest)
+
+The value function tells us the **monetary value** of the financial contract at each point in time. It's like tracking the "paper value" of an investment as time passes—even before any money actually changes hands!
+
+**Key insight**: The value function is NOT the cash you physically hold. It's the **economic value** of your position in the contract at any given moment.
+:::
+
+## Extending to Multi-Period Transactions
+
+Let's now extend this notion to multi-period financial transactions.
+
+Consider the following **composite transaction**:
+
+- At time 0, an amount $S$ is invested by a financial institution
+- At time 1, the debtor can decide to:
+  1. **Pay the entire sum**, with interest $I$. The resulting financial operation is:
+     $$\{-S, S+I\} / \{0, 1\}$$
+  2. **Defer the principal reimbursement** for one year, paying an additional interest $I'$, so that the operation becomes:
+     $$\{-S, S+I+I'\} / \{0, 2\}$$
+
+We have implicitly defined two value functions, one for each possible choice of the debtor.
+
+::: {.callout-tip icon="true"}
+## Concrete Example: A Flexible Student Loan
+
+You take out a **€10,000 student loan** on graduation day. The lender offers you flexibility:
+
+**Option 1**: Pay everything back in 1 year with **€500 interest**
+
+- Total payment: €10,500 at year 1
+
+**Option 2**: Defer payment for another year, but pay an **additional €600 interest**
+
+- Total payment: €11,100 at year 2 (original €500 + extra €600)
+
+This is a real-world example of a composite transaction where the debtor has **optionality**—the choice affects the timeline and the final amount!
+:::
+
+### Two Possible Value Functions
+
+The tabular representations of the two value functions are:
+
+**Option 1: Pay at time 1**
+
+| $t$ | $V_1(t)$ |
+|-----|----------|
+| 0   | $S$      |
+| 1   | $S+I$    |
+
+**Option 2: Pay at time 2**
+
+| $t$ | $V_2(t)$ |
+|-----|----------|
+| 0   | $S$      |
+| 2   | $S+I+I'$ |
+
+However, we can see the second choice as a **composition** of two basic operations:
 
 $$
-V(t) = \text{value at time } t \text{ of everything that has happened and will happen}
+\{-S, S+I\} / \{0, 1\} \oplus \{-(S+I), (S+I)+I'\} / \{1, 2\}
+$$
+
+Therefore, this contract involves **three different time periods**: this implicitly defines an intertemporal equivalence law $V(t)$ on three dates, whose representation is:
+
+| $t$ | $V_2(t)$ |
+|-----|----------|
+| 0   | $S$      |
+| 1   | $S+I$    |
+| 2   | $S+I+I'$ |
+
+Using our student loan example:
+
+| $t$ (years) | $V(t)$ (€) | What's happening |
+|-------------|------------|------------------|
+| 0           | 10,000     | Loan received    |
+| 1           | 10,500     | Could pay here, or roll over |
+| 2           | 11,100     | Final payment if deferred |
+
+::: {.callout-important icon="true"}
+## Key Observation
+
+The composite transaction is not defined on a fixed time schedule. However, all potential outcomes have been examined and agreed upon at time 0. The function $V(t)$ **summarizes all such alternative outcomes**.
+:::
+
+::: {.callout-tip icon="true"}
+## Intuition: The Value Function as a "Decision Tree Summary"
+
+Think of the value function as a **snapshot of all possible futures** that were agreed upon upfront:
+
+- At time 0, you and the lender sat down and agreed: "Here are all the possible scenarios"
+- The value function $V(t)$ captures **every node in that decision tree**
+- Even though you haven't decided yet (at time 0) whether to pay at year 1 or year 2, the value function already encodes both possibilities
+
+This is powerful because:
+
+1. **Flexibility is built in**: The contract allows for multiple paths
+2. **Everything is pre-agreed**: No surprises—all terms are clear from day 1
+3. **The value function is the "master map"**: It shows the value of your position at every possible decision point
+
+**Real-world parallel**: It's like a mobile phone contract where you agree upfront on prices for 12-month vs 24-month commitments—the value at each point is predetermined, but you get to choose your path!
+:::
+
+## Basic Assumptions About the Value Function
+
+For the value function to make economic sense, we impose two fundamental assumptions:
+
+::: {.callout-note icon="true"}
+## Assumption 1: Positive and Non-Negative Time
+
+For simplicity, and without loss of generality, we assume that the value function is positive-valued and defined on positive times:
+
+$$
+V(t) > 0; \quad t \geq 0
 $$
 :::
 
 ::: {.callout-tip icon="true"}
-## Intuition: Your Investment's "Bank Balance"
+## Intuition: Why Positive Values?
 
-Think of $V(t)$ as the balance in a virtual bank account that tracks your investment:
+This assumption might seem obvious, but it's important:
 
-- At $t=0$: You make your initial investment → $V(0)$ shows starting balance
-- As time passes: Interest accrues, payments come in/go out → $V(t)$ shows current "net worth"
-- At maturity: All payments are settled → $V(T)$ shows final accumulated value
+- **Positive values**: We're tracking the value of an asset or investment, not a liability. If you're the lender, $V(t)$ represents "how much your loan is worth" (positive from your perspective)
+- **Non-negative time**: We start measuring from "now" (time 0) and look forward. We don't deal with "negative time" (the past) because contracts are about the future!
 
-**Key insight**: Unlike your actual cashflows (which only happen at specific times), $V(t)$ exists at *every* moment in time. It's a smooth, continuous function that tells you "if I liquidated everything right now, what would I have?"
+**Example**: If you invest €1,000 today, at any future point $t$, that investment should be worth something positive (€1,000 + interest). It doesn't make sense for it to be worth -€500 unless you're modeling debt (which we'd handle differently).
 :::
-
-### Two Perspectives on $V(t)$
-
-1.  **Backward-looking**: What happened before $t$, accumulated to time $t$
-2.  **Forward-looking**: What will happen after $t$, discounted to time $t$
-
-## Value Function and Cash Flows: A Detailed Example
 
 ::: {.callout-note icon="true"}
-## Important Distinction
+## Assumption 2: Strictly Increasing
 
-The **value function** of a financial transaction and its **cash flows** are two different concepts. To see this clearly, let's examine an investment/borrowing operation in detail.
+To incorporate the **time-value of money**, we assume that the value function is strictly increasing:
+
+$$
+t_1 < t_2 \Rightarrow V(t_1) < V(t_2)
+$$
+
+This captures the fundamental principle that **money today is worth more than money tomorrow**.
 :::
 
-### The Investment Operation
+::: {.callout-tip icon="true"}
+## Intuition: Why Must Value Always Increase?
 
-Consider the following financial transaction representing either an investment or borrowing operation:
+This is the **mathematical expression of "time value of money"**—one of the most fundamental concepts in finance!
+
+**Why does value increase over time?**
+
+1. **Opportunity cost**: Money today can be invested to earn returns
+2. **Inflation**: Money loses purchasing power over time
+3. **Risk and uncertainty**: Future payments are less certain than present ones
+4. **Patience has value**: People prefer having money now rather than later (liquidity preference)
+
+**Concrete example**:
+
+- €1,000 today can be invested at 5% interest
+- By next year, it grows to €1,050
+- So €1,000 today is "equivalent" to €1,050 next year
+- If time didn't add value, why would anyone lend money? There'd be no incentive!
+
+**Key insight**: If $V(t)$ were constant or decreasing, it would mean **time has no value** or even **destroys value**—which contradicts the entire premise of interest and financial markets!
+
+**Real-world check**: Have you ever heard someone say "I'll gladly pay you €100 today for the privilege of receiving €100 back in 5 years"? Of course not! That's because of this assumption.
+:::
+
+## Value Function and Cash Flows Are Different
+
+::: {.callout-warning icon="true"}
+## Critical Distinction
+
+Please note that the **value function** of a financial transaction and its **cash flows** are two different concepts.
+:::
+
+To see this with an example, let's go back to the investment/borrowing operation:
 
 $$
 \{1000, -380, -380, -380\} / \{0, 1, 2, 3\}
 $$
 
-This means:
--   **t = 0**: Receive or invest 1,000€
--   **t = 1**: Pay 380€
--   **t = 2**: Pay 380€  
--   **t = 3**: Pay 380€
-
-### Cashflow Table
-
-| Time (quarters) | Cashflow (€) | Type    | Description |
-|-----------------|--------------|---------|-------------|
-| 0               | +1,000       | Inflow  | Loan received / Investment |
-| 1               | −380         | Outflow | Payment     |
-| 2               | −380         | Outflow | Payment     |
-| 3               | −380         | Outflow | Payment     |
-
-\FloatBarrier
-
-### Timeline Diagram
-
-```{=latex}
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}[scale=1.2]
-% Time axis
-\draw[thick,->] (0,0) -- (13,0) node[right] {Time (quarters)};
-\foreach \x/\label in {0/0, 4/1, 8/2, 12/3}
-    \draw (\x,0.1) -- (\x,-0.1) node[below] {$t=\label$};
-
-% Inflow at t=0
-\draw[->,green!60!black,very thick] (0,-1.2) -- (0,0.5);
-\node[above,green!60!black,font=\small] at (0,0.7) {+1{,}000€};
-\node[below,green!60!black,font=\scriptsize] at (0,-1.5) {Loan received};
-
-% Outflow at t=1
-\draw[->,red!70!black,very thick] (4,0.5) -- (4,-1.2);
-\node[above,red!70!black,font=\small] at (4,0.7) {−380€};
-\node[below,red!70!black,font=\scriptsize] at (4,-1.5) {Payment};
-
-% Outflow at t=2
-\draw[->,red!70!black,very thick] (8,0.5) -- (8,-1.2);
-\node[above,red!70!black,font=\small] at (8,0.7) {−380€};
-\node[below,red!70!black,font=\scriptsize] at (8,-1.5) {Payment};
-
-% Outflow at t=3
-\draw[->,red!70!black,very thick] (12,0.5) -- (12,-1.2);
-\node[above,red!70!black,font=\small] at (12,0.7) {−380€};
-\node[below,red!70!black,font=\scriptsize] at (12,-1.5) {Payment};
-
-% Starting date annotation
-\node[font=\scriptsize,blue] at (6,1.5) {Starting: 31/12/2024};
-\end{tikzpicture}
-\end{figure}
-```
-
-\FloatBarrier
-
-::: {.callout-tip icon="true"}
-## Interpretation
-
-If you **receive** 1,000€ initially, this is a **borrowing** operation (you're taking a loan).  
-If you **invest** 1,000€ initially, think of the negative sign meaning you place money, and the positive payments are your returns.
-
-For this example, we'll treat it as a **borrowing operation** where you borrow 1,000€ and make three payments of 380€.
-:::
-
-### Decomposing the Interest
-
-Let's suppose that interest is described by **Decomposition 1**, with the cashflows decomposed as:
+Let's suppose that interest is described by **Decomposition 1**, such that:
 
 $$
 \{1000, -333.33-46.67, -333.33-46.67, -333.34-46.66\} / \{0, 1, 2, 3\}
 $$
 
-This decomposition separates each payment into **principal repayment** and **interest payment**:
+where each payment is decomposed into principal and interest.
 
-| Time | Total Payment (€) | Principal (€) | Interest (€) |
-|------|-------------------|---------------|--------------|
-| 0    | +1,000            | —             | —            |
-| 1    | −380              | −333.33       | −46.67       |
-| 2    | −380              | −333.33       | −46.67       |
-| 3    | −380              | −333.34       | −46.66       |
-
-\FloatBarrier
-
-For the sake of brevity, let's measure time in **quarters**, starting from 31/12/2024. From this decomposition, we can compute the following **period interest rates**:
+For the sake of brevity, let's measure time in **quarters**, starting from 31/12/2024. From this interest, we compute the following **period interest rates**:
 
 $$
 i_1 = 0.047; \quad i_2 = 0.070; \quad i_3 = 0.140
 $$
 
-::: {.callout-note icon="true"}
-## Computing Period Interest Rates
+We can now try to use these rates to build a composite operation of the same type we've used to introduce the value function.
 
-The period interest rate $i_k$ represents the interest accrued during period $k$:
+### Building the Value Function: Step by Step
 
-- **Period 1**: Interest = 46.67€ on 1,000€ principal → $i_1 = 46.67/1000 = 0.047$
-- **Period 2**: Interest = 46.67€ on 1,000€ principal → $i_2 = 0.070$ (needs accumulated capital)
-- **Period 3**: Interest = 46.66€ on accumulated capital → $i_3 = 0.140$
-:::
+**At time 0:**
 
-### Building the Value Function
-
-We can now use these rates to build a **composite operation** of the same type we've used to introduce the value function.
-
-#### At Time 0: Initial Investment
-
-The investment consists of 1,000€ at time 0. Therefore:
+The investment consists of 1,000 € at time 0. Therefore:
 
 $$
 V(0) = 1,000
 $$
 
-#### At Time 1: After First Period
+**At time 1:**
 
-At time 1, since the period interest rate is $i_1 = 0.047$, the period interest is 46.67€. The borrower can decide to **repay the entire debt**, or to **extend the payment** term by another quarter, paying an additional interest.
+Since the period interest rate is $i_1 = 0.047$, the period interest is 46.67 €. The borrower can decide to repay his entire debt, or to extend the payment term by another quarter, paying an additional interest.
 
-If they choose the **second option**, the composite transaction becomes:
+If he chooses the second option, the composite transaction becomes:
 
 $$
-\{1,000, -1,046.67\} / \{1, 046.67, -1,046.67 + I_2\}
+\{1,000, -1,046.67\} / \{0, 1\} \oplus \{1,046.67, -1,046.67 + I_2\} / \{1, 2\}
 $$
 
 Now, what is the interest pertaining to the second period? To preserve coherence with interest rate $i_2$, it must be:
@@ -209,24 +288,24 @@ $$
 Therefore, the composite transaction becomes:
 
 $$
-\{1,000, -1,046.67\} / \{0, 1\} \oplus \{1,046.67, -1,119.43\} / \{0, 1\}
+\{1,000, -1,046.67\} / \{0, 1\} \oplus \{1,046.67, -1,119.93\} / \{1, 2\}
 $$
 
-The symbol $\oplus$ means we're **combining** or **composing** these operations. We now have the second point of the value function:
+We now have the second point of the value function:
 
 $$
 V(0) = 1,000; \quad V(1) = 1,046.67
 $$
 
-#### At Time 2 and 3: Continuing the Process
+**At time 2 and 3:**
 
-We can **repeat the same procedure**: holding the period interest rates fixed and supposing to delay the principal payment until time 3, we find the remaining points of the value function:
+We can repeat the same procedure: holding the period interest rates fixed and supposing to delay the principal payment until time 3, we find the remaining points of the value function:
 
 $$
 V(2) = 1,119.93; \quad V(3) = 1,276.72
 $$
 
-### The Value Function Graph (Decomposition 1)
+### The Graph: Decomposition 1
 
 ```{=latex}
 \begin{figure}[h]
@@ -265,37 +344,15 @@ $$
 
 \FloatBarrier
 
-::: {.callout-tip icon="true"}
-## Reading the Graph
-
--   **The value function grows over time** — the debt accumulates with interest
--   Starting from 1,000€, it grows to 1,276.72€ by time 3
--   The growth rate **accelerates** over time (notice $i_3 = 0.140$ is much higher than $i_1 = 0.047$)
--   This represents the **accumulated capital** if no payments are made
-:::
-
 ### Comparing with Decomposition 2
 
-What happens if we repeat the same procedure using **Decomposition 2**?
+What happens if we repeat the same procedure using interest from **Decomposition 2**?
 
 $$
 \{1000, -370-10, -370-10, -260-120\} / \{0, 1, 2, 3\}
 $$
 
-This alternative decomposition has a **different structure** of principal and interest:
-
-| Time | Total Payment (€) | Principal (€) | Interest (€) |
-|------|-------------------|---------------|--------------|
-| 0    | +1,000            | —             | —            |
-| 1    | −380              | −370          | −10          |
-| 2    | −380              | −370          | −10          |
-| 3    | −380              | −260          | −120         |
-
-\FloatBarrier
-
-Notice that in Decomposition 2, **more principal is paid early**, but the **interest in period 3 is much higher** (120€ vs 46.66€).
-
-From this decomposition, we compute different period interest rates:
+From this decomposition, we obtain different period interest rates:
 
 $$
 i_1 = 0.010; \quad i_2 = 0.016; \quad i_3 = 0.462
@@ -307,7 +364,7 @@ $$
 V(0) = 1,000; \quad V(1) = 1,010; \quad V(2) = 1,026.16; \quad V(3) = 1,500.25
 $$
 
-### Comparing Both Decompositions
+### Comparison Graph
 
 ```{=latex}
 \begin{figure}[h]
@@ -332,7 +389,7 @@ $$
 \fill[red] (9,2.553) circle (3pt);
 \draw[thick,red] (0,2) -- (3,2.093) -- (6,2.24) -- (9,2.553);
 
-% Decomposition 2 (blue)
+% Decomposition 2 (blue) - V(3)=1500.25->3.0 on scale
 \fill[blue] (0,2) circle (3pt);
 \fill[blue] (3,2.02) circle (3pt);
 \fill[blue] (6,2.052) circle (3pt);
@@ -350,371 +407,544 @@ $$
 \FloatBarrier
 
 ::: {.callout-important icon="true"}
-## Key Observations
+## Critical Conclusion
 
-Comparing the two decompositions:
-
-1. **Both start at the same point**: $V(0) = 1,000$ for both
-2. **Decomposition 1** (red): Grows steadily with moderate interest rates
-   - More balanced growth across all periods
-   - Final value: 1,276.72€
-3. **Decomposition 2** (blue): Grows slowly at first, then dramatically in period 3
-   - Very low interest rates in periods 1 and 2
-   - Extremely high interest rate in period 3 ($i_3 = 0.462$ or 46.2%!)
-   - Final value: 1,500.25€ (much higher!)
-
-**Same cashflows, different interest rate structures** lead to different value functions!
+-   The **same cash flows**, with a different agreement on interest calculation, led to **two different value functions**.
+-   To describe the value function associated with a transaction, the cash flow stream is not enough: the value function is linked to **period interest rates**.
+-   Since the value function is expressed in monetary terms, its **initial value** is also required to fully describe it. In the previous example, starting from $V(0) = 500$, with the same period interest rates, would have produced two new value functions, whose values would have been exactly half of the starting ones.
 :::
 
 ::: {.callout-tip icon="true"}
-## Intuition: Why Different Value Functions?
+## Intuition: Why Do Identical Cash Flows Produce Different Value Functions?
 
-Imagine two credit cards with the same minimum payments but different interest structures:
+This is **one of the most important insights** in financial mathematics! Let's understand why:
 
-- **Card 1** (Decomposition 1): Charges steady 4-14% interest across all periods → predictable debt growth
-- **Card 2** (Decomposition 2): Charges low 1-2% initially, then BAM! 46% in the final period → balloon debt
+**The cash flow tells you WHAT happens, but not HOW value accumulates**
 
-Both have identical payment schedules, but the *timing* of when interest compounds creates vastly different financial realities. This is why reading the fine print matters—the payment schedule alone doesn't tell the whole story!
+Think of two loans, both with payments of €380 per quarter:
 
-**Financial lesson**: Two loans with identical cashflows can have completely different "financial health trajectories" depending on how interest is structured over time.
+**Loan A (Decomposition 1)**: "Balanced growth"
+
+- Interest is distributed relatively evenly across periods
+- Like a standard amortizing loan
+- Value grows steadily: €1,000 → €1,047 → €1,120 → €1,277
+
+**Loan B (Decomposition 2)**: "Balloon structure"
+
+- Most interest is deferred to the final period
+- Like a "balloon payment" loan where you pay interest upfront and principal later
+- Value grows slowly at first, then jumps: €1,000 → €1,010 → €1,026 → €1,500
+
+**Real-world analogy**:
+
+Imagine two rental properties:
+
+- Both collect €1,200/month in rent (same "cash flows")
+- **Property A**: Rent increases steadily with inflation
+- **Property B**: Rent is flat for years, then jumps massively in year 3
+
+Even though the rent checks look the same today, the **properties have different values** because the growth patterns differ!
+
+**The lesson**: Cash flows alone are like seeing the inputs and outputs of a black box. The value function reveals **what's happening inside the box**—how value is accumulating over time.
+
+**What determines the value function?**
+
+1. Initial capital: $V(0)$
+2. The "growth engine": Period interest rates $i_1, i_2, i_3, \ldots$
+3. NOT the cash flows themselves!
+
+The cash flows are the **result** of the value function and the interest structure, not the **cause**.
 :::
 
-## The Value Function Formula
+## Formal Definitions in Terms of the Value Function
 
-::: {.callout-important icon="true"}
-## Key Formula: Value Function
+We can now express some key quantities in a more formal way, in terms of the value function.
 
-For a cashflow stream with payments $C_0, C_1, ..., C_n$ at times $t_0, t_1, ..., t_n$:
-
-$$
-V(t) = \sum_{t_i \leq t} C_i \cdot (1+i)^{t-t_i} + \sum_{t_j > t} \frac{C_j}{(1+i)^{t_j - t}}
-$$
-
-Where: 
-
-- First sum: Past cashflows accumulated forward to time $t$ 
-- Second sum: Future cashflows discounted back to time $t$ 
-- $i$ = interest rate per period
-
-NOTE: $\sum$ means summation. You can read more about that in the maths cheat sheet.
-:::
-
-**In words**: Value at time $t$ = (Everything before $t$, grown with interest) + (Everything after $t$, discounted)
-
-::: {.callout-tip icon="true"}
-## Intuition: The Value Function Formula
-
-The value function formula has two "modes":
-
-**🔭 Looking backward** (first sum): "I already received/paid these amounts. If I'd invested them at rate $i$, they'd be worth..." → Accumulate past cashflows forward
-
-**🔬 Looking forward** (second sum): "I know I'll receive/pay these amounts later. In today's money, they're worth..." → Discount future cashflows backward
-
-**At any time $t$, you stand at the dividing line**: everything behind you has been growing with interest, everything ahead of you needs to be discounted. The sum gives you your current financial position.
-
-**Example**: Standing at year 2 of a 5-year project:
-
-- Years 0-2 cashflows: Already happened → accumulate to year 2
-- Years 3-5 cashflows: Still coming → discount to year 2
-- Your position at year 2 = sum of both
-:::
-
-## Net Present Value (NPV)
-
-::: {.callout-caution icon=true}
-## References
-
-**Book:** Pearson Corporate Finance 6th Edition, Chapter 3 (NPV and Investment Decisions), Page 80, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=113)
-
-**Slide:** Financial Mathematics Slides 1-96, Slide 35 (NPV formula and decision rule), Page 35, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=35)
-:::
-
-The value at time zero, $V(0)$, has a special name:
+### Interest
 
 ::: {.callout-note icon="true"}
-## Definition: Net Present Value
+## Definition: Interest
 
-The **Net Present Value (NPV)** is the value function evaluated at $t=0$:
+The **interest** earned between time $t$ and time $t + \tau$ is:
 
 $$
-\text{NPV} = V(0) = \sum_{i=0}^{n} \frac{C_i}{(1+r)^{t_i}}
+I(t, t+\tau) = V(t+\tau) - V(t)
 $$
-
-It represents the "today value" of the entire cashflow stream.
 :::
-
-### Decision Rule
-
-::: {.callout-important icon="true"}
-## NPV Decision Rule
-
--   **NPV \> 0**: Project adds value → **Accept**
--   **NPV = 0**: Project is break-even → **Indifferent**
--   **NPV \< 0**: Project destroys value → **Reject**
-:::
-
-### Example: Should We Accept This Investment?
-
-**Investment opportunity**:
-
-- Initial cost: \$5,000
-- Year 1 return: \$2,000
-- Year 2 return: \$2,500
-- Year 3 return: \$1,800
-- Discount rate: 10%
-
-**Calculate NPV**:
-$$
-\begin{aligned}
-\text{NPV} &= -5000 + \frac{2000}{1.10} + \frac{2500}{1.10^2} + \frac{1800}{1.10^3} \\
-&= -5000 + 1818.18 + 2066.12 + 1352.42 \\
-&= 236.72
-\end{aligned}
-$$
-
-**Decision**: **Accept!** NPV = $236.72$ \> 0, so the project adds value.
 
 ::: {.callout-tip icon="true"}
-## Intuition: Why NPV = V(0)?
+## Concrete Example: Interest
 
-NPV is just a special name for the value function at time zero:
+Suppose you invest in a bond with value function:
 
-- **V(0)**: "What's my financial position *right now* if I commit to this entire project?"
-- **NPV**: Same question, different name, used specifically for investment decisions
+- $V(0) = 1,000$ (initial investment)
+- $V(3) = 1,150$ (value after 3 years)
 
-Think of it as a "today snapshot" of the entire project's worth. If NPV > 0, the project is worth more than it costs today → good deal! If NPV < 0, you're paying more than it's worth → bad deal.
+**What's the interest earned over these 3 years?**
 
-**Why time zero?** Because that's when you make the decision. You need to know: "If I start this project today, does it create or destroy value?"
+$$
+I(0, 3) = V(3) - V(0) = 1,150 - 1,000 = 150 \text{ euros}
+$$
+
+**Intuition**: Interest is simply **"how much more do I have?"**—the absolute gain in value. It's measured in currency units (euros, dollars, etc.), not percentages.
+
+**Mid-period example**: If $V(1) = 1,050$ and $V(3) = 1,150$, then:
+
+$$
+I(1, 3) = 1,150 - 1,050 = 100 \text{ euros}
+$$
+
+This is the interest earned **from year 1 to year 3**, not from the beginning!
 :::
 
-## Value Function Properties
+### Interest Rate
 
-### Property 1: Additivity
+::: {.callout-note icon="true"}
+## Definition: Interest Rate
 
-If you have two independent cashflow streams $A$ and $B$:
-
-$$
-V_{A+B}(t) = V_A(t) + V_B(t)
-$$
-
-You can value them separately and add the results.
-
-### Property 2: Time Consistency
-
-The value function satisfies:
+The **interest rate** for the period from time $t$ to time $t + \tau$ is:
 
 $$
-V(t_2) = V(t_1) \cdot (1+i)^{t_2-t_1} + \sum_{t_1 < t_i \leq t_2} C_i \cdot (1+i)^{t_2-t_i}
+i(t, t+\tau) = \frac{V(t+\tau) - V(t)}{V(t)}
+$$
+:::
+
+::: {.callout-tip icon="true"}
+## Concrete Example: Interest Rate
+
+Using the same bond:
+
+- $V(0) = 1,000$
+- $V(3) = 1,150$
+
+**What's the interest rate over these 3 years?**
+
+$$
+i(0, 3) = \frac{V(3) - V(0)}{V(0)} = \frac{1,150 - 1,000}{1,000} = \frac{150}{1,000} = 0.15 = 15\%
 $$
 
-**Interpretation**: Value at $t_2$ = (Value at $t_1$ grown with interest) + (Cashflows in between, accumulated)
+**Intuition**: The interest rate asks **"what percentage did I earn?"** It's a **relative** measure—the gain divided by the initial amount.
 
-### Property 3: Boundary Conditions
+**Why does this matter?**
 
--   **At start**: $V(0)$ = NPV
--   **At end**: $V(T)$ = all cashflows accumulated to final time
+- Interest (absolute): "I earned €150" ← depends on how much you started with
+- Interest rate (relative): "I earned 15%" ← comparable across different investment sizes
 
-## Practical Applications
+**Mid-period example**: From year 1 to year 3:
 
-### 1. Project Monitoring
+$$
+i(1, 3) = \frac{V(3) - V(1)}{V(1)} = \frac{1,150 - 1,050}{1,050} = \frac{100}{1,050} \approx 9.52\%
+$$
 
-Track $V(t)$ over time to see if your project is on track:
+Same €100 gain, but different rate because you started with more capital at year 1!
+:::
+
+### Accumulation Factor
+
+::: {.callout-note icon="true"}
+## Definition: Accumulation Factor
+
+The **accumulation factor** from time $t$ to time $t + \tau$ is:
+
+$$
+m(t, t+\tau) = \frac{V(t+\tau)}{V(t)}
+$$
+:::
+
+::: {.callout-tip icon="true"}
+## Concrete Example: Accumulation Factor
+
+Using the same bond:
+
+- $V(0) = 1,000$
+- $V(3) = 1,150$
+
+**What's the accumulation factor from year 0 to year 3?**
+
+$$
+m(0, 3) = \frac{V(3)}{V(0)} = \frac{1,150}{1,000} = 1.15
+$$
+
+**Intuition**: The accumulation factor tells you **"how many times bigger did my money become?"**
+
+- If $m = 1.15$, your money became 1.15 times its original size
+- It's like a multiplier: $\text{Final Value} = \text{Initial Value} \times m$
+
+**Connection to interest rate**:
+
+$$
+m(t, t+\tau) = 1 + i(t, t+\tau)
+$$
+
+In our example: $m = 1.15 = 1 + 0.15 = 1 + 15\%$
+
+**Practical use**: Want to know what €5,000 grows to over the same period?
+
+$$
+\text{Final} = 5,000 \times 1.15 = 5,750 \text{ euros}
+$$
+
+No need to recalculate the rate—just multiply by the accumulation factor!
+
+**Mid-period example**:
+
+$$
+m(1, 3) = \frac{V(3)}{V(1)} = \frac{1,150}{1,050} \approx 1.0952
+$$
+
+Money invested at year 1 grows by a factor of about 1.095 by year 3.
+:::
+
+### Graphical Interpretation
 
 ```{=latex}
 \begin{figure}[h]
 \centering
-\begin{tikzpicture}[scale=1.0]
+\begin{tikzpicture}[scale=1.4]
 % Axes
-\draw[->] (0,0) -- (10,0) node[right] {Time};
-\draw[->] (0,-2) -- (0,3) node[above] {Value};
+\draw[->] (-0.5,0) -- (10,0) node[right] {time};
+\draw[->] (0,0) -- (0,5) node[above] {$V$};
 
-% Planned trajectory
-\draw[thick,blue,dashed] (0,0.5) -- (2,-0.5) -- (4,0.2) -- (6,1) -- (8,1.6) -- (10,2);
-\node[blue] at (10,2.5) {Planned $V(t)$};
+% Value function curve
+\draw[thick,blue] (0,1) to[out=30,in=180] (3,2.5) to[out=0,in=180] (6,3.5) to[out=0,in=180] (9,4.2);
 
-% Actual trajectory
-\draw[thick,red] (0,0.5) -- (2,-0.3) -- (4,0.4) -- (6,1.2) -- (8,1.9);
-\node[red] at (8,2.5) {Actual $V(t)$};
+% Key points
+\fill[red] (0,1) circle (2pt);
+\fill[red] (3,2.5) circle (2pt);
+\fill[red] (6,3.5) circle (2pt);
 
-% Current time
-\draw[thick,dashed] (8,-2) -- (8,3);
-\node[below] at (8,-2) {Today};
+% Labels
+\node[left] at (0,1) {$V(0)$};
+\node[left] at (3,2.5) {$V(t)$};
+\node[left] at (6,3.5) {$V(t+\tau)$};
 
-% Annotation
-\node[green!50!black,font=\small] at (7,1.5) {Ahead of plan! ✓};
+% Time markers
+\draw[dashed] (3,0) -- (3,2.5);
+\draw[dashed] (6,0) -- (6,3.5);
+\node[below] at (3,0) {$t$};
+\node[below] at (6,0) {$t+\tau$};
+
+% Interest bracket
+\draw[<->,thick,red] (6.5,2.5) -- (6.5,3.5);
+\node[right,red] at (6.5,3) {$V(t+\tau) - V(t)$};
+
+% Tau bracket
+\draw[<->,thick] (3,-0.5) -- (6,-0.5);
+\node[below] at (4.5,-0.5) {$\tau$};
+
 \end{tikzpicture}
 \end{figure}
 ```
 
 \FloatBarrier
 
-If actual $V(t)$ \> planned $V(t)$, you're ahead of schedule!
+## Example: Computing Interest Rates
 
-### 2. Comparing Investments
+Suppose that a transaction is summarized by the value function in this table:
 
-Two projects with different cashflow patterns:
+| $t$ | $V(t)$ |
+|-----|--------|
+| 0   | 100    |
+| 1   | 101    |
+| 1.5 | 105    |
+| 2   | 110    |
+| 4   | 111    |
 
-| Time | Project A | Project B |
-|------|-----------|-----------|
-| 0    | −1,000    | −1,000    |
-| 1    | +1,200    | 0         |
-| 2    | 0         | +1,300    |
+### Calculations
 
-**At 10% discount rate**: - $\text{NPV}_A = -1000 + 1200/1.10 = 90.91$ - $\text{NPV}_B = -1000 + 1300/1.10^2 = 74.38$
-
-**Conclusion**: Project A is better (higher NPV).
-
-## Lizzi's Notation: Bridging Two Worlds
-
-::: {.callout-note icon="true"}
-## Two Ways to Think About Financial Mathematics
-
-Lizzi uses **value function notation** $V(t)$, while most textbooks use **classical formulas** (PV, FV, NPV). They're saying the same thing, just in different languages. Here's how they connect:
-:::
-
-### Classical Approach (Traditional Finance)
-
-In most finance courses, you learn these standalone formulas:
-
-**Present Value:**
-$$
-PV = \frac{C_1}{(1+i)} + \frac{C_2}{(1+i)^2} + \cdots + \frac{C_n}{(1+i)^n}
-$$
-
-**Future Value:**
-$$
-FV = C_0 \cdot (1+i)^n
-$$
-
-**Net Present Value:**
-$$
-NPV = -C_0 + \frac{C_1}{(1+i)} + \frac{C_2}{(1+i)^2} + \cdots + \frac{C_n}{(1+i)^n}
-$$
-
-**The classical view**: You have separate formulas for moving money forward (FV) or backward (PV). NPV is a special application of PV for investment decisions.
-
-### Lizzi's Approach (Value Function)
-
-Lizzi introduces **one unified framework** that encompasses all of these:
+**Interest from time 0 to time 1:**
 
 $$
-V(t) = \sum_{t_i \leq t} C_i \cdot (1+i)^{t-t_i} + \sum_{t_j > t} \frac{C_j}{(1+i)^{t_j - t}}
+I(0, 1) = V(1) - V(0) = 101 - 100 = 1
 $$
 
-**The value function view**: At any time $t$, you can compute the "value" by accumulating past cashflows forward and discounting future cashflows backward.
+**Interest rate from time 0 to time 1:**
 
-### The Bridge: Connecting Both Approaches
-
-| Classical Formula | Value Function Equivalent | Key Distinction |
-|-------------------|---------------------------|-----------------|
-| **PV** | $V(0)$ excluding initial cost | Present value = discounted future cashflows only |
-| **FV** | $V(T)$ | Future value = value function at final time T |
-| **NPV** | $V(0)$ including all cashflows | NPV = Net present value (includes initial investment) |
-
-**Key insight**: The classical formulas are just **special cases** of the value function:
-- **PV** is typically the present value of *future* cashflows only (excluding initial cost)
-- **NPV** is $V(t)$ evaluated at $t=0$, including *all* cashflows (initial investment + future cashflows)
-- **Relationship**: NPV = -Initial Cost + PV, or equivalently, NPV = $V(0)$ with all cashflows
-- **FV** is $V(t)$ evaluated at $t=T$ (final time)
-- The value function generalizes these to **any** time $t$
-
-::: {.callout-note icon="true"}
-## PV vs NPV: The Key Difference
-
-**PV (Present Value)**: Only the present value of *future* cashflows
 $$
-PV = \frac{C_1}{(1+i)} + \frac{C_2}{(1+i)^2} + \cdots + \frac{C_n}{(1+i)^n}
+i(0, 1) = \frac{V(1) - V(0)}{V(0)} = \frac{1}{100} = 1\%
 $$
 
-**NPV (Net Present Value)**: Includes the initial investment/cost
+**Interest from time 2 to time 4:**
+
 $$
-NPV = -C_0 + PV = -C_0 + \frac{C_1}{(1+i)} + \frac{C_2}{(1+i)^2} + \cdots + \frac{C_n}{(1+i)^n}
+I(2, 4) = V(4) - V(2) = 111 - 110 = 1
 $$
 
-The word "Net" means it accounts for the initial outlay. So: **NPV = Net effect = What you get - What you pay**
-:::
+**Interest rate from time 2 to time 4:**
 
-### Example: Same Problem, Two Languages
-
-**Scenario**: Invest \$1,000 today, receive \$1,200 in 2 years at 10% interest.
-
-**Classical approach** (compute NPV):
 $$
-NPV = -1000 + \frac{1200}{(1.10)^2} = -1000 + 991.74 = -\$8.26
+i(2, 4) = \frac{V(4) - V(2)}{V(2)} = \frac{1}{110} = 0.909\%
 $$
-**Decision**: Reject (NPV < 0)
-
-**Value function approach** (compute $V(0)$):
-$$
-V(0) = -1000 \cdot (1.10)^{0} + \frac{1200}{(1.10)^2} = -1000 + 991.74 = -\$8.26
-$$
-**Decision**: Reject ($V(0) < 0$)
-
-**Same answer!** But the value function also tells you the value at other times:
-- $V(1) = -1000 \cdot (1.10)^1 + \frac{1200}{(1.10)^1} = -1100 + 1090.91 = -\$9.09$
-- $V(2) = -1000 \cdot (1.10)^2 + 1200 = -1210 + 1200 = -\$10.00$
-
-The classical approach only tells you "reject it." The value function tells you "reject it, *and here's how badly you'd be doing at each point in time*."
-
-### Why Each Approach Is Useful
-
-::: {.callout-important icon="true"}
-## When to Use Each Approach
-
-**Use Classical Formulas (PV/FV/NPV) when:**
-
-- You only need a single "yes/no" investment decision
-- You're working with standard textbook problems
-- You're communicating with practitioners who use traditional finance language
-- You need quick calculations
-
-**Use Value Function $V(t)$ when:**
-
-- You need to track financial position over time
-- You're comparing different interest rate structures
-- You want to understand *how* value evolves, not just the final decision
-- You're dealing with complex, multi-period scenarios
-- You need a unified framework that handles all time periods consistently
-
-**Best of both worlds**: Understand the value function conceptually, but recognize that PV/FV/NPV are just convenient shortcuts for specific time points!
-:::
-
-### Intuition: Why Your Professor Uses $V(t)$
 
 ::: {.callout-tip icon="true"}
-## The Power of Abstraction
+## Observation
 
-Think of it like this:
+Notice that the **same interest amount** (1 euro) corresponds to **different interest rates** depending on the initial capital. This is because the interest rate is a **relative** measure, while interest is an **absolute** measure.
+:::
 
-**Classical approach**: You have separate tools—a hammer (PV), a screwdriver (FV), and pliers (NPV). Each tool works for specific jobs.
+## Discount Rate and Discount Factor
 
-**Value function approach**: You have a Swiss Army knife ($V(t)$) that contains all the tools. Want PV? Use the knife at $t=0$. Want FV? Use it at $t=T$. Want to check your position midway? Use it at $t=5$.
+Just as we can express interest in terms of the value function, we can also define discount-related quantities.
 
-Your professor teaches the Swiss Army knife because:
+### Discount
 
-1. **Generality**: One framework explains everything
-2. **Flexibility**: Works at *any* time, not just beginning/end
-3. **Insight**: Shows *how* value changes over time, not just snapshots
-4. **Rigor**: More mathematically elegant and precise
+::: {.callout-note icon="true"}
+## Definition: Discount
 
-**Practical tip**: On exams, use whichever approach is faster. For decision problems, NPV is quick. For understanding *why* something works, $V(t)$ provides deeper insight.
+The **discount** between time $t$ and time $t + \tau$ is:
+
+$$
+D(t, t+\tau) = V(t+\tau) - V(t) = I(t, t+\tau)
+$$
+:::
+
+::: {.callout-tip icon="true"}
+## Intuition: Interest vs. Discount
+
+Wait, isn't this the same formula as interest? Yes! **Numerically they're identical**, but conceptually they represent **different perspectives**:
+
+- **Interest** (forward-looking): "If I invest today, how much will I **gain**?"
+- **Discount** (backward-looking): "If I need money in the future, how much must I invest today? What's the **discount** from the future value?"
+
+**Concrete example**:
+
+You need €1,150 in 3 years. The value function tells you:
+
+- $V(0) = 1,000$ (invest this today)
+- $V(3) = 1,150$ (get this in the future)
+
+**From the interest perspective** (looking forward):
+
+- "I invest €1,000 and gain €150 over 3 years"
+- $I(0,3) = 150$
+
+**From the discount perspective** (looking backward):
+
+- "The future €1,150 is worth €1,000 today"
+- "I get a discount of €150 from the future value"
+- $D(0,3) = 150$
+
+Same number, different mental frame!
+:::
+
+### Discount Rate
+
+::: {.callout-note icon="true"}
+## Definition: Discount Rate
+
+The **discount rate** for the period from time $t$ to time $t + \tau$ is:
+
+$$
+d(t, t+\tau) = \frac{V(t+\tau) - V(t)}{V(t+\tau)}
+$$
+:::
+
+::: {.callout-tip icon="true"}
+## Concrete Example: Discount Rate
+
+Using our bond example:
+
+- $V(0) = 1,000$
+- $V(3) = 1,150$
+
+**What's the discount rate from year 0 to year 3?**
+
+$$
+d(0, 3) = \frac{V(3) - V(0)}{V(3)} = \frac{1,150 - 1,000}{1,150} = \frac{150}{1,150} \approx 0.1304 = 13.04\%
+$$
+
+**Compare with interest rate**:
+
+- Interest rate: $i(0,3) = 15\%$ (gain relative to **initial** value)
+- Discount rate: $d(0,3) = 13.04\%$ (reduction relative to **final** value)
+
+**Intuition**: The discount rate answers: **"What percentage of the future value do I NOT need to pay today?"**
+
+- Future value: €1,150
+- Present value: €1,000
+- Discount: €150 is 13.04% of €1,150
+
+**Real-world use**: This is common in bond pricing! A bond with face value €1,150 trades at a **discount** of 13.04%, meaning you pay only €1,000 today.
+
+**Why is the discount rate smaller than the interest rate?**
+
+Because we're dividing by a **larger number** (final value vs. initial value). The same €150 gain is:
+
+- 15% of €1,000 (interest rate)
+- 13.04% of €1,150 (discount rate)
+:::
+
+### Discount Factor
+
+::: {.callout-note icon="true"}
+## Definition: Discount Factor
+
+The **discount factor** from time $t$ to time $t + \tau$ is:
+
+$$
+v(t, t+\tau) = \frac{V(t)}{V(t+\tau)}
+$$
+:::
+
+::: {.callout-tip icon="true"}
+## Concrete Example: Discount Factor
+
+Using our bond:
+
+- $V(0) = 1,000$
+- $V(3) = 1,150$
+
+**What's the discount factor from year 0 to year 3?**
+
+$$
+v(0, 3) = \frac{V(0)}{V(3)} = \frac{1,000}{1,150} \approx 0.8696
+$$
+
+**Intuition**: The discount factor tells you **"what fraction of the future value is the present value?"**
+
+- €1 received in 3 years is worth about €0.87 today
+- It's a **"present value multiplier"**
+
+**Practical use**: Want to find today's value of €5,000 received in 3 years?
+
+$$
+\text{Present Value} = 5,000 \times 0.8696 \approx 4,348 \text{ euros}
+$$
+
+**Connection to accumulation factor**:
+
+$$
+v(t, t+\tau) = \frac{1}{m(t, t+\tau)}
+$$
+
+In our example:
+
+- Accumulation factor: $m = 1.15$ (multiply to go forward in time)
+- Discount factor: $v = 1/1.15 \approx 0.8696$ (multiply to go backward in time)
+
+They're **reciprocals**—one undoes the other!
+
+**Memory aid**:
+
+- **Accumulation** = Moving forward = Multiplying by $m > 1$ = Money grows
+- **Discount** = Moving backward = Multiplying by $v < 1$ = Money shrinks
+:::
+
+::: {.callout-tip icon="true"}
+## Key Relationships: The Big Picture
+
+Let's tie everything together with our bond example ($V(0) = 1,000$, $V(3) = 1,150$):
+
+| Concept | Formula | Value | What it means |
+|---------|---------|-------|---------------|
+| **Interest** | $I = V(3) - V(0)$ | €150 | Absolute gain |
+| **Interest rate** | $i = \frac{V(3)-V(0)}{V(0)}$ | 15% | % gain relative to start |
+| **Accumulation factor** | $m = \frac{V(3)}{V(0)}$ | 1.15 | Growth multiplier (forward) |
+| **Discount** | $D = V(3) - V(0)$ | €150 | Absolute reduction from future |
+| **Discount rate** | $d = \frac{V(3)-V(0)}{V(3)}$ | 13.04% | % reduction from future value |
+| **Discount factor** | $v = \frac{V(0)}{V(3)}$ | 0.8696 | Shrinkage multiplier (backward) |
+
+**Key relationships**:
+
+-   $m = 1 + i$ (accumulation factor = 1 + interest rate)
+-   $v = \frac{1}{m}$ (discount and accumulation factors are reciprocals)
+-   $v = 1 - d$ (discount factor = 1 - discount rate)
+-   Interest and discount are numerically equal: $I = D$
+-   But rates differ: $i \neq d$ (different denominators!)
+
+**The fundamental insight**:
+
+- **Accumulation** (forward-looking): Start with €1,000 → multiply by $m=1.15$ → end with €1,150
+- **Discounting** (backward-looking): Need €1,150 later → multiply by $v=0.8696$ → invest €1,000 today
+
+They're two sides of the same coin, connected through the value function!
 :::
 
 ## Summary
 
-✅ **Value function** $V(t)$ = financial position at any time $t$\
-✅ **Combines** past (accumulated) and future (discounted) cashflows\
-✅ **NPV** = $V(0)$ = value at the start\
-✅ **Decision rule**: Accept if NPV \> 0\
-✅ **Tells a story**: Smoothed continuous view of wealth over time\
-✅ **Practical use**: Monitor projects, compare investments
-
 ::: {.callout-important icon="true"}
-## Key Insight
+## Key Takeaways
 
-The value function transforms **discrete cashflows** (jumps) into a **continuous financial narrative** (smooth story). It's the "bank account balance" of the investment at every moment.
+1. **The value function $V(t)$ is your financial "GPS"**
+   
+   - It tracks the monetary worth of a financial contract at any time $t$
+   - NOT the same as cash flows—it's the economic value of your position
+   - Example: Lending €1,000 today creates a value function tracking €1,000 → €1,050 even before you receive payment
+
+2. **What determines a value function?**
+   
+   - Initial capital: $V(0)$ 
+   - Period interest rates: $i_1, i_2, i_3, \ldots$
+   - **NOT just the cash flows!** Same payments can mean different values
+
+3. **Two fundamental properties**
+   
+   - **Positive**: $V(t) > 0$ (we're tracking assets, not liabilities)
+   - **Strictly increasing**: $V(t_1) < V(t_2)$ if $t_1 < t_2$ (time value of money!)
+
+4. **Six key quantities, all derived from $V(t)$**
+   
+   - **Interest** $I$: Absolute gain (e.g., €150)
+   - **Interest rate** $i$: Relative gain vs. start (e.g., 15%)
+   - **Accumulation factor** $m$: Growth multiplier (e.g., 1.15)
+   - **Discount** $D$: Same as interest, backward perspective
+   - **Discount rate** $d$: Relative gain vs. end (e.g., 13.04%)
+   - **Discount factor** $v$: Shrinkage multiplier (e.g., 0.87)
+
+5. **The power of the value function framework**
+   
+   - Reveals **how** value accumulates over time, not just snapshots
+   - Explains why identical cash flows can have different values
+   - Unifies forward-looking (accumulation) and backward-looking (discounting) perspectives
+   - Foundation for all time-value-of-money calculations
+
+6. **Key relationships to remember**
+   
+   - $m = 1 + i$ (accumulation factor = 1 + interest rate)
+   - $v = \frac{1}{m}$ (accumulation and discount factors are reciprocals)
+   - $v = 1 - d$ (discount factor = 1 - discount rate)
+   - Going forward in time: multiply by $m$
+   - Going backward in time: multiply by $v$
 :::
 
-------------------------------------------------------------------------
+::: {.callout-tip icon="true"}
+## Practical Wisdom
 
-**Next**: In [Chapter 4: Interest & Discount Rates](interest_rates.qmd), we'll dive deep into how interest rates drive the time value of money.
+**When analyzing a financial contract, always ask:**
+
+1. What's the initial value $V(0)$?
+2. What are the period interest rates?
+3. How does value evolve over time?
+
+Don't just look at the payment schedule—understand the **underlying value function** that drives those payments!
+
+**Real-world applications:**
+
+- Comparing loan offers with different interest structures
+- Valuing bonds trading at a discount or premium
+- Understanding mortgage refinancing decisions
+- Evaluating investment opportunities with complex payment patterns
+:::
+
+::: {.callout-note icon="true"}
+## Looking Ahead
+
+In the next chapters, we will explore:
+
+- **Specific financial laws** that define how the value function evolves:
+  - Simple interest (linear growth)
+  - Compound interest (exponential growth)
+  - Continuous compounding
+  
+- **Practical applications**:
+  - How to compute value functions for real financial products
+  - Solving for unknown interest rates or time periods
+  - Converting between different interest rate conventions
+  
+- **Investment decision tools**:
+  - Net Present Value (NPV)
+  - Internal Rate of Return (IRR)
+  - Annuities and perpetuities
+
+The value function is the **foundation**—everything else builds on this!
+:::

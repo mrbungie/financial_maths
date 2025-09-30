@@ -13,7 +13,6 @@ book:
     - basic_notions.qmd
     - bonds.qmd
     - value_function.qmd
-    - interest_rates.qmd
 
 bibliography: references.bib
 
@@ -33,6 +32,10 @@ format:
     number-sections: true
     geometry:
       - margin=1in
+    colorlinks: true
+    linkcolor: blue
+    urlcolor: blue
+    citecolor: blue
     include-in-header:
       text: |
         \usepackage{amsmath}

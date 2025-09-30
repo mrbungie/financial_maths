@@ -490,13 +490,19 @@ $$
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}[scale=0.9]
+% Time 0 - Initial Inflow
+\draw[thick,fill=green!50] (-2.5,0) rectangle (-1,10);
+\node[font=\large] at (-1.75,5) {\texteuro 1{,}000};
+\node[below,font=\small] at (-1.75,-0.3) {t=0};
+\node[above,font=\small] at (-1.75,10.3) {+\texteuro 1{,}000};
+
 % Quarter 1
 \draw[thick,fill=red!40] (0,0) rectangle (1.5,0.47);
 \node[font=\tiny] at (0.75,0.235) {\texteuro 47};
 \draw[thick,fill=blue!50] (0,0.47) rectangle (1.5,4.2);
 \node[font=\small] at (0.75,2.3) {\texteuro 333};
 \node[below,font=\small] at (0.75,-0.3) {Q1};
-\node[above,font=\small] at (0.75,4.4) {\texteuro 380};
+\node[above,font=\small] at (0.75,4.4) {-\texteuro 380};
 
 % Quarter 2
 \draw[thick,fill=red!40] (2.5,0) rectangle (4,0.47);
@@ -504,7 +510,7 @@ $$
 \draw[thick,fill=blue!50] (2.5,0.47) rectangle (4,4.2);
 \node[font=\small] at (3.25,2.3) {\texteuro 333};
 \node[below,font=\small] at (3.25,-0.3) {Q2};
-\node[above,font=\small] at (3.25,4.4) {\texteuro 380};
+\node[above,font=\small] at (3.25,4.4) {-\texteuro 380};
 
 % Quarter 3
 \draw[thick,fill=red!40] (5,0) rectangle (6.5,0.47);
@@ -512,16 +518,18 @@ $$
 \draw[thick,fill=blue!50] (5,0.47) rectangle (6.5,4.2);
 \node[font=\small] at (5.75,2.3) {\texteuro 333};
 \node[below,font=\small] at (5.75,-0.3) {Q3};
-\node[above,font=\small] at (5.75,4.4) {\texteuro 380};
+\node[above,font=\small] at (5.75,4.4) {-\texteuro 380};
 
 % Legend
-\draw[thick,fill=red!40] (8,3.5) rectangle (8.5,3.8);
-\node[right,font=\small] at (8.6,3.65) {Interest ($I_k$)};
-\draw[thick,fill=blue!50] (8,3) rectangle (8.5,3.3);
-\node[right,font=\small] at (8.6,3.15) {Principal ($C_k$)};
+\draw[thick,fill=green!50] (8,4.5) rectangle (8.5,4.8);
+\node[right,font=\small] at (8.6,4.65) {Inflow (Loan)};
+\draw[thick,fill=red!40] (8,3.8) rectangle (8.5,4.1);
+\node[right,font=\small] at (8.6,3.95) {Interest ($I_k$)};
+\draw[thick,fill=blue!50] (8,3.1) rectangle (8.5,3.4);
+\node[right,font=\small] at (8.6,3.25) {Principal ($C_k$)};
 
 % Y-axis
-\draw[->] (-0.7,0) -- (-0.7,4.5) node[above,font=\small] {\texteuro};
+\draw[->] (-3.2,0) -- (-3.2,10.5) node[above,font=\small] {\texteuro};
 \end{tikzpicture}
 \end{figure}
 ```
