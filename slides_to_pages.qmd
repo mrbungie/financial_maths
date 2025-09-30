@@ -2,7 +2,7 @@
 
 ::: {.callout-note icon=false}
 ## 📑 Quick Navigation Guide
-This reverse index maps the course slides (pages 1-46) to:
+This reverse index maps the course slides (pages 1-49) to:
 
 - **Guide Section**: The corresponding section in this study guide
 - **Book Section**: The related chapter/page in Pearson Corporate Finance 6th Edition textbook
@@ -18,11 +18,11 @@ Click any link to jump directly to the relevant section. Topics marked with *"No
 
 | Slide | Topic | Guide Section | Book Section |
 |:------|:------|:-------------|:-------------|
-| [1-3](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=1) | Title pages, course structure | [Welcome](#welcome) | *Course introduction* |
+| [1-3](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=1) | Title pages, course structure (Basic notions / Financial laws / Annuities / NPV & IRR) | [Welcome](#welcome) | *Course introduction* |
 
 ---
 
-## Slides 4-32: Module 1 — Basic Notions {#idx-slides-4-32}
+## Slides 4-33: Module 1 — Basic Notions {#idx-slides-4-33}
 
 ### Financial Transactions (Slides 4-14) {#idx-slides-4-14}
 
@@ -45,11 +45,13 @@ Click any link to jump directly to the relevant section. Topics marked with *"No
 | [19](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=19) | General notation | [Financial Transaction Notation](#financial-transaction-notation-lizzis) | *Not in book* |
 | [20-21](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=20) | Graphical & table representation | [Cashflow Representations](#cashflow-representations) | Ch. 4, p. 105, [PDF 138](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=138) |
 
-### Terminology (Slides 22-24) {#idx-slides-22-24}
+### Terminology & Patterns (Slides 22-24) {#idx-slides-22-24}
 
 | Slide | Topic | Guide Section | Book Section |
 |:------|:------|:-------------|:-------------|
-| [22-24](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=22) | Terminology (Investment, Financing, Spot/Forward, Long/Short) | [Investment vs. Financing](#investment-vs.-financing-cashflows) | Ch. 7, p. 217, [PDF 250](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=250) |
+| [22](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=22) | Terminology: Investment | [Investment vs. Financing](#investment-vs.-financing-cashflows) | Ch. 7, p. 217, [PDF 250](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=250) |
+| [23](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=23) | Terminology: Financing | [Investment vs. Financing](#investment-vs.-financing-cashflows) | Ch. 14, p. 495, [PDF 528](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=528) |
+| [24](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=24) | Terminology: Spot/Forward | [Financial Transaction Notation](#financial-transaction-notation-lizzis) | *Not in book* |
 
 ### Coupon Bonds (Slides 25-31) {#idx-slides-25-31}
 
@@ -58,31 +60,36 @@ Click any link to jump directly to the relevant section. Topics marked with *"No
 | [25-30](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=25) | Coupon bonds (1-6) | [Bonds](#bonds) | Ch. 6, p. 181, [PDF 214](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=214) |
 | [31](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=31) | Accrued vs dirty price (example) | [Calculating Accrued Interest](#calculating-accrued-interest) | Ch. 6, p. 187, [PDF 220](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=220) |
 
-### Sum of Transactions (Slides 30-32) {#idx-slides-30-32}
+### Sum of Transactions (Slides 32-33) {#idx-slides-32-33}
 
 | Slide | Topic | Guide Section | Book Section |
 |:------|:------|:-------------|:-------------|
-| [32-33](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=32) | Sum of financial transactions | [Sum of Financial Transactions](#sum-of-financial-transactions) | *Not in book* |
+| [32-33](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=32) | Sum of financial transactions (1-3) | [Sum of Financial Transactions](#sum-of-financial-transactions) | *Not in book* |
 
 ---
 
-## Slides 33-46: Module 2 — Financial Laws {#idx-slides-33-46}
+## Slides 34-46: Module 2 — Financial Laws {#idx-slides-34-46}
 
-### Value Function (Slides 34-42) {#idx-slides-34-42}
+### Value Function (Slides 34-37) {#idx-slides-34-37}
 
 | Slide | Topic | Guide Section | Book Section |
 |:------|:------|:-------------|:-------------|
 | [34-37](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=34) | Value function (definition + graphical) | [Introduction](#value-function-introduction) | *Not in book* |
+
+### Value and Cash Flows (Slides 38-42) {#idx-slides-38-42}
+
+| Slide | Topic | Guide Section | Book Section |
+|:------|:------|:-------------|:-------------|
 | [38-42](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=38) | Value and cash flows | [Understanding Interest](#understanding-interest-and-interest-rates) | Ch. 3, p. 71, [PDF 104](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=104) |
 
-### Interest Rate (Slides 43-46) {#idx-slides-43-46}
+### Interest Rate Definitions (Slides 43-46) {#idx-slides-43-46}
 
 | Slide | Topic | Guide Section | Book Section |
 |:------|:------|:-------------|:-------------|
 | [43](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=43) | Interest rate: definitions in terms of value function | [Formal Definitions](#formal-definitions-in-terms-of-the-value-function) | Ch. 4, p. 106, [PDF 139](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=139) |
-| [44](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=44) | Interest rate: definitions in terms of value function (plot) | [Formal Definitions](#formal-definitions-in-terms-of-the-value-function) | Ch. 4, p. 106, [PDF 139](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=139) |
-| [45](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=45) | Interest rate example | [Computing Interest Rates](#example-computing-interest-rates) | Ch. 4, p. 106, [PDF 139](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=139) |
-| [46](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=46) | Discount rate example | [Discount Rate and Discount Factor](#discount-rate-and-discount-factor) | Ch. 4, p. 108, [PDF 141](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=141) |
+| [44](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=44) | Interest rate: definitions in terms of value function (plot) | [Computing Interest Rates](#example-computing-interest-rates) | Ch. 4, p. 106, [PDF 139](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=139) |
+| [45](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=45) | Interest rate example | [Discount Rate and Discount Factor](#discount-rate-and-discount-factor) | Ch. 4, p. 108, [PDF 141](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=141) |
+| [46](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=46) | Discount rate example | [Formal Definitions](#formal-definitions-in-terms-of-the-value-function) | Ch. 4, p. 107, [PDF 140](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=140) |
 
 ---
 
@@ -101,7 +108,7 @@ When reviewing slides, use this index to jump directly to:
 
 This reverse index maps content from:
 
-**Slide:** Financial Mathematics Slides 1-96, Pages 1-46, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=1)
+**Slide:** Financial Mathematics Slides 1-96, Pages 1-49, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=1)
 
 To:
 - **Guide sections** in this book with expanded explanations and examples
