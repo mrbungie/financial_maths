@@ -3,18 +3,48 @@
 ::: {.callout-caution icon=true}
 ## References
 
-**Book:** Pearson Corporate Finance 6th Edition, Chapter 3 (Present Value and NPV Decision Rule), Page 74, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=107)
+**Book:** **No direct reference for a "Value Function". This is an abstraction created by Lizzi's (it may have theorical grounding but the term itself is not common in Finance).**
 
 **Slide:** Financial Mathematics Slides 1-96, Slides 34-46 (Value function definition, properties, and relationship with interest rates), Page 34, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=34)
 :::
 
 ## Introduction
 
-Suppose we have a financial transaction on two dates, represented as:
+Suppose we have a financial transaction on two dates. The fundamental idea is that two parties agree to exchange money at different points in time, creating an equivalence between amounts at different dates.
 
-$$
-\{-S, S + I\} / \{0, 1\}
-$$
+We can represent this transaction in several ways:
+
+**Set notation:** $\{-S, S + I\} / \{0, 1\}$
+
+**Timeline representation:**
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+% Timeline
+\draw[->,thick] (-0.5,0) -- (8,0) node[right] {time};
+
+% Time points
+\draw[thick] (0,0.15) -- (0,-0.15) node[below] {$0$};
+\draw[thick] (6,0.15) -- (6,-0.15) node[below] {$1$};
+
+% Cash flows
+\draw[->,red,thick] (0,0) -- (0,1.2);
+\node[above,red] at (0,1.2) {$-S$};
+
+\draw[->,blue,thick] (6,0) -- (6,1.2);
+\node[above,blue] at (6,1.2) {$S+I$};
+
+\end{tikzpicture}
+\end{center}
+```
+
+**Tabular representation:**
+
+| Time | Cash Flow |
+|------|-----------|
+| 0    | $-S$      |
+| 1    | $S + I$   |
 
 This means that, strictly speaking, the counterparts have agreed to consider the sum $S$ at time 0 **equivalent** to the sum $S + I$ at time 1.
 
@@ -23,7 +53,42 @@ This means that, strictly speaking, the counterparts have agreed to consider the
 
 Imagine you lend your friend **€1,000 today** (time 0), and they agree to pay you back **€1,050 in one year** (time 1). 
 
-The financial transaction is: $\{-1000, 1050\} / \{0, 1\}$
+**Timeline visualization:**
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+% Timeline
+\draw[->,thick] (-0.5,0) -- (9,0) node[right] {years};
+
+% Time points
+\draw[thick] (0,0.15) -- (0,-0.15);
+\node[below] at (0,-0.3) {$0$};
+\node[below,font=\small] at (0,-0.7) {(today)};
+
+\draw[thick] (7,0.15) -- (7,-0.15);
+\node[below] at (7,-0.3) {$1$};
+\node[below,font=\small] at (7,-0.7) {(1 year later)};
+
+% Cash flows
+\draw[->,red,thick] (0,0) -- (0,-1.8);
+\node[above right,red] at (0,0.2) {\texteuro 1,000};
+\node[below,red,font=\small] at (0,-1.8) {You lend};
+
+\draw[->,blue,thick] (7,0) -- (7,1.5);
+\node[above,blue] at (7,1.5) {\texteuro 1,050};
+\node[below,blue,font=\small] at (7,-1.8) {Friend pays back};
+
+\end{tikzpicture}
+\end{center}
+```
+
+**Tabular representation:**
+
+| Time (years) | Cash Flow | Description |
+|--------------|-----------|-------------|
+| 0 (today)    | -€1,000   | You lend    |
+| 1 (one year) | +€1,050   | Friend pays back |
 
 This contract establishes that:
 
@@ -73,18 +138,67 @@ The value function tells us the **monetary value** of the financial contract at 
 **Key insight**: The value function is NOT the cash you physically hold. It's the **economic value** of your position in the contract at any given moment.
 :::
 
+::: {.callout-note icon="true"}
+## Understanding Interest and Interest Rates
+
+Before diving into the value function, it's essential to understand the concepts of **interest** and **interest rates**. These foundational ideas explain why money has time value.
+
+For a complete explanation including:
+
+- What interest represents economically (compensation for waiting, price of time, opportunity cost)
+- The difference between interest (absolute amount) and interest rate (relative percentage)
+- Why interest exists (with zero-coupon bond examples)
+- How to compare investments using rates
+
+Please see the following sections in Basic Notions:
+
+- [What Does Interest Represent?](basic_notions.qmd#sec-interest-meaning)
+- [Interest vs. Interest Rate](basic_notions.qmd#sec-interest-vs-rate)
+- [Cashflow Decomposition: Interest vs. Principal](basic_notions.qmd#cashflow-decomposition-interest-vs.-principal)
+
+**Quick reminder**: Interest $I = F - P$ (difference between face value and price), and interest rate $i = I/P$ (relative return).
+:::
+
 ## Extending to Multi-Period Transactions
 
-Let's now extend this notion to multi-period financial transactions.
+Let's now extend this notion to multi-period financial transactions. So far, we've seen simple two-date scenarios. Real-world finance is more complex—loans can be extended, payments can be deferred, and multiple decision points can exist. The value function framework handles this elegantly.
 
-Consider the following **composite transaction**:
+Consider the following **composite transaction** where the borrower has flexibility:
 
 - At time 0, an amount $S$ is invested by a financial institution
 - At time 1, the debtor can decide to:
-  1. **Pay the entire sum**, with interest $I$. The resulting financial operation is:
-     $$\{-S, S+I\} / \{0, 1\}$$
-  2. **Defer the principal reimbursement** for one year, paying an additional interest $I'$, so that the operation becomes:
-     $$\{-S, S+I+I'\} / \{0, 2\}$$
+  
+  1. **Pay the entire sum**, with interest $I$:
+     
+     ```{=latex}
+     \begin{center}
+     \begin{tikzpicture}[scale=1.0]
+     \draw[->,thick] (-0.5,0) -- (7,0) node[right] {time};
+     \draw[thick] (0,0.15) -- (0,-0.15) node[below] {$0$};
+     \draw[thick] (5,0.15) -- (5,-0.15) node[below] {$1$};
+     \draw[->,red,thick] (0,0) -- (0,-1);
+     \node[above right,red] at (0,0.2) {$-S$};
+     \draw[->,blue,thick] (5,0) -- (5,1);
+     \node[above,blue] at (5,1) {$S+I$};
+     \end{tikzpicture}
+     \end{center}
+     ```
+     
+  2. **Defer the principal reimbursement** for one year, paying an additional interest $I'$:
+     
+     ```{=latex}
+     \begin{center}
+     \begin{tikzpicture}[scale=1.0]
+     \draw[->,thick] (-0.5,0) -- (10,0) node[right] {time};
+     \draw[thick] (0,0.15) -- (0,-0.15) node[below] {$0$};
+     \draw[thick] (8,0.15) -- (8,-0.15) node[below] {$2$};
+     \draw[->,red,thick] (0,0) -- (0,-1);
+     \node[above right,red] at (0,0.2) {$-S$};
+     \draw[->,blue,thick] (8,0) -- (8,1);
+     \node[above,blue] at (8,1) {$S+I+I'$};
+     \end{tikzpicture}
+     \end{center}
+     ```
 
 We have implicitly defined two value functions, one for each possible choice of the debtor.
 
@@ -95,11 +209,44 @@ You take out a **€10,000 student loan** on graduation day. The lender offers y
 
 **Option 1**: Pay everything back in 1 year with **€500 interest**
 
-- Total payment: €10,500 at year 1
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+\draw[->,thick] (-0.5,0) -- (8,0) node[right] {years};
+\draw[thick] (0,0.15) -- (0,-0.15) node[below] {$0$};
+\draw[thick] (6,0.15) -- (6,-0.15) node[below] {$1$};
+\draw[->,red,thick] (0,0) -- (0,-1.2);
+\node[above right,red] at (0,0.2) {\texteuro 10,000};
+\draw[->,blue,thick] (6,0) -- (6,1.2);
+\node[above,blue] at (6,1.2) {\texteuro 10,500};
+\node[below,font=\small] at (3,-1.8) {Interest: \texteuro 500};
+\end{tikzpicture}
+\end{center}
+```
 
 **Option 2**: Defer payment for another year, but pay an **additional €600 interest**
 
-- Total payment: €11,100 at year 2 (original €500 + extra €600)
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+\draw[->,thick] (-0.5,0) -- (10,0) node[right] {years};
+\draw[thick] (0,0.15) -- (0,-0.15) node[below] {$0$};
+\draw[thick] (8,0.15) -- (8,-0.15) node[below] {$2$};
+\draw[->,red,thick] (0,0) -- (0,-1.2);
+\node[above right,red] at (0,0.2) {\texteuro 10,000};
+\draw[->,blue,thick] (8,0) -- (8,1.2);
+\node[above,blue] at (8,1.2) {\texteuro 11,100};
+\node[below,font=\small] at (4,-1.8) {Total Interest: \texteuro 1,100 (\texteuro 500 + \texteuro 600)};
+\end{tikzpicture}
+\end{center}
+```
+
+**Summary table:**
+
+| Option | Time 0 | Time 1 | Time 2 | Total Interest |
+|--------|--------|--------|--------|----------------|
+| 1      | -€10,000 | +€10,500 | — | €500 |
+| 2      | -€10,000 | — | +€11,100 | €1,100 |
 
 This is a real-world example of a composite transaction where the debtor has **optionality**—the choice affects the timeline and the final amount!
 :::
@@ -122,13 +269,43 @@ The tabular representations of the two value functions are:
 | 0   | $S$      |
 | 2   | $S+I+I'$ |
 
-However, we can see the second choice as a **composition** of two basic operations:
+However, here's a key insight: we can see the second choice as a **composition** of two basic operations. The borrower essentially takes a one-year loan from time 0 to 1, then "rolls it over" for another year from time 1 to 2.
 
-$$
-\{-S, S+I\} / \{0, 1\} \oplus \{-(S+I), (S+I)+I'\} / \{1, 2\}
-$$
+**Timeline of composed operations:**
 
-Therefore, this contract involves **three different time periods**: this implicitly defines an intertemporal equivalence law $V(t)$ on three dates, whose representation is:
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+% Timeline
+\draw[->,thick] (-0.5,0) -- (11,0) node[right] {time};
+
+% Time points
+\draw[thick] (0,0.15) -- (0,-0.15) node[below] {$0$};
+\draw[thick] (5,0.15) -- (5,-0.15) node[below] {$1$};
+\draw[thick] (10,0.15) -- (10,-0.15) node[below] {$2$};
+
+% Cash flows
+\draw[->,red,thick] (0,0) -- (0,-1);
+\node[above right,red] at (0,0.2) {$-S$};
+
+\node[above,blue] at (5,1) {$S+I$};
+\fill[blue] (5,0) circle (2pt);
+
+\draw[->,green!60!black,thick] (10,0) -- (10,1);
+\node[above,green!60!black] at (10,1) {$(S+I)+I'$};
+
+% Operation labels
+\draw[<->,thick,orange] (0,-1.8) -- (5,-1.8);
+\node[below,orange,font=\small] at (2.5,-1.8) {Operation 1: $0 \to 1$};
+
+\draw[<->,thick,orange] (5,-1.8) -- (10,-1.8);
+\node[below,orange,font=\small] at (7.5,-1.8) {Operation 2: $1 \to 2$};
+
+\end{tikzpicture}
+\end{center}
+```
+
+Therefore, this contract involves **three different time periods**: this implicitly defines an intertemporal equivalence law $V(t)$ on three dates, whose representation is. **PLEASE NOTE THAT THESE ARE NOT CASHFLOWS, BUT EVALUATIONS OF THE VALUE FUNCTION AT EACH POSSIBLE TIME STEP (year).**:
 
 | $t$ | $V_2(t)$ |
 |-----|----------|
@@ -136,11 +313,11 @@ Therefore, this contract involves **three different time periods**: this implici
 | 1   | $S+I$    |
 | 2   | $S+I+I'$ |
 
-Using our student loan example:
+Using our student loan example, we can make a V(t) function:
 
-| $t$ (years) | $V(t)$ (€) | What's happening |
+| $t$ (years) | $V(t)$ (€) | Potential outcome / equivalence |
 |-------------|------------|------------------|
-| 0           | 10,000     | Loan received    |
+| 0           | 10,000     | The loan / spot value (i.e. can also be interpreted as paying directly without a loan)   |
 | 1           | 10,500     | Could pay here, or roll over |
 | 2           | 11,100     | Final payment if deferred |
 
@@ -170,7 +347,7 @@ This is powerful because:
 
 ## Basic Assumptions About the Value Function
 
-For the value function to make economic sense, we impose two fundamental assumptions:
+For the value function to make economic sense, we impose two fundamental assumptions. These aren't arbitrary mathematical rules—they reflect deep economic principles about how money and time interact in real markets.
 
 ::: {.callout-note icon="true"}
 ## Assumption 1: Positive and Non-Negative Time
@@ -237,19 +414,56 @@ This is the **mathematical expression of "time value of money"**—one of the mo
 Please note that the **value function** of a financial transaction and its **cash flows** are two different concepts.
 :::
 
-To see this with an example, let's go back to the investment/borrowing operation:
+This is one of the most important distinctions in financial mathematics. Many students confuse cash flows (the actual payments you make or receive) with the value function (the economic worth of your position). Let's see why they're different with a concrete example.
 
-$$
-\{1000, -380, -380, -380\} / \{0, 1, 2, 3\}
-$$
+To see this with an example, let's go back to an investment/borrowing operation:
 
-Let's suppose that interest is described by **Decomposition 1**, such that:
+**Cash flow timeline:**
 
-$$
-\{1000, -333.33-46.67, -333.33-46.67, -333.34-46.66\} / \{0, 1, 2, 3\}
-$$
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+% Timeline
+\draw[->,thick] (-0.5,0) -- (11,0) node[right] {quarters};
 
-where each payment is decomposed into principal and interest.
+% Time points
+\foreach \x/\label in {0/0, 3/1, 6/2, 9/3} {
+    \draw[thick] (\x,0.15) -- (\x,-0.15) node[below] {$\label$};
+}
+
+% Cash flows
+\draw[->,blue,thick] (0,0) -- (0,1.5);
+\node[above,blue] at (0,1.5) {\texteuro 1,000};
+
+\draw[->,red,thick] (3,0) -- (3,-1.2);
+\node[below,red] at (3,-1.2) {\texteuro 380};
+
+\draw[->,red,thick] (6,0) -- (6,-1.2);
+\node[below,red] at (6,-1.2) {\texteuro 380};
+
+\draw[->,red,thick] (9,0) -- (9,-1.2);
+\node[below,red] at (9,-1.2) {\texteuro 380};
+
+\end{tikzpicture}
+\end{center}
+```
+
+**Cash flow table:**
+
+| Time (quarters) | Cash Flow | Description |
+|----------------|-----------|-------------|
+| 0              | +€1,000   | Receive loan |
+| 1              | -€380     | First payment |
+| 2              | -€380     | Second payment |
+| 3              | -€380     | Final payment |
+
+Let's suppose that interest is described by **Decomposition 1**, where each payment breaks down as:
+
+| Time | Principal | Interest | Total Payment |
+|------|-----------|----------|---------------|
+| 1    | €333.33   | €46.67   | €380 |
+| 2    | €333.33   | €46.67   | €380 |
+| 3    | €333.34   | €46.66   | €380 |
 
 For the sake of brevity, let's measure time in **quarters**, starting from 31/12/2024. From this interest, we compute the following **period interest rates**:
 
@@ -458,7 +672,7 @@ The cash flows are the **result** of the value function and the interest structu
 
 ## Formal Definitions in Terms of the Value Function
 
-We can now express some key quantities in a more formal way, in terms of the value function.
+We can now express some key quantities in a more formal way, in terms of the value function. These definitions might look mathematical, but each one has a clear financial interpretation that we'll explore with concrete examples.
 
 ### Interest
 
@@ -508,6 +722,8 @@ $$
 i(t, t+\tau) = \frac{V(t+\tau) - V(t)}{V(t)}
 $$
 :::
+
+Let's see a concrete example.
 
 ::: {.callout-tip icon="true"}
 ## Concrete Example: Interest Rate
@@ -640,15 +856,53 @@ Money invested at year 1 grows by a factor of about 1.095 by year 3.
 
 ## Example: Computing Interest Rates
 
-Suppose that a transaction is summarized by the value function in this table:
+Let's work through a complete example to see how all these definitions work in practice. Suppose that a transaction is summarized by the value function in this table:
 
-| $t$ | $V(t)$ |
-|-----|--------|
-| 0   | 100    |
-| 1   | 101    |
-| 1.5 | 105    |
-| 2   | 110    |
-| 4   | 111    |
+**Value function timeline:**
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+% Timeline
+\draw[->,thick] (-0.5,0) -- (11,0) node[right] {years};
+
+% Time points and values
+\draw[thick] (0,0.15) -- (0,-0.15) node[below] {$0$};
+\fill[blue] (0,0) circle (2pt);
+\node[above,blue] at (0,0.3) {\texteuro 100};
+
+\draw[thick] (2,0.15) -- (2,-0.15) node[below] {$1$};
+\fill[blue] (2,0) circle (2pt);
+\node[above,blue] at (2,0.3) {\texteuro 101};
+
+\draw[thick] (4,0.15) -- (4,-0.15) node[below] {$1.5$};
+\fill[blue] (4,0) circle (2pt);
+\node[above,blue] at (4,0.3) {\texteuro 105};
+
+\draw[thick] (6,0.15) -- (6,-0.15) node[below] {$2$};
+\fill[blue] (6,0) circle (2pt);
+\node[above,blue] at (6,0.3) {\texteuro 110};
+
+\draw[thick] (10,0.15) -- (10,-0.15) node[below] {$4$};
+\fill[blue] (10,0) circle (2pt);
+\node[above,blue] at (10,0.3) {\texteuro 111};
+
+% Value function curve
+\draw[thick,blue,dashed] (0,0) -- (2,0) -- (4,0) -- (6,0) -- (10,0);
+
+\end{tikzpicture}
+\end{center}
+```
+
+**Value function table:**
+
+| $t$ (years) | $V(t)$ (€) |
+|-------------|------------|
+| 0           | 100        |
+| 1           | 101        |
+| 1.5         | 105        |
+| 2           | 110        |
+| 4           | 111        |
 
 ### Calculations
 
@@ -684,7 +938,7 @@ Notice that the **same interest amount** (1 euro) corresponds to **different int
 
 ## Discount Rate and Discount Factor
 
-Just as we can express interest in terms of the value function, we can also define discount-related quantities.
+Just as we can express interest in terms of the value function, we can also define discount-related quantities. While interest looks forward ("how much will I gain?"), discounting looks backward ("how much do I need today?"). Both perspectives are essential in finance.
 
 ### Discount
 
@@ -703,8 +957,8 @@ $$
 
 Wait, isn't this the same formula as interest? Yes! **Numerically they're identical**, but conceptually they represent **different perspectives**:
 
-- **Interest** (forward-looking): "If I invest today, how much will I **gain**?"
-- **Discount** (backward-looking): "If I need money in the future, how much must I invest today? What's the **discount** from the future value?"
+- **Interest** (forward-looking): "If I invest today, how much will I **gain in the future**?"
+- **Discount** (backward-looking): "If I need **money in the future, **how much must I invest today**? What's the **discount** from the **future value**?"
 
 **Concrete example**:
 
@@ -924,27 +1178,4 @@ Don't just look at the payment schedule—understand the **underlying value func
 - Valuing bonds trading at a discount or premium
 - Understanding mortgage refinancing decisions
 - Evaluating investment opportunities with complex payment patterns
-:::
-
-::: {.callout-note icon="true"}
-## Looking Ahead
-
-In the next chapters, we will explore:
-
-- **Specific financial laws** that define how the value function evolves:
-  - Simple interest (linear growth)
-  - Compound interest (exponential growth)
-  - Continuous compounding
-  
-- **Practical applications**:
-  - How to compute value functions for real financial products
-  - Solving for unknown interest rates or time periods
-  - Converting between different interest rate conventions
-  
-- **Investment decision tools**:
-  - Net Present Value (NPV)
-  - Internal Rate of Return (IRR)
-  - Annuities and perpetuities
-
-The value function is the **foundation**—everything else builds on this!
 :::

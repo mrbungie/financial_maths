@@ -112,29 +112,33 @@ timeline
 -   **Arrow position**: Where it touches the timeline indicates *when*
 :::
 
-## Multiple Cashflows: Loan Amortization Example
+## Zero-Coupon Bond Example
 
-Let's see a more realistic scenario: a 3-year loan of \$10,000 with annual payments.
+::: {.callout-caution icon=true}
+## References
 
-### Cashflow Table
+**Slide:** Financial Mathematics Slides 1-96, Slide 8 (Zero-coupon bond example), Page 8, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=8)
+:::
 
-| Time (years) | Payment | Outstanding Balance |
-|--------------|---------|---------------------|
-| 0            | +10,000 | 10,000              |
-| 1            | −3,500  | 7,000               |
-| 2            | −3,650  | 3,700               |
-| 3            | −3,885  | 0                   |
+Let's examine a simple but important financial instrument: a **zero-coupon bond (ZCB)**. These are financial contracts that guarantee the holder, on the part of the issuer, the payment of a specific sum $F$ (face value) at a later date (maturity). To acquire this right, the investor must pay a certain price $P$ at issue.
+
+### Cashflow Table (Investor's Perspective)
+
+| Time | Date | Cashflow (€) | Type | Description |
+|------|------|--------------|------|-------------|
+| 0 | 01/01/2024 | −960 | Outflow | Price paid ($P$) |
+| 1 year | 31/12/2024 | +1,000 | Inflow | Face value received ($F$) |
 
 \FloatBarrier
 
 ::: {.callout-note icon="true"}
-## Understanding the Table
+## Understanding the Transaction
 
--   **Time 0**: Borrower receives the loan (+\$10,000 inflow)
--   **Each year**: Borrower makes a payment (outflow)
--   **Outstanding Balance**: What remains to be paid
+-   **Time 01/01/2024**: Investor pays €960 to purchase the bond (outflow)
+-   **Time 31/12/2024** (maturity): Investor receives €1,000 face value (inflow)
+-   **Interest**: The difference $I = F - P = 1,000 - 960 = €40$ represents the interest earned
 
-**Notice**: Each payment can be split into **Interest** and **Principal** components. We'll explore this decomposition in detail in the next section!
+**Key insight**: The face value can be thought of as price (€960) + interest (€40).
 :::
 
 ### Timeline Representation
@@ -145,31 +149,44 @@ Let's see a more realistic scenario: a 3-year loan of \$10,000 with annual payme
 \begin{tikzpicture}[scale=1.0]
 % Time axis
 \draw[thick,->] (-0.5,0) -- (13,0) node[right] {Time};
-\foreach \x/\label in {0/0, 4/1, 8/2, 12/3}
-    \draw (\x,0.1) -- (\x,-0.1) node[below] {\label\,yr};
 
-% Initial inflow at t=0
-\draw[->,green!60!black,ultra thick] (0,-1.5) -- (0,0.5);
-\node[below,green!60!black,font=\bfseries] at (0,-1.5) {+\$10,000};
+% Date markers
+\draw (0,0.1) -- (0,-0.1) node[below,font=\small,align=center] {01/01\\2024};
+\draw (12,0.1) -- (12,-0.1) node[below,font=\small,align=center] {31/12\\2024};
 
-% Outflows at t=1,2,3
-\draw[->,red!70!black,very thick] (4,0.5) -- (4,-1);
-\node[above,red!70!black] at (4,0.7) {−\$3,500};
+% Price paid at t=0 (outflow)
+\draw[->,red!70!black,ultra thick] (0,0.5) -- (0,-1.5);
+\node[above,red!70!black,font=\bfseries] at (0,0.9) {$-P = -\text{\texteuro}960$};
+\node[below,red!70!black,font=\small] at (0,-1.8) {Price paid};
 
-\draw[->,red!70!black,very thick] (8,0.5) -- (8,-1);
-\node[above,red!70!black] at (8,0.7) {−\$3,650};
+% Face value received at t=1 (inflow)
+\draw[->,green!60!black,ultra thick] (12,-1.5) -- (12,0.5);
+\node[above,green!60!black,font=\bfseries] at (12,0.9) {$+F = +\text{\texteuro}1{,}000$};
+\node[below,green!60!black,font=\small] at (12,-1.8) {Face value received};
 
-\draw[->,red!70!black,very thick] (12,0.5) -- (12,-1);
-\node[above,red!70!black] at (12,0.7) {−\$3,885};
+% Interest annotation
+\draw[<->,blue,thick] (0,-2.5) -- (12,-2.5);
+\node[below,blue,font=\small] at (6,-2.5) {Interest: $I = F - P = \text{\texteuro}40$};
 
-% Labels
-\node[green!60!black] at (0,-2.2) {Loan received};
-\node[red!70!black,font=\small] at (8,-2.2) {Annual payments};
 \end{tikzpicture}
 \end{figure}
 ```
 
 \FloatBarrier
+
+::: {.callout-tip icon="true"}
+## Pattern Recognition
+
+This is an **investment pattern**:
+
+- Initial **outflow** (−€960): You pay money
+- Subsequent **inflow** (+€1,000): You receive money back plus interest
+
+From the **issuer's perspective** (borrower), this would be a **financing pattern** with signs reversed:
+
+- They receive €960 (inflow)
+- They pay €1,000 at maturity (outflow)
+:::
 
 ## Cashflow Decomposition: Interest vs. Principal
 
@@ -197,101 +214,81 @@ $$
 **Principal**: The portion that reduces your debt balance
 :::
 
-### The Mechanics of Decomposition
+### What Does Interest Represent? {#sec-interest-meaning}
 
-Let's see how this works period by period using our loan example:
+Before diving into mechanics, let's understand **why** interest exists. Interest has multiple interpretations, all equivalent:
 
-**Given**: $10,000 loan at 5% annual interest
+::: {.callout-important icon="true"}
+## Economic Meaning of Interest
 
-#### Year 1 Decomposition
+1. **Compensation for waiting**: Interest represents a payment to the lender for **postponing** consumption and waiting for reimbursement of the amount due.
 
-Starting balance: $10,000
+2. **Price of time**: Interest is the **reward** received for having agreed to delay the settlement of a debt. Time has value, and interest is its price.
 
-$$
-\begin{aligned}
-\text{Interest} &= \text{Balance} \times \text{Rate} = \$10,000 \times 0.05 = \$500 \\
-\text{Payment} &= \$3,500 \\
-\text{Principal} &= \text{Payment} - \text{Interest} = \$3,500 - \$500 = \$3,000 \\
-\text{New Balance} &= \$10,000 - \$3,000 = \$7,000
-\end{aligned}
-$$
+3. **Return on investment**: From the investor's perspective, interest is the **return** earned on the invested capital.
 
-#### Year 2 Decomposition
+4. **Opportunity cost**: Interest compensates for alternative uses of money—what you give up by lending instead of spending or investing elsewhere.
+:::
 
-Starting balance: $7,000
+::: {.callout-warning icon="true"}
+## Simplifying Assumption: Risk-Free World
 
-$$
-\begin{aligned}
-\text{Interest} &= \$7,000 \times 0.05 = \$350 \\
-\text{Payment} &= \$3,650 \\
-\text{Principal} &= \$3,650 - \$350 = \$3,300 \\
-\text{New Balance} &= \$7,000 - \$3,300 = \$3,700
-\end{aligned}
-$$
+Throughout this course, **we assume an idealized world where interest represents pure compensation for time**, abstracting away:
 
-#### Year 3 Decomposition
+- **Credit risk**: We assume all parties will honor their obligations with certainty
+- **Default risk**: No possibility of non-payment or bankruptcy
+- **Market risk**: Interest rates remain stable and predictable
 
-Starting balance: $3,700
+This allows us to focus on the **fundamental time value of money** without the complexities of risk management. In real-world applications, interest rates include additional premiums for these risks—topics covered in advanced finance courses.
 
-$$
-\begin{aligned}
-\text{Interest} &= \$3,700 \times 0.05 = \$185 \\
-\text{Payment} &= \$3,885 \\
-\text{Principal} &= \$3,885 - \$185 = \$3,700 \\
-\text{New Balance} &= \$3,700 - \$3,700 = \$0
-\end{aligned}
-$$
+**Key takeaway**: The interest we study here is the **risk-free rate**—the minimum return required simply for waiting, not for bearing uncertainty.
+:::
 
-### Visual Decomposition: Stacked Bar Chart
+::: {.callout-tip icon="true"}
+## Intuition: Why Does Interest Exist?
 
-```{=latex}
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}[scale=0.8]
-% Year 1
-\draw[thick,fill=red!30] (0,0) rectangle (1.5,0.5);
-\node[font=\tiny] at (0.75,0.25) {\$500};
-\draw[thick,fill=blue!30] (0,0.5) rectangle (1.5,3.5);
-\node[font=\small] at (0.75,2) {\$3,000};
-\node[below,font=\small] at (0.75,-0.3) {Year 1};
+Think about a zero-coupon bond example: Why would you accept €960 today instead of demanding the full €1,000 right now?
 
-% Year 2
-\draw[thick,fill=red!30] (2.5,0) rectangle (4,0.35);
-\node[font=\tiny] at (3.25,0.175) {\$350};
-\draw[thick,fill=blue!30] (2.5,0.35) rectangle (4,3.65);
-\node[font=\small] at (3.25,2) {\$3,300};
-\node[below,font=\small] at (3.25,-0.3) {Year 2};
+**Because time has value!**
 
-% Year 3
-\draw[thick,fill=red!30] (5,0) rectangle (6.5,0.185);
-\node[font=\tiny] at (5.75,0.09) {\$185};
-\draw[thick,fill=blue!30] (5,0.185) rectangle (6.5,3.885);
-\node[font=\small] at (5.75,2) {\$3,700};
-\node[below,font=\small] at (5.75,-0.3) {Year 3};
+- **Inflation**: €960 today might buy more than €960 next year
+- **Risk**: There's uncertainty about receiving payment in the future
+- **Opportunity cost**: You could invest that €960 elsewhere during the year
+- **Preference for liquidity**: People generally prefer having money now rather than later
 
-% Legend
-\draw[thick,fill=red!30] (8,3) rectangle (8.5,3.3);
-\node[right,font=\small] at (8.6,3.15) {Interest};
-\draw[thick,fill=blue!30] (8,2.5) rectangle (8.5,2.8);
-\node[right,font=\small] at (8.6,2.65) {Principal};
+Interest (say €40) compensates for all these factors. It's the "price" that makes you **indifferent** between:
 
-% Y-axis
-\draw[->] (-0.5,0) -- (-0.5,4) node[above,font=\small] {Amount (\$)};
-\foreach \y/\label in {0/0, 1/1000, 2/2000, 3/3000, 4/4000}
-    \node[left,font=\tiny] at (-0.6,\y) {\label};
-\end{tikzpicture}
-\end{figure}
-```
+- Having €960 today, OR
+- Having €1,000 in one year
 
-\FloatBarrier
+Without interest, nobody would lend money—there'd be no incentive!
 
-::: {.callout-tip icon=true}
-## Key Observations
+**Real-world check**: Would you lend someone €100 today if they promised to pay you back exactly €100 in 5 years? Of course not! You'd want interest to make it worthwhile.
+:::
 
-1. **Interest decreases** over time (because balance decreases)
-2. **Principal increases** over time (more of each payment goes to debt reduction)
-3. **Total payment changes** each period to maintain the amortization schedule
-4. The **proportions shift**: Early payments are mostly interest, later payments are mostly principal
+### Interest vs. Interest Rate {#sec-interest-vs-rate}
+
+::: {.callout-tip icon="true"}
+## What's the Difference?
+
+**Interest** ($I$): Absolute amount in currency
+
+- "I earned €40"
+- Depends on how much you invested
+- Measured in euros, dollars, etc.
+
+**Interest rate** ($i$): Relative percentage return
+
+- "I earned 4.167%"
+- Independent of investment size (percentage is the same whether you invest €960 or €96,000)
+- Dimensionless (it's a ratio)
+
+**Why rates matter**: They allow comparison across different investment sizes!
+
+- Investment A: Pay €960, receive €1,000 → Interest = €40, Rate = 4.167%
+- Investment B: Pay €10,000, receive €10,500 → Interest = €500, Rate = 5%
+
+Investment B has higher absolute interest (€500 > €40) but you can't directly compare them. The **rates** (5% vs 4.167%) tell you that Investment B offers a better return **per euro invested**.
 :::
 
 ## Investment vs. Financing Cashflows
@@ -418,73 +415,83 @@ Be careful to distinguish:
 
 **Interest earned in year 2** refers to the interval $[1, 2]$, but the **payment at time 2** refers to the instant $t=2$.
 
-## Comprehensive Example: Quarterly Loan Operation
+## Comprehensive Example: Four-Period Investment/Borrowing Operation
 
-Let's apply **all the concepts** we've learned to analyze a realistic quarterly loan scenario (based on slides 5-9).
+Let's apply **all the concepts** we've learned to analyze a realistic quarterly loan scenario. This example demonstrates that **there is no unique way** to decompose installments into interest and principal portions—multiple valid decompositions exist.
 
 ::: {.callout-caution icon=true}
 ## References
 
-**Slide:** Financial Mathematics Slides 1-96, Slides 5-9 (Four-period investment/borrowing operation with decomposition), Page 5, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=5)
+**Slide:** Financial Mathematics Slides 1-96, Slides 10-12 (Four-period investment/borrowing operation with two decompositions), Page 10, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=10)
 :::
 
-**Scenario**: You're taking a **quarterly loan** to finance working capital:
+**Scenario**: A **four-period borrowing operation** to finance working capital:
 
--   **Loan amount (principal S)**: €1,000
--   **Repayment**: Equal quarterly installments of €380
--   **Dates**: 31/12/2024, 31/03/2025, 30/06/2025, 31/09/2025
+-   **Loan amount (principal $S$)**: €1,000
+-   **Repayment**: Three equal quarterly installments of €380
+-   **Dates**: 12/24 (disbursement), 03/25, 06/25, 09/25 (payments)
 
-**Question**: In each installment, how much of the payment is interest?
+**Question**: How can we split each €380 installment into interest and principal portions?
 
-### Step 1: Cashflow Table (Borrower's Perspective)
+### Step 1: Cashflow Table
 
-| Time       | Total Cashflow ($R$) | Type    | Description      |
-|------------|----------------------|---------|------------------|
-| 31/12/2024 | +1,000               | Inflow  | Loan received    |
-| 31/03/2025 | −380                 | Outflow | 1st installment  |
-| 30/06/2025 | −380                 | Outflow | 2nd installment  |
-| 31/09/2025 | −380                 | Outflow | 3rd installment  |
+**Cashflow Table** (borrower's perspective):
+
+| Time | Date   | Total Cashflow ($R$) | Type    | Description      |
+|------|--------|----------------------|---------|------------------|
+| 0    | 12/24  | +1,000               | Inflow  | Loan received ($S$) |
+| 1    | 03/25  | −380                 | Outflow | 1st installment ($R_1$) |
+| 2    | 06/25  | −380                 | Outflow | 2nd installment ($R_2$) |
+| 3    | 09/25  | −380                 | Outflow | 3rd installment ($R_3$) |
 
 \FloatBarrier
 
-### Step 2: Decomposition Table
+### Step 2: Decomposition into Interest and Principal
 
-Each payment $R$ splits into **interest portion** $I$ and **principal portion** $C$:
+Conventionally, each installment $R$ is split between an **interest portion** $I$ and a **principal portion** $C$:
 
 $$
-R_k = I_k + C_k
+R_k = C_k + I_k
 $$
 
 Where:
 
-- $D_k$ = Outstanding debt at beginning of period $k$
-- $R_k$ = Payment (installment) at end of period $k$
-- $I_k$ = Interest portion
-- $C_k$ = Principal portion (capital reduction)
+- $D_k$ = Outstanding debt (remaining balance) at time $k$
+- $R_k$ = Total payment (installment) at time $k$
+- $C_k$ = Principal portion (capital reduction) at time $k$
+- $I_k$ = Interest portion at time $k$ (remunerates the time value of money)
 
-#### Complete Decomposition Table
+It's natural to think about the **remaining balance** or **outstanding debt** $D$ after an installment has been paid:
 
-| Time       | Debt $D_k$ | Payment $R_k$ | Interest $I_k$ | Principal $C_k$ | New Balance |
-|------------|------------|---------------|----------------|-----------------|-------------|
-| 31/12/2024 | 1,000      | —             | —              | —               | 1,000       |
-| 31/03/2025 | 1,000      | 380           | 46.67          | 333.33          | 666.67      |
-| 30/06/2025 | 666.67     | 380           | 46.67          | 333.33          | 333.33      |
-| 31/09/2025 | 333.33     | 380           | 46.67          | 333.33          | 0           |
-
-**Calculation details** (assuming constant period rate):
-
-For each quarter:
 $$
 \begin{aligned}
-I_k &\approx \text{€46.67} \text{ (interest)} \\
-C_k &= 380 - 46.67 = \text{€333.33} \text{ (principal reduction)} \\
-D_{k+1} &= D_k - C_k
+D_{31/12} &= S = \text{€1,000} \\
+D_{31/03} &= S - C_{31/03} \\
+D_{30/06} &= D_{31/03} - C_{30/06} = S - C_{31/03} - C_{30/06} \\
+D_{30/09} &= D_{30/06} - C_{30/09} = 0
 \end{aligned}
 $$
 
+### Step 3: Complete Decomposition Table
+
+| Time | Date  | Payment $R$ | Interest $I$ | Principal $C$ | Outstanding Debt $D$ |
+|------|-------|-------------|--------------|---------------|----------------------|
+| 0    | 12/24 | €1,000      | —            | —             | €1,000               |
+| 1    | 03/25 | −€380       | −€46.67      | −€333.33      | €666.67              |
+| 2    | 06/25 | −€380       | −€46.67      | −€333.33      | €333.34              |
+| 3    | 09/25 | −€380       | −€46.66      | −€333.34      | €0                   |
+
+**Note**: $C$ is intended as a partial repayment of the debt, while $I$ remunerates the time value of money.
+
+::: {.callout-warning icon=true}
+## Important Remark
+
+Since we have not yet established a rule (financial law) for decomposing the installment into principal and interest portions, **other decompositions are equally valid in principle**. The specific split shown here is just one possibility. Later, when we study financial laws, we'll learn how to determine the appropriate decomposition for any given situation.
+:::
+
 \FloatBarrier
 
-### Step 3: Visual Decomposition (Stacked Bars)
+### Step 4: Visual Decomposition (Stacked Bars)
 
 ```{=latex}
 \begin{figure}[h]
@@ -493,7 +500,7 @@ $$
 % Time 0 - Initial Inflow
 \draw[thick,fill=green!50] (-2.5,0) rectangle (-1,10);
 \node[font=\large] at (-1.75,5) {\texteuro 1{,}000};
-\node[below,font=\small] at (-1.75,-0.3) {t=0};
+\node[below,font=\small] at (-1.75,-0.3) {12/24};
 \node[above,font=\small] at (-1.75,10.3) {+\texteuro 1{,}000};
 
 % Quarter 1
@@ -501,7 +508,7 @@ $$
 \node[font=\tiny] at (0.75,0.235) {\texteuro 47};
 \draw[thick,fill=blue!50] (0,0.47) rectangle (1.5,4.2);
 \node[font=\small] at (0.75,2.3) {\texteuro 333};
-\node[below,font=\small] at (0.75,-0.3) {Q1};
+\node[below,font=\small] at (0.75,-0.3) {03/25};
 \node[above,font=\small] at (0.75,4.4) {-\texteuro 380};
 
 % Quarter 2
@@ -509,7 +516,7 @@ $$
 \node[font=\tiny] at (3.25,0.235) {\texteuro 47};
 \draw[thick,fill=blue!50] (2.5,0.47) rectangle (4,4.2);
 \node[font=\small] at (3.25,2.3) {\texteuro 333};
-\node[below,font=\small] at (3.25,-0.3) {Q2};
+\node[below,font=\small] at (3.25,-0.3) {06/25};
 \node[above,font=\small] at (3.25,4.4) {-\texteuro 380};
 
 % Quarter 3
@@ -517,7 +524,7 @@ $$
 \node[font=\tiny] at (5.75,0.235) {\texteuro 47};
 \draw[thick,fill=blue!50] (5,0.47) rectangle (6.5,4.2);
 \node[font=\small] at (5.75,2.3) {\texteuro 333};
-\node[below,font=\small] at (5.75,-0.3) {Q3};
+\node[below,font=\small] at (5.75,-0.3) {09/25};
 \node[above,font=\small] at (5.75,4.4) {-\texteuro 380};
 
 % Legend
@@ -536,7 +543,7 @@ $$
 
 \FloatBarrier
 
-### Step 4: Timeline with Decomposition
+### Step 5: Timeline with Decomposition
 
 ```{=latex}
 \begin{figure}[h]
@@ -579,43 +586,32 @@ $$
 
 \FloatBarrier
 
-### Step 5: Pattern Identification
+### Step 6: Pattern Identification
 
-This is a **financing pattern**:
+This is a **financing pattern** from the borrower's perspective:
 
 - Initial **inflow** (+€1,000): You receive money
 - Subsequent **outflows** (−€380 each quarter): You pay back
 
 The **opposite perspective** (lender's view) would show an **investment pattern**:
 
-- Initial outflow (loan disbursement)
-- Subsequent inflows (receiving payments)
+- Initial **outflow** (−€1,000): Lender pays money
+- Subsequent **inflows** (+€380 each quarter): Lender receives payments
 
-### Step 6: Cumulative Net Position
-
-| Time       | Cashflow | Cumulative Net | Status           |
-|------------|----------|----------------|------------------|
-| 31/12/2024 | +1,000   | +1,000         | ✓ Have money     |
-| 31/03/2025 | −380     | +620           | ✓ Still positive |
-| 30/06/2025 | −380     | +240           | ✓ Still positive |
-| 31/09/2025 | −380     | −140           | ✗ Net negative   |
-
-\FloatBarrier
+### Step 7: Key Insights
 
 ::: {.callout-important icon="true"}
 ## Complete Analysis
 
-**Decomposition shows**: Each €380 payment contains approximately €47 interest and €333 principal
+**Decomposition shows**: Each €380 payment contains approximately €47 interest and €333 principal repayment
 
 **Pattern**: This is financing (borrow now, pay later in installments)
 
-**Cumulative view**: You pay back **€1,140** total for a **€1,000** loan
+**Total payments**: €380 × 3 = **€1,140**
 
-**True cost**: €1,140 − €1,000 = **€140** in total interest over 3 quarters
+**Total interest**: €1,140 − €1,000 = **€140** over 3 quarters
 
-**Period rate**: The interest rate per quarter is $i_k = I_k / D_k \approx 46.67 / 1000 = 4.67\%$
-
-**Perspective matters**: From the lender's view, this €140 is their profit!
+**Perspective matters**: From the lender's view, this €140 is their return on investment!
 :::
 
 ## Financial Transaction Notation (Lizzi's)
@@ -744,6 +740,7 @@ This is fundamental for:
 **Step 1**: Find common schedule $\mathbf{t}'' = \{0, 1, 2, 4\}$
 
 **Step 2**: Extend both transactions:
+
 - Transaction A: $\{-10, 8, 8, 0\} / \{0, 1, 2, 4\}$
 - Transaction B: $\{-3, 0, 2, 2\} / \{0, 1, 2, 4\}$
 

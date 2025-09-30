@@ -2,16 +2,21 @@
 
 ::: {.callout-note icon=false}
 ## 📑 Quick Navigation Guide
-This reverse index maps the course slides (pages 1-49) to the corresponding sections in this book. Click any link to jump directly to the relevant section.
+This reverse index maps the course slides (pages 1-49) to:
+
+- **Guide Section**: The corresponding section in this study guide
+- **Book Section**: The related chapter/page in Pearson Corporate Finance 6th Edition textbook
+
+Click any link to jump directly to the relevant section. Topics marked with *"Not in book"* are Lizzi's notation and frameworks not found in the Pearson textbook.
 :::
 
 ---
 
 ## Slides 1-3: Introduction & Course Outline {#idx-slides-1-3}
 
-| Slide(s) | Topic | Book Section |
-|:---------|:------|:-------------|
-| 1-3 | Title pages, course structure | [Welcome](#welcome) |
+| Slide(s) | Topic | Guide Section | Book Section |
+|:---------|:------|:-------------|:-------------|
+| 1-3 | Title pages, course structure | [Welcome](#welcome) | *Course introduction* |
 
 ---
 
@@ -19,46 +24,46 @@ This reverse index maps the course slides (pages 1-49) to the corresponding sect
 
 ### Financial Transactions (Slides 4-13) {#idx-slides-4-13}
 
-| Slide(s) | Topic | Book Section |
-|:---------|:------|:-------------|
-| 4 | Financial transactions: example (1) | [Cashflows: The Building Blocks](#cashflows-the-building-blocks) |
-| 5 | Financial transactions (1) - Definition | [Cashflows: The Building Blocks](#cashflows-the-building-blocks) |
-| 6 | Financial transactions (2) - Time Value of Money | [Cashflows: The Building Blocks](#cashflows-the-building-blocks) |
-| 7 | Financial transactions (3) - Zero-coupon bond | [Cashflows: The Building Blocks](#cashflows-the-building-blocks) |
-| 8 | Financial transactions (4) - Interests in two-period operation | [Comprehensive Example: Quarterly Loan Operation](#comprehensive-example-quarterly-loan-operation) |
-| 9 | Financial transactions (5) - Four-period investment/borrowing | [Comprehensive Example: Quarterly Loan Operation](#comprehensive-example-quarterly-loan-operation) |
-| 10-12 | Financial transactions (6-8) - Four-period decomposition, interests | [Comprehensive Example: Quarterly Loan Operation](#comprehensive-example-quarterly-loan-operation) |
-| 13 | Financial transactions (9) - Period rates | [Comprehensive Example: Quarterly Loan Operation](#comprehensive-example-quarterly-loan-operation) |
+| Slide(s) | Topic | Guide Section | Book Section |
+|:---------|:------|:-------------|:-------------|
+| 4 | Financial transactions: example (1) | [Cashflows: The Building Blocks](#cashflows-the-building-blocks) | Ch. 4 (The Timeline), p. 105, [PDF p. 138](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=138) |
+| 5 | Financial transactions (1) - Definition | [Cashflows: The Building Blocks](#cashflows-the-building-blocks) | Ch. 4 (The Timeline), p. 105, [PDF p. 138](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=138) |
+| 6 | Financial transactions (2) - Time Value of Money | [What Does Interest Represent?](#sec-interest-meaning) | Ch. 3 (Time Value of Money), p. 71, [PDF p. 104](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=104) |
+| 7 | Financial transactions (3) - Zero-coupon bond | [Multiple Cashflows: Zero-Coupon Bond Example](#multiple-cashflows-zero-coupon-bond-example) | Ch. 6 (Zero-Coupon Bonds), p. 178, [PDF p. 211](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=211) |
+| 8 | Financial transactions (4) - Interests in two-period operation | [What Does Interest Represent?](#sec-interest-meaning) | Ch. 4 (The Three Rules of Time Travel), p. 106, [PDF p. 139](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=139) |
+| 9 | Financial transactions (5) - Four-period investment/borrowing | [Comprehensive Example: Four-Period Investment/Borrowing Operation](#comprehensive-example-four-period-investmentborrowing-operation) | Ch. 4 (Loan Payments), p. 131, [PDF p. 164](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=164) |
+| 10-12 | Financial transactions (6-8) - Four-period decomposition, interests | [Comprehensive Example: Four-Period Investment/Borrowing Operation](#comprehensive-example-four-period-investmentborrowing-operation) | Ch. 4 (Loan Payments), p. 131, [PDF p. 164](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=164) |
+| 13 | Financial transactions (9) - Period rates | [Comprehensive Example: Four-Period Investment/Borrowing Operation](#comprehensive-example-four-period-investmentborrowing-operation) | Ch. 5 (Interest Rate Quotes), p. 150, [PDF p. 183](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=183) |
 
 ### Notation & Conventions (Slides 14-20) {#idx-slides-14-20}
 
-| Slide(s) | Topic | Book Section |
-|:---------|:------|:-------------|
-| 14-15 | Notation (1-2) | [Financial Transaction Notation (Lizzi's)](#financial-transaction-notation-lizzis) |
-| 16-17 | Conventions on time representation (1-2) | [Time Conventions and Periods](#time-conventions-and-periods) |
-| 18 | General notation | [Financial Transaction Notation (Lizzi's)](#financial-transaction-notation-lizzis) |
-| 19-20 | Graphical & table representation | [Cashflow Representations](#cashflow-representations) |
+| Slide(s) | Topic | Guide Section | Book Section |
+|:---------|:------|:-------------|:-------------|
+| 14-15 | Notation (1-2) | [Financial Transaction Notation (Lizzi's)](#financial-transaction-notation-lizzis) | *Not in book (Lizzi's notation)* |
+| 16-17 | Conventions on time representation (1-2) | [Time Conventions and Periods](#time-conventions-and-periods) | Ch. 4 (The Timeline), p. 105, [PDF p. 138](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=138) |
+| 18 | General notation | [Financial Transaction Notation (Lizzi's)](#financial-transaction-notation-lizzis) | *Not in book (Lizzi's notation)* |
+| 19-20 | Graphical & table representation | [Cashflow Representations](#cashflow-representations) | Ch. 4 (The Timeline), p. 105, [PDF p. 138](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=138) |
 
 ### Terminology & Patterns (Slides 21-23) {#idx-slides-21-23}
 
-| Slide(s) | Topic | Book Section |
-|:---------|:------|:-------------|
-| 21 | Terminology - Investment | [Investment vs. Financing Cashflows](#investment-vs.-financing-cashflows) |
-| 22 | Terminology - Financing | [Investment vs. Financing Cashflows](#investment-vs.-financing-cashflows) |
-| 23 | Terminology - Spot/Forward, Long/Short | [Financial Transaction Notation (Lizzi's)](#financial-transaction-notation-lizzis) |
+| Slide(s) | Topic | Guide Section | Book Section |
+|:---------|:------|:-------------|:-------------|
+| 21 | Terminology - Investment | [Investment vs. Financing Cashflows](#investment-vs.-financing-cashflows) | Ch. 7 (NPV and Stand-Alone Projects), p. 217, [PDF p. 250](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=250) |
+| 22 | Terminology - Financing | [Investment vs. Financing Cashflows](#investment-vs.-financing-cashflows) | Ch. 14 (Equity Versus Debt Financing), p. 495, [PDF p. 528](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=528) |
+| 23 | Terminology - Spot/Forward, Long/Short | [Financial Transaction Notation (Lizzi's)](#financial-transaction-notation-lizzis) | *Not in book (Lizzi's terminology)* |
 
 ### Coupon Bonds (Slides 24-29) {#idx-slides-24-29}
 
-| Slide(s) | Topic | Book Section |
-|:---------|:------|:-------------|
-| 24-28 | Coupon bonds (1-5) | [Bonds](#bonds) |
-| 29 | Accrued vs dirty price (example) | [Calculating Accrued Interest](#calculating-accrued-interest) |
+| Slide(s) | Topic | Guide Section | Book Section |
+|:---------|:------|:-------------|:-------------|
+| 24-28 | Coupon bonds (1-5) | [Bonds](#bonds) | Ch. 6 (Coupon Bonds), p. 181, [PDF p. 214](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=214) |
+| 29 | Accrued vs dirty price (example) | [Calculating Accrued Interest](#calculating-accrued-interest) | Ch. 6 (Clean and Dirty Prices), p. 187, [PDF p. 220](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=220) |
 
 ### Sum of Transactions (Slides 30-32) {#idx-slides-30-32}
 
-| Slide(s) | Topic | Book Section |
-|:---------|:------|:-------------|
-| 30-32 | Sum of financial transactions (1-3) | [Sum of Financial Transactions](#sum-of-financial-transactions) |
+| Slide(s) | Topic | Guide Section | Book Section |
+|:---------|:------|:-------------|:-------------|
+| 30-32 | Sum of financial transactions (1-3) | [Sum of Financial Transactions](#sum-of-financial-transactions) | *Not in book (Lizzi's framework)* |
 
 ---
 
@@ -66,21 +71,20 @@ This reverse index maps the course slides (pages 1-49) to the corresponding sect
 
 ### Value Function (Slides 33-36) {#idx-slides-33-36}
 
-| Slide(s) | Topic | Book Section |
-|:---------|:------|:-------------|
-| 33-34 | Value function (definition + graphical) | [The Core Concept](#the-core-concept) |
-| 35-36 | Value function: example & properties | [Value Function and Cash Flows: A Detailed Example](#value-function-and-cash-flows-a-detailed-example) |
-| 35 | NPV formula and decision rule | [Net Present Value (NPV)](#net-present-value-npv) |
+| Slide(s) | Topic | Guide Section | Book Section |
+|:---------|:------|:-------------|:-------------|
+| 33-34 | Value function (definition + graphical) | [Introduction](#introduction) | *Not in book (Lizzi's value function)* |
+| 35-36 | Value function: example & properties | [Concrete Example: A Simple Loan](#concrete-example-a-simple-loan) | *Not in book (Lizzi's value function)* |
 
-### Interest, Discount, Accumulation (Slides 37-49) {#idx-slides-37-49}
+### Interest, Discount, & Accumulation (Slides 37-49) {#idx-slides-37-49}
 
-| Slide(s) | Topic | Book Section |
-|:---------|:------|:-------------|
-| 37-38 | Interest, discount, accumulation (intro) | [From Value Function to Rates](#from-value-function-to-rates) |
-| 39-41 | Interest definitions (rates, factors) | [The Six Manifestations (Plain Language)](#the-six-manifestations-plain-language) |
-| 42-44 | Value function examples | [Comparing Both Decompositions](#comparing-both-decompositions) |
-| 45-47 | Discount rate & factor, example with ZCB | [The Six Manifestations (Plain Language)](#the-six-manifestations-plain-language) |
-| 48-49 | Application of accumulation factor | [The Six Manifestations (Plain Language)](#the-six-manifestations-plain-language) |
+| Slide(s) | Topic | Guide Section | Book Section |
+|:---------|:------|:-------------|:-------------|
+| 37-38 | Interest, discount, accumulation (intro) | [Understanding Interest and Interest Rates](#understanding-interest-and-interest-rates) | Ch. 3 (Interest Rates and Time Value), p. 71, [PDF p. 104](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=104) |
+| 39-41 | Interest definitions (rates, factors) | [Formal Definitions in Terms of the Value Function](#formal-definitions-in-terms-of-the-value-function) | Ch. 4 (The Three Rules of Time Travel), p. 106, [PDF p. 139](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=139) |
+| 42-44 | Value function examples | [Example: Computing Interest Rates](#example-computing-interest-rates) | Ch. 4 (The Three Rules of Time Travel), p. 106, [PDF p. 139](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=139) |
+| 45-47 | Discount rate & factor, example with ZCB | [Discount Rate and Discount Factor](#discount-rate-and-discount-factor) | Ch. 4 (Moving Cash Flows Back in Time), p. 108, [PDF p. 141](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=141) |
+| 48-49 | Application of accumulation factor | [Formal Definitions in Terms of the Value Function](#formal-definitions-in-terms-of-the-value-function) | Ch. 4 (Moving Cash Flows Forward in Time), p. 107, [PDF p. 140](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=140) |
 
 ---
 
@@ -94,8 +98,10 @@ This reverse index maps the course slides (pages 1-49) to the corresponding sect
 
 **Key topics**:
 
-- [Cashflows and sign conventions](#cashflows-the-building-blocks) (Slides 4-7)
-- [Financial transaction examples](#comprehensive-example-quarterly-loan-operation) (Slides 8-13)
+- [Cashflows and sign conventions](#cashflows-the-building-blocks) (Slides 4-5)
+- [Zero-coupon bond example](#multiple-cashflows-zero-coupon-bond-example) (Slide 7)
+- [Interest concepts](#sec-interest-meaning) (Slides 6, 8)
+- [Four-period loan operation and decomposition](#comprehensive-example-four-period-investmentborrowing-operation) (Slides 9-13)
 - [Notation and time representation](#time-conventions-and-periods) (Slides 14-20)
 - [Investment vs. Financing patterns](#investment-vs.-financing-cashflows) (Slides 21-22)
 - [Terminology and conventions](#financial-transaction-notation-lizzis) (Slide 23)
@@ -110,24 +116,16 @@ This reverse index maps the course slides (pages 1-49) to the corresponding sect
 - [Accrued interest and dirty price](#calculating-accrued-interest) (Slide 29)
 
 ### [Value Function](#value-function) {#idx-ref-value}
-**Slides covered**: 33-36, 42-44
+**Slides covered**: 33-49
 
 **Key topics**:
 
-- [Value function definition](#the-core-concept) (Slides 33-34)
-- [Value function examples and properties](#value-function-and-cash-flows-a-detailed-example) (Slides 35-36)
-- [NPV formula and decision rule](#net-present-value-npv) (Slide 35)
-- [Value function decomposition examples](#comparing-both-decompositions) (Slides 42-44)
-
-### [Interest & Discount Rates](#interest-discount-rates) {#idx-ref-interest}
-**Slides covered**: 37-41, 45-49
-
-**Key topics**:
-
-- [Interest, discount, accumulation intro](#from-value-function-to-rates) (Slides 37-38)
-- [The six manifestations](#the-six-manifestations-plain-language) (Slides 39-41)
-- [Discount rates and factors](#the-six-manifestations-plain-language) (Slides 45-47)
-- [Accumulation factor applications](#the-six-manifestations-plain-language) (Slides 48-49)
+- [Value function definition](#introduction) (Slides 33-34)
+- [Value function examples and properties](#concrete-example-a-simple-loan) (Slides 35-36)
+- [Understanding interest and rates](#understanding-interest-and-interest-rates) (Slides 37-38)
+- [Formal definitions of interest, rates, and accumulation](#formal-definitions-in-terms-of-the-value-function) (Slides 39-41, 48-49)
+- [Interest rate computation examples](#example-computing-interest-rates) (Slides 42-44)
+- [Discount rates and factors](#discount-rate-and-discount-factor) (Slides 45-47)
 
 ---
 
@@ -142,22 +140,19 @@ This reverse index maps the course slides (pages 1-49) to the corresponding sect
 ### Bonds {#idx-topic-bonds}
 **Slides**: 24-29 → [Bonds](#bonds)
 
-### Value Function {#idx-topic-value}
-**Slides**: 33-36, 42-44 → [Value Function](#value-function)
-
-### Interest & Discount {#idx-topic-interest}
-**Slides**: 37-41, 45-49 → [Interest & Discount Rates](#interest-discount-rates)
+### Value Function, Interest & Discount {#idx-topic-value}
+**Slides**: 33-49 → [Value Function](#value-function)
 
 ---
 
 ::: {.callout-tip}
 ## 💡 Pro Tip
-When reviewing slides, use this index to jump directly to the relevant book section for:
+When reviewing slides, use this index to jump directly to:
 
-- **Detailed explanations** with additional examples
-- **Visual diagrams** and intuitive interpretations  
-- **Common pitfalls** and practical tips
-- **Reference links** to original source materials
+- **Guide Section**: Our expanded explanations with visual diagrams, intuitive interpretations, and common pitfalls
+- **Book Section**: The corresponding Pearson Corporate Finance textbook chapters for foundational theory (when available)
+
+**Note**: Some topics (marked with *"Not in book"*) are Lizzi's notation and frameworks, which don't appear in the Pearson textbook.
 :::
 
 ::: {.callout-caution icon=true}
@@ -167,7 +162,9 @@ This reverse index maps content from:
 
 **Slide:** Financial Mathematics Slides 1-96, Pages 1-49, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=1)
 
-To chapters in this book covering the same material with expanded explanations, examples, and visual aids.
+To:
+- **Guide sections** in this book with expanded explanations and examples
+- **Book sections** in Pearson Corporate Finance 6th Edition with foundational theory
 :::
 
 ---
