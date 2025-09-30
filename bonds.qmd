@@ -6,14 +6,6 @@ Bonds are one of the most important financial instruments. Think of a bond as a 
 
 ## What Is a Bond?
 
-::: {.callout-caution icon=true}
-## References
-
-**Book:** Pearson Corporate Finance 6th Edition, Chapter 6 (Valuing Bonds), Page 177, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=210)
-
-**Slide:** Financial Mathematics Slides 1-96, Slides 24-26 (Coupon bonds definition), Page 24, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=24)
-:::
-
 ::: {.callout-note icon=true}
 ## Definition: Bond
 A **bond** is a debt security with the following components:
@@ -109,14 +101,6 @@ At maturity (Year 3), you receive both the final coupon ($I = \$50$) and the fac
 \FloatBarrier
 
 ## Clean Price vs. Dirty Price
-
-::: {.callout-caution icon=true}
-## References
-
-**Book:** Pearson Corporate Finance 6th Edition, Chapter 6 (Bond Pricing), Page 182, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=215)
-
-**Slide:** Financial Mathematics Slides 1-96, Slides 27-29 (Clean vs Dirty Price), Page 27, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=27)
-:::
 
 When bonds are traded between coupon payment dates, we need to account for **accrued interest**.
 
@@ -249,14 +233,6 @@ Always check which day count convention applies! The same bond can have differen
 
 ### Example Calculation
 
-::: {.callout-caution icon=true}
-## References
-
-**Book:** Pearson Corporate Finance 6th Edition, Chapter 6 (Valuing Bonds), Page 177, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=210)
-
-**Slide:** Financial Mathematics Slides 1-96, Slides 24-29 (Accrued interest and day count conventions), Page 24, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=24)
-:::
-
 **Given**:
 
 - Semi-annual bond (6-month coupons)
@@ -354,12 +330,6 @@ The seller held the bond for 90/181 ≈ **49.7%** of the coupon period, so they 
 :::
 
 ## Bond Pricing: Clean vs. Dirty in Action
-
-::: {.callout-caution icon=true}
-## References
-
-**Slide:** Financial Mathematics Slides 1-96, Slide 30 (Italian BTP Btp-1mg31 6% example), [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=30)
-:::
 
 Let's work through a complete real-world bond transaction. Imagine you're buying an Italian Treasury bond (BTP) from another investor in the secondary market. The bond was issued some time ago and has been paying regular coupons. When you buy it between coupon dates, you need to understand both the **quoted price** (what you see in the market) and the **actual price** (what you'll pay).
 

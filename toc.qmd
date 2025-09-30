@@ -1,0 +1,8 @@
+```{=latex}
+\clearpage
+{
+\hypersetup{linkcolor=blue}
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+```

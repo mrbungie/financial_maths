@@ -1,26 +1,10 @@
 # Basic Notions
 
-::: {.callout-caution icon=true}
-## References
-
-**Book:** Pearson Corporate Finance 6th Edition, Chapter 4 (The Time Value of Money), Page 105, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=138)
-
-**Slide:** Financial Mathematics Slides 1-96, Slides 4-23 (Module 1: Basic Notions - Financial transactions, graphical representation, terminology), Page 4, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=4)
-:::
-
 ## Introduction
 
 Financial mathematics is fundamentally about tracking **money flows over time**. Before diving into complex formulas, we need to establish a clear language for describing when money moves, in which direction, and how much.
 
 ## Cashflows: The Building Blocks
-
-::: {.callout-caution icon=true}
-## References
-
-**Book:** Pearson Corporate Finance 6th Edition, Chapter 4 (The Time Value of Money), Page 105, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=138)
-
-**Slide:** Financial Mathematics Slides 1-96, Slides 4-9 (Basic notions - Financial transactions), Page 4, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=4)
-:::
 
 ::: {.callout-note icon="true"}
 ## Definition: Cashflow
@@ -114,12 +98,6 @@ timeline
 
 ## Zero-Coupon Bond Example
 
-::: {.callout-caution icon=true}
-## References
-
-**Slide:** Financial Mathematics Slides 1-96, Slide 8 (Zero-coupon bond example), Page 8, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=8)
-:::
-
 Let's examine a simple but important financial instrument: a **zero-coupon bond (ZCB)**. These are financial contracts that guarantee the holder, on the part of the issuer, the payment of a specific sum $F$ (face value) at a later date (maturity). To acquire this right, the investor must pay a certain price $P$ at issue.
 
 ### Cashflow Table (Investor's Perspective)
@@ -189,14 +167,6 @@ From the **issuer's perspective** (borrower), this would be a **financing patter
 :::
 
 ## Cashflow Decomposition: Interest vs. Principal
-
-::: {.callout-caution icon=true}
-## References
-
-**Book:** Pearson Corporate Finance 6th Edition, Chapter 4 (Loan Payments), Page 120, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=153)
-
-**Slide:** Financial Mathematics Slides 1-96, Slides 13-16 (Decomposition of payments), Page 13, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=13)
-:::
 
 When you make a loan payment, that single cashflow actually represents **two distinct economic components**. Understanding this decomposition is crucial for financial analysis.
 
@@ -292,12 +262,6 @@ Investment B has higher absolute interest (€500 > €40) but you can't directl
 :::
 
 ## Investment vs. Financing Cashflows
-
-::: {.callout-caution icon=true}
-## References
-
-**Slide:** Financial Mathematics Slides 1-96, Slides 10-12 (Investment vs Financing patterns), Page 10, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=10)
-:::
 
 Two fundamental patterns emerge in financial mathematics:
 
@@ -418,12 +382,6 @@ Be careful to distinguish:
 ## Comprehensive Example: Four-Period Investment/Borrowing Operation
 
 Let's apply **all the concepts** we've learned to analyze a realistic quarterly loan scenario. This example demonstrates that **there is no unique way** to decompose installments into interest and principal portions—multiple valid decompositions exist.
-
-::: {.callout-caution icon=true}
-## References
-
-**Slide:** Financial Mathematics Slides 1-96, Slides 10-12 (Four-period investment/borrowing operation with two decompositions), Page 10, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=10)
-:::
 
 **Scenario**: A **four-period borrowing operation** to finance working capital:
 
@@ -615,14 +573,6 @@ The **opposite perspective** (lender's view) would show an **investment pattern*
 :::
 
 ## Financial Transaction Notation (Lizzi's)
-
-::: {.callout-caution icon=true}
-## References
-
-**Book:** Pearson Corporate Finance 6th Edition, Chapter 4 (The Time Value of Money), Page 105, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=138)
-
-**Slide:** Financial Mathematics Slides 1-96, Slides 31-33 (Sum of financial transactions), Page 31, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=31)
-:::
 
 So far we've described cashflows informally using tables and timelines. Now we introduce a **formal mathematical notation** used by the professor to precisely describe financial transactions.
 

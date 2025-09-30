@@ -1,13 +1,5 @@
 # Value Function
 
-::: {.callout-caution icon=true}
-## References
-
-**Book:** **No direct reference for a "Value Function". This is an abstraction created by Lizzi's (it may have theorical grounding but the term itself is not common in Finance).**
-
-**Slide:** Financial Mathematics Slides 1-96, Slides 34-46 (Value function definition, properties, and relationship with interest rates), Page 34, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=34)
-:::
-
 ## Introduction
 
 Suppose we have a financial transaction on two dates. The fundamental idea is that two parties agree to exchange money at different points in time, creating an equivalence between amounts at different dates.

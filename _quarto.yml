@@ -3,9 +3,9 @@ project:
   output-dir: _output
 
 book:
-  title: "Financial Mathematics - Class 1"
+  title: "Financial Mathematics"
   subtitle: "A Student-Friendly Guide"
-  author: "AI and friends"
+  author: "Someone"
   date: today
   chapters:
     - index.qmd
@@ -13,6 +13,7 @@ book:
     - basic_notions.qmd
     - bonds.qmd
     - value_function.qmd
+    - toc.qmd
 
 bibliography: references.bib
 
@@ -27,8 +28,9 @@ format:
     html-math-method: mathjax
   pdf:
     documentclass: scrbook
-    toc: true
+    toc: false
     toc-depth: 3
+    toc-location: back
     number-sections: true
     geometry:
       - margin=1in
