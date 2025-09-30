@@ -105,7 +105,7 @@ $$
 ### Accrued Interest
 
 $$
-\text{AI} = C \times \frac{\text{days since last coupon}}{\text{days in period}}
+\text{AI} = I \times \frac{\text{days since last coupon}}{\text{days in period}}
 $$
 
 ---
@@ -114,21 +114,33 @@ $$
 
 ### Components
 
-| Term | Definition |
-|:-----|:-----------|
-| **Face Value** | Principal repaid at maturity (typically $1,000) |
-| | |
-| **Coupon Rate** | Annual interest rate on face value |
-| | |
-| **Coupon Payment** | $C = \text{Face Value} \times \text{Coupon Rate}$ |
-| | |
-| **Clean Price** | Quoted price (excludes accrued interest) |
-| | |
-| **Dirty Price** | Invoice price = Clean + Accrued Interest |
+| Term | Variable | Definition |
+|:-----|:---------|:-----------|
+| **Face Value** | $C$ | Principal repaid at maturity (typically $1,000) |
+| | | |
+| **Coupon Rate** | $i_C$ | Annual interest rate on face value |
+| | | |
+| **Coupon Payment** | $I$ | $I = i_C \cdot C$ |
+| | | |
+| **Payment Period** | $\tau$ | Time between payments |
+| | | |
+| **Number of Periods** | $m$ | Total payments until maturity |
+| | | |
+| **Price** | $P$ | Market price of the bond |
+| | | |
+| **Clean Price** | | Quoted price (excludes accrued interest) |
+| | | |
+| **Dirty Price** | | Invoice price = Clean + Accrued Interest |
 
 ### Bond Cashflow Pattern
 
 **Timeline**: Initial payment (buy bond) → periodic coupons → final coupon + face value repayment
+
+### Bond Pricing Terminology
+
+- **Above par**: $P > C$
+- **At par**: $P = C$
+- **Below par**: $P < C$
 
 ---
 
