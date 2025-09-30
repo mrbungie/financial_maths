@@ -570,6 +570,7 @@ This is a **financing pattern**:
 - Subsequent **outflows** (−€380 each quarter): You pay back
 
 The **opposite perspective** (lender's view) would show an **investment pattern**:
+
 - Initial outflow (loan disbursement)
 - Subsequent inflows (receiving payments)
 
