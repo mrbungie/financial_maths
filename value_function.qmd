@@ -556,12 +556,12 @@ Two projects with different cashflow patterns:
 
 **Conclusion**: Project A is better (higher NPV).
 
-## Teacher's Notation: Bridging Two Worlds
+## Lizzi's Notation: Bridging Two Worlds
 
 ::: {.callout-note icon="true"}
 ## Two Ways to Think About Financial Mathematics
 
-Your professor uses **value function notation** $V(t)$, while most textbooks use **classical formulas** (PV, FV, NPV). They're saying the same thing, just in different languages. Here's how they connect:
+Lizzi uses **value function notation** $V(t)$, while most textbooks use **classical formulas** (PV, FV, NPV). They're saying the same thing, just in different languages. Here's how they connect:
 :::
 
 ### Classical Approach (Traditional Finance)
@@ -585,9 +585,9 @@ $$
 
 **The classical view**: You have separate formulas for moving money forward (FV) or backward (PV). NPV is a special application of PV for investment decisions.
 
-### Teacher's Approach (Value Function)
+### Lizzi's Approach (Value Function)
 
-Your professor introduces **one unified framework** that encompasses all of these:
+Lizzi introduces **one unified framework** that encompasses all of these:
 
 $$
 V(t) = \sum_{t_i \leq t} C_i \cdot (1+i)^{t-t_i} + \sum_{t_j > t} \frac{C_j}{(1+i)^{t_j - t}}
@@ -636,12 +636,14 @@ The classical approach only tells you "reject it." The value function tells you 
 ## When to Use Each Approach
 
 **Use Classical Formulas (PV/FV/NPV) when:**
+
 - You only need a single "yes/no" investment decision
 - You're working with standard textbook problems
 - You're communicating with practitioners who use traditional finance language
 - You need quick calculations
 
 **Use Value Function $V(t)$ when:**
+
 - You need to track financial position over time
 - You're comparing different interest rate structures
 - You want to understand *how* value evolves, not just the final decision
@@ -663,6 +665,7 @@ Think of it like this:
 **Value function approach**: You have a Swiss Army knife ($V(t)$) that contains all the tools. Want PV? Use the knife at $t=0$. Want FV? Use it at $t=T$. Want to check your position midway? Use it at $t=5$.
 
 Your professor teaches the Swiss Army knife because:
+
 1. **Generality**: One framework explains everything
 2. **Flexibility**: Works at *any* time, not just beginning/end
 3. **Insight**: Shows *how* value changes over time, not just snapshots

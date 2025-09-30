@@ -5,7 +5,7 @@ project:
 book:
   title: "Financial Mathematics - Class 1"
   subtitle: "A Student-Friendly Guide"
-  author: "MBA Program"
+  author: "AI and friends"
   date: today
   chapters:
     - index.qmd

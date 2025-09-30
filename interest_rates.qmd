@@ -2,760 +2,466 @@
 
 ## Introduction
 
-Interest rates are the **engine** of financial mathematics. They answer the fundamental question: *"What is the price of time?"* In this chapter, we'll explore how interest rates work, how they relate to discount factors, and how they transform money across time.
+::: {.callout-note icon=true}
+## Building on the Value Function
 
-## The Time Value of Money
+In the previous chapter on [Value Function](value_function.qmd), we learned how $V(t)$ describes the financial position of a cashflow stream at any time $t$. Now, we'll see how interest rates, discount rates, and accumulation factors are all **manifestations** of this value function—different ways of reading the same underlying information.
+:::
+
+Interest rates represent the **risk-free price of time** in an ideal financial world. They answer the fundamental question: *"What is the pure cost of waiting for money?"* 
+
+::: {.callout-note icon=true}
+## Ideal World Assumption
+
+For now, we focus on the **risk-free interest rate** in a frictionless market:
+
+- No default risk
+- No inflation
+- Perfect liquidity
+- No transaction costs
+
+This represents the **pure time preference**: how much more valuable money is today compared to tomorrow, stripped of all real-world complications.
+
+**Reality check**: Real-world interest rates include additional components (inflation premium, default risk, liquidity premium). We'll address these complexities later.
+:::
 
 ::: {.callout-caution icon=true}
 ## References
 
 **Book:** Pearson Corporate Finance 6th Edition, Chapter 4 (Time Value of Money), Page 105, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=138)
 
-**Slide:** Financial Mathematics Slides 1-96, Slides 37-42 (Interest and discount rates introduction), Page 37, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=37)
+**Slide:** Financial Mathematics Slides 1-96, Slides 43-46 (Interest rate definitions in terms of value function), Page 43, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=43)
 :::
+
+## Interest and Discount: Manifestations of the Value Function
+
+Rather than treating interest rates as standalone concepts, we express them as **direct consequences** of the value function $V(t)$. Every interest-related quantity is simply a different way of comparing values at two time points.
+
+### Conceptual Overview: Six Ways to Measure Time Value
+
+Before diving into formulas, let's understand what each quantity represents in plain language:
 
 ::: {.callout-note icon=true}
-## Core Principle: Time Value of Money
-**A dollar today is worth more than a dollar tomorrow.**
+## The Six Manifestations in Everyday Language
 
-Why? Three main reasons:
+Imagine you invest money at time $t$ and check the result at time $t+\tau$. You can describe this transaction in six different ways:
 
-1. **Opportunity cost**: Today's dollar can be invested to earn returns
-2. **Inflation**: Future dollars have less purchasing power
-3. **Risk**: Future payments are uncertain
-:::
+**Absolute Measures (in currency):**
 
-Interest rates **quantify** this time value: they tell us precisely *how much more* a dollar today is worth compared to a dollar later.
+1. **Interest** ($I$): "How much money did I gain?"
+   - *Example*: "I earned €21 in profit"
+   - Measures the raw dollar/euro gain
 
-## Two Directions: Accumulation vs. Discount
+2. **Discount** ($D$): "How much extra money will I receive in the future?"
+   - *Example*: "The future payment includes €21 of growth"
+   - Same as interest, but viewed from the future looking back
 
-Think of interest rates as a **bidirectional lens** for viewing money across time:
+**Relative Measures (as percentages):**
 
-::: {.callout-tip icon=true}
-## The "Money Lens" Analogy
+3. **Interest rate** ($i$): "What percentage return did I earn?"
+   - *Example*: "I earned a 21% return on my investment"
+   - Measures return per euro invested
 
-**🔭 Accumulation = Telescope (Forward View)**  
-Looking into the future: *"If I invest $100 today, how much will I have later?"*  
-Answer: **More** (money grows)
+4. **Discount rate** ($d$): "What fraction of the future value is interest?"
+   - *Example*: "The interest represents 17.4% of the final amount"
+   - Measures interest as a fraction of the ending value
 
-**🔬 Discount = Microscope (Backward View)**  
-Looking back to present: *"If I need $100 in the future, how much should I set aside today?"*  
-Answer: **Less** (future dollars are worth less today)
-:::
+**Multiplicative Factors (as multipliers):**
 
-### Visual: Mirrored Diagrams
+5. **Accumulation factor** ($m$): "What multiplier transforms present to future value?"
+   - *Example*: "Each euro becomes 1.21 euros"
+   - How much does €1 grow to?
 
-```{=latex}
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}[scale=1.1]
-% ACCUMULATION (top half)
-\node[font=\large\bfseries] at (5,4) {ACCUMULATION (Forward) 🔭};
+6. **Discount factor** ($v$): "What multiplier transforms future to present value?"
+   - *Example*: "Each future euro is worth 0.826 euros today"
+   - How much is a future €1 worth now?
 
-% Time axis
-\draw[thick,->] (0,2.5) -- (10,2.5) node[right] {Time};
-\draw (0,2.6) -- (0,2.4) node[below] {Today};
-\draw (8,2.6) -- (8,2.4) node[below] {Future};
-
-% Amount growth
-\filldraw[blue!30] (0.5,1.5) rectangle (1.5,2.3);
-\node at (1,1.9) {\$100};
-\draw[->,ultra thick,blue] (1.8,1.9) -- (6,1.9);
-\node[above] at (4,1.9) {Grow at rate $i$};
-\filldraw[green!30] (6.5,1) rectangle (9,2.8);
-\node at (7.75,1.9) {\$121};
-\node[font=\small] at (7.75,1.4) {(2 years @ 10\%)};
-
-% Formula
-\node[font=\large] at (5,0.5) {$FV = PV \times (1+i)^t$};
-
-% Separator
-\draw[thick,dashed] (-1,0) -- (11,0);
-
-% DISCOUNT (bottom half)
-\node[font=\large\bfseries] at (5,-1) {DISCOUNT (Backward) 🔬};
-
-% Time axis (reversed direction emphasis)
-\draw[thick,<-] (0,-2.5) -- (10,-2.5) node[right] {Time};
-\draw (0,-2.6) -- (0,-2.4) node[above] {Today};
-\draw (8,-2.6) -- (8,-2.4) node[above] {Future};
-
-% Amount shrinkage
-\filldraw[blue!30] (0.5,-2.3) rectangle (1.5,-3.5);
-\node at (1,-2.9) {\$82.64};
-\draw[<-,ultra thick,red] (1.8,-2.9) -- (6,-2.9);
-\node[below] at (4,-2.9) {Discount at rate $i$};
-\filldraw[green!30] (6.5,-2.3) rectangle (9,-3.5);
-\node at (7.75,-2.9) {\$100};
-\node[font=\small] at (7.75,-3.4) {(needed in 2 years)};
-
-% Formula
-\node[font=\large] at (5,-4.5) {$PV = \frac{FV}{(1+i)^t}$};
-\end{tikzpicture}
-\end{figure}
-```
-
-## Accumulation: Growing Money Forward
-
-::: {.callout-note icon=true}
-## Definition: Accumulation Factor
-The **accumulation factor** $a(t)$ tells you how much $1$ today grows to at time $t$:
-
-$$
-a(t) = (1 + i)^t
-$$
-
-Where $i$ is the interest rate per period.
+**The key insight**: All six are just different ways of reading the same information from the value function $V(t)$.
 :::
 
 ::: {.callout-tip icon=true}
-## Intuition: The Multiplier of Time
+## Intuition: The Value Function Lens
 
-Think of the accumulation factor as a **time multiplier** for your money:
+Think of $V(t)$ as the **master function** that describes how money grows over time. All other quantities are just different **perspectives** on this single underlying reality:
 
-- $a(1) = 1.05$ means: "After 1 year at 5%, every dollar becomes 1.05 dollars"
-- $a(5) = 1.276$ means: "After 5 years, every dollar becomes 1.276 dollars"
-- $a(10) = 1.629$ means: "After 10 years, every dollar becomes 1.629 dollars"
+- **Value function** $V(t)$: "What is the monetary value of the entire investment at time $t$?"
+- **Interest** $I(t,t+\tau)$: "How many *dollars/euros* do I gain?" (absolute)
+- **Interest rate** $i(t,t+\tau)$: "By what *percentage* does value grow?" (relative)
+- **Accumulation factor** $m(t,t+\tau)$: "What's the *multiplicative factor* for growth?" (also: "How much is $1 at time $t$ worth at time $t+\tau$?")
+- **Discount** $D(t,t+\tau)$: "How many *dollars/euros* represent the gain?" (absolute, from future perspective)
+- **Discount rate** $d(t,t+\tau)$: "By what *percentage* must I shrink future value to get present value?" (relative)
+- **Discount factor** $v(t,t+\tau)$: "What's the *multiplicative factor* for shrinking?" (also: "How much is $1 at time $t+\tau$ worth at time $t$?")
 
-**Real-world parallel**: It's like a "growth multiplier" in a video game. Your money at level 5 is worth 1.276x more than at level 0. The accumulation factor is your XP multiplier!
+All are **manifestations** of the same phenomenon: the time value of money encoded in $V(t)$.
 :::
 
-### Example: Accumulation
-
-**Question**: You invest $1,000$ today at 6\% annual interest. How much will you have in 5 years?
-
-**Solution**:
-$$
-FV = 1000 \times (1.06)^5 = 1000 \times 1.3382 = \$1,338.20
-$$
-
-**Timeline View**:
-
-| Time (years) | 0 | 1 | 2 | 3 | 4 | 5 |
-|--------------|---|---|---|---|---|---|
-| Amount | $1,000.00 | $1,060.00 | $1,123.60 | $1,191.02 | $1,262.48 | $1,338.23 |
-| Growth | — | +$60 | +$63.60 | +$67.42 | +$71.46 | +$75.75 |
-
-::: {.callout-tip icon=true}
-## Notice
-Each year's growth is **larger** than the previous year—that's **compound interest** at work! You earn interest not just on your original $1,000, but also on previously earned interest.
-:::
-
-## Discount: Shrinking Money Backward
-
-::: {.callout-note icon=true}
-## Definition: Discount Factor
-The **discount factor** $v^t$ tells you how much $1$ at time $t$ is worth today:
-
-$$
-v^t = \frac{1}{(1+i)^t}
-$$
-
-Alternatively, we can define $v = \frac{1}{1+i}$ (the one-period discount factor), so:
-
-$$
-v^t = \left(\frac{1}{1+i}\right)^t
-$$
-:::
-
-::: {.callout-tip icon=true}
-## Intuition: The Shrink Ray of Time
-
-The discount factor is like a **"shrink ray"** that makes future money smaller in today's terms:
-
-- $v^1 = 0.952$ means: "A dollar next year is worth 95.2 cents today"
-- $v^5 = 0.784$ means: "A dollar in 5 years is worth 78.4 cents today"
-- $v^{10} = 0.614$ means: "A dollar in 10 years is worth only 61.4 cents today"
-
-**Why it shrinks**: The further away a payment is, the less it's worth today—because you lose the opportunity to invest that money and earn interest. Time literally "discounts" the value of future money.
-
-**Key relationship**: Notice $a(t) \times v^t = 1$. They're inverses! Growing forward and shrinking backward cancel out perfectly.
-:::
-
-### Example: Discounting
-
-**Question**: You need $1,000$ in 5 years. If the interest rate is 6\%, how much should you set aside today?
-
-**Solution**:
-$$
-PV = \frac{1000}{(1.06)^5} = \frac{1000}{1.3382} = \$747.26
-$$
-
-**Interpretation**: If you invest $747.26$ today at 6\%, it will grow to exactly $1,000$ in 5 years.
-
-### Discount Rate vs. Interest Rate
+### Interest vs. Interest Rate: Absolute vs. Relative
 
 ::: {.callout-important icon=true}
-## Key Relationship
-For the **same** time value of money:
+## Two Different Manifestations: Absolute and Relative
 
-- **Interest rate** $i$: Used for accumulation (moving forward)
-- **Discount rate** $i$: Same rate, used for discounting (moving backward)
-- **Discount factor** $v = \frac{1}{1+i}$
+From the value function, we can extract **two fundamentally different types** of measures:
 
-They're two sides of the same coin:
-
+**1. Interest (Absolute Amount)**:
 $$
-(1+i) \times v = (1+i) \times \frac{1}{1+i} = 1
+I(t, t+\tau) = V(t+\tau) - V(t)
 $$
+
+- **Units**: Currency (€, $, etc.)
+- **Meaning**: "How many dollars/euros do I gain?"
+- **Example**: "I earned €21"
+
+**2. Interest Rate (Relative Percentage)**:
+$$
+i(t, t+\tau) = \frac{V(t+\tau) - V(t)}{V(t)} = \frac{I(t, t+\tau)}{V(t)}
+$$
+
+- **Units**: Dimensionless (percentage)
+- **Meaning**: "What fraction of my initial investment do I gain?"
+- **Example**: "I earned 21% return"
+
+**The key difference**: Interest tells you the **dollar gain**, interest rate tells you the **return per dollar invested**.
 :::
 
-## Effective vs. Nominal Rates
+::: {.callout-tip icon=true}
+## Intuition: Why Both Matter
 
-::: {.callout-caution icon=true}
-## References
+**Interest (absolute)** = "How much richer am I?"
+- If $V(0) = 100$ and $V(2) = 121$, then $I(0,2) = 121 - 100 = 21$ euros
+- Direct measure of wealth increase
 
-**Book:** Pearson Corporate Finance 6th Edition, Chapter 5 (Interest Rates - Compounding), Page 149, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=182)
+**Interest rate (relative)** = "How good was my investment?"
+- $i(0,2) = \frac{21}{100} = 0.21 = 21\%$
+- Allows comparison across different investment sizes
 
-**Slide:** Financial Mathematics Slides 1-96, Slides 60-68 (Effective interest rates and compounding), Page 60, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=60)
+**Why we need both**:
+- Earning €21 on €100 investment (21% return) is **excellent**
+- Earning €21 on €10,000 investment (0.21% return) is **terrible**
+
+The **same interest** (€21) has completely different meanings depending on the starting amount. That's why we need the **interest rate** to normalize by the initial value.
+
+**Relationship**: $i(t, t+\tau) = \frac{I(t, t+\tau)}{V(t)}$ → Interest rate is interest per unit of initial value.
 :::
 
-Real-world interest rates come in different flavors depending on **compounding frequency**.
-
-### Effective Annual Rate (EAR)
+### Interest Rate: Growth Perspective
 
 ::: {.callout-note icon=true}
-## Definition: Effective Annual Rate
-The **effective annual rate** is the actual annual return, accounting for compounding within the year.
+## Definition: Interest Rate from Value Function
 
-If interest is compounded $m$ times per year at rate $i_m$ per period:
+The **interest rate** measures the fractional increase in value:
 
 $$
-\text{EAR} = \left(1 + \frac{i_m}{m}\right)^m - 1
+i(t, t+\tau) = \frac{V(t+\tau) - V(t)}{V(t)}
 $$
+
+**Interpretation**: "What percentage return do I earn from time $t$ to time $t+\tau$?"
 :::
 
-### Example: Quarterly Compounding
-
-**Given**: Bank offers 8\% annual rate, compounded quarterly (4 times/year).
-
-**What's the effective annual rate?**
-
-- Quarterly rate: $i_4 = 8\% / 4 = 2\%$ per quarter
-- Effective annual rate:
-
-$$
-\text{EAR} = (1.02)^4 - 1 = 1.0824 - 1 = 8.24\%
-$$
-
-::: {.callout-tip icon=true}
-## Interpretation
-Due to compounding, you effectively earn **8.24\%** per year, not just 8\%. The more frequent the compounding, the higher the effective rate.
-:::
-
-::: {.callout-tip icon=true}
-## Intuition: Why More Compounding = More Money
-
-Compounding frequency is like **reinvesting your gains more often**:
-
-**Annual compounding** (once/year):
-- Year 1: Earn 8% on $1,000 = $80
-- Wait until end of year to reinvest
-- Year 2: Earn 8% on $1,080
-
-**Quarterly compounding** (4 times/year):
-- Q1: Earn 2% on $1,000 = $20
-- **Immediately** reinvest → now have $1,020
-- Q2: Earn 2% on $1,020 = $20.40 (more than Q1!)
-- Keep reinvesting every 3 months...
-
-The more frequently you reinvest, the sooner your "interest earns interest." That's why quarterly gives you 8.24% vs. 8% annual.
-
-**Extreme case**: Continuous compounding = reinvesting every nanosecond = maximum possible return!
-:::
-
-### Compounding Frequency Comparison
-
-For a **nominal rate of 12\%** per year:
-
-| Compounding | Formula | Effective Rate |
-|-------------|---------|----------------|
-| Annual | $(1.12)^1 - 1$ | **12.00\%** |
-| Semi-annual | $(1.06)^2 - 1$ | **12.36\%** |
-| Quarterly | $(1.03)^4 - 1$ | **12.55\%** |
-| Monthly | $(1.01)^{12} - 1$ | **12.68\%** |
-| Daily | $(1 + 0.12/365)^{365} - 1$ | **12.75\%** |
-| Continuous | $e^{0.12} - 1$ | **12.75\%** |
-
-```{=latex}
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}[scale=1.0]
-% Axes
-\draw[->] (0,0) -- (11,0) node[right] {Compounding Frequency};
-\draw[->] (0,0) -- (0,5) node[above] {Effective Rate (\%)};
-
-% Y-axis labels
-\foreach \y/\label in {0/0, 1/12.0, 2/12.2, 3/12.4, 4/12.6, 5/12.8}
-    \node[left] at (-0.3,\y) {\label};
-
-% Bars
-\fill[blue!60] (1,0) rectangle (2,1);
-\node[below] at (1.5,-0.3) {Annual};
-
-\fill[blue!60] (3,0) rectangle (4,2.4);
-\node[below,font=\small] at (3.5,-0.3) {Semi};
-
-\fill[blue!60] (5,0) rectangle (6,3.3);
-\node[below,font=\small] at (5.5,-0.3) {Quarterly};
-
-\fill[blue!60] (7,0) rectangle (8,4.2);
-\node[below,font=\small] at (7.5,-0.3) {Monthly};
-
-\fill[blue!60] (9,0) rectangle (10,4.7);
-\node[below,font=\small] at (9.5,-0.3) {Daily};
-
-% Reference line at 12%
-\draw[red,dashed,thick] (0,1) -- (11,1);
-\node[right,red] at (11,1) {Nominal};
-
-% Asymptote
-\draw[green!50!black,dashed,thick] (0,4.7) -- (11,4.7);
-\node[right,green!50!black] at (11,4.7) {Continuous limit};
-\end{tikzpicture}
-\end{figure}
-```
-
-## Continuous Compounding
-
-As compounding becomes more frequent, the effective rate approaches a limit:
+### Accumulation Factor: Growth Multiplier
 
 ::: {.callout-note icon=true}
-## Definition: Continuous Compounding
-When interest compounds **continuously** (infinitely often), the accumulation formula becomes:
+## Definition: Accumulation Factor from Value Function
 
-$$
-FV = PV \times e^{rt}
-$$
+The **accumulation factor** measures how much $1 at time $t$ grows to at time $t+\tau$:
 
-Where:
-- $e \approx 2.71828$ (Euler's number)
-- $r$ = continuously compounded rate
-- $t$ = time
-:::
-
-### Example: Continuous vs. Annual
-
-**Invest $1,000 at 10\% for 3 years:**
-
-| Compounding | Formula | Future Value |
-|-------------|---------|--------------|
-| Annual | $1000 \times (1.10)^3$ | **$1,331.00** |
-| Continuous | $1000 \times e^{0.10 \times 3}$ | **$1,349.86** |
-
-**Difference**: $1,349.86 − $1,331.00 = **$18.86** extra from continuous compounding.
-
-::: {.callout-tip icon=true}
-## Intuition: Continuous Compounding
-
-Continuous compounding is the **theoretical limit** of "reinvest as fast as possible":
-
-- Annual: Reinvest once per year
-- Quarterly: Reinvest 4 times per year
-- Daily: Reinvest 365 times per year
-- **Continuous**: Reinvest *infinitely* often
-
-**Why $e$?** Euler's number $e \approx 2.718$ naturally emerges when you take the limit of $(1 + \frac{r}{n})^n$ as $n \to \infty$. It's the mathematical constant that describes continuous growth.
-
-**Practical use**: Continuous compounding simplifies many financial formulas and is used in derivatives pricing (Black-Scholes formula). It's more of a mathematical convenience than something banks actually use.
-:::
-
-## Interest Rate Decomposition
-
-Real-world interest rates have multiple components:
-
-::: {.callout-important icon=true}
-## Interest Rate Components
-
-$$
-i = r_f + \text{inflation} + \text{risk premium} + \text{liquidity premium}
-$$
-
-Where:
-
-- **$r_f$**: Real risk-free rate (time preference)
-- **Inflation**: Compensation for loss of purchasing power
-- **Risk premium**: Compensation for default risk
-- **Liquidity premium**: Compensation for illiquidity
-:::
-
-### Example: Corporate Bond Rate
-
-A corporate bond might have:
-
-- Risk-free rate: 2%
-- Expected inflation: 3%
-- Default risk premium: 2%
-- Liquidity premium: 1%
-
-**Total rate**: 2% + 3% + 2% + 1% = **8%**
-
-::: {.callout-tip icon=true}
-## Intuition: Unpacking the Interest Rate
-
-When you see "8% interest rate," it's not just the "price of time." It's actually **four prices bundled together**:
-
-1. **Real risk-free rate** (2%): The "pure" price of waiting—what you'd charge even with zero inflation and zero risk
-2. **Inflation** (3%): Compensation for money losing purchasing power—"your $100 today buys less in the future"
-3. **Risk premium** (2%): Payment for taking on default risk—"what if they don't pay me back?"
-4. **Liquidity premium** (1%): Compensation for tying up your money—"I can't access this cash for a while"
-
-**Why this matters**: If inflation drops from 3% to 1%, interest rates should drop by ~2%. If default risk increases, rates go up. Interest rates are a barometer of economic conditions!
-
-**NOTE**: For now we are mostly focusing in the risk-free rate, as in an ideal world.
-:::
-
-## Present Value of Annuities
-
-::: {.callout-caution icon=true}
-## References
-
-**Book:** Pearson Corporate Finance 6th Edition, Chapter 4 (Annuities), Page 118, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=151)
-
-**Slide:** Financial Mathematics Slides 1-96, Slides 75-82 (Annuities and perpetuities), Page 75, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=75)
-:::
-
-A common cashflow pattern is an **annuity**: equal payments at regular intervals.
-
-::: {.callout-note icon=true}
-## Definition: Annuity
-An **annuity** is a series of equal payments $C$ made at regular intervals for $n$ periods.
-
-**Present value of an annuity**:
-
-$$
-PV = C \times \frac{1 - v^n}{i} = C \times \frac{1 - (1+i)^{-n}}{i}
-$$
-
-This is often denoted as $PV = C \times a_{\overline{n}|i}$ where $a_{\overline{n}|i}$ is the annuity factor.
-:::
-
-### Example: Mortgage Payment
-
-**You take a $200,000 mortgage at 5\% for 30 years. What's the monthly payment?**
-
-Given:
-- $PV = 200,000$
-- $i = 5\% / 12 = 0.4167\%$ per month
-- $n = 30 \times 12 = 360$ months
-
-Rearranging: $C = PV \times \frac{i}{1 - (1+i)^{-n}}$
-
-$$
-C = 200,000 \times \frac{0.004167}{1 - (1.004167)^{-360}} = 200,000 \times 0.00537 = \$1,073.64
-$$
-
-**Your monthly payment**: **$1,073.64**
-
-::: {.callout-tip icon=true}
-## Intuition: What Is an Annuity?
-
-An annuity is the "*equal payments*" special case:
-
-**Without the annuity formula**: You'd need to discount each of 360 payments individually:
-$$PV = \frac{C}{1.004167} + \frac{C}{1.004167^2} + \cdots + \frac{C}{1.004167^{360}}$$
-That's 360 calculations! 😱
-
-**With the annuity formula**: One clean formula:
-$$PV = C \times \frac{1-v^{360}}{0.004167}$$
-One calculation! 🎉
-
-**The magic**: Because all payments are equal, we can use the geometric series formula to collapse 360 terms into one. It's like finding a shortcut through 360 identical rooms.
-
-**Real-world use**: Mortgages, car loans, bonds, pensions—any time you have equal, regular payments, the annuity formula saves you massive computational work.
-:::
-
-### Annuity Timeline
-
-```{=latex}
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}[scale=0.9]
-% Time axis
-\draw[thick,->] (0,0) -- (13,0) node[right] {Time};
-\foreach \x/\label in {0/0, 2/1, 4/2, 6/3, 10/n-1, 12/n}
-    \draw (\x,0.1) -- (\x,-0.1) node[below] {\label};
-
-% Equal payments
-\foreach \x in {2,4,6,10,12} {
-    \draw[->,blue!70,very thick] (\x,-1) -- (\x,0.5);
-    \node[below,blue!70] at (\x,-1) {$C$};
-}
-
-% Dots
-\node at (8,0.25) {$\cdots$};
-\node at (8,-0.5) {$\cdots$};
-
-% Label
-\node[blue!70,font=\bfseries] at (6,-2) {$n$ equal payments of $C$ each};
-\node[red,font=\bfseries] at (6,1.2) {$PV = C \times a_{\overline{n}|i}$};
-\end{tikzpicture}
-\end{figure}
-```
-
-\FloatBarrier
-
-## Perpetuity: The Infinite Annuity
-
-::: {.callout-note icon=true}
-## Definition: Perpetuity
-A **perpetuity** is an annuity that continues forever.
-
-**Present value**:
-
-$$
-PV = \frac{C}{i}
-$$
-
-As $n \to \infty$, the annuity formula simplifies to this beautifully simple result.
-:::
-
-### Example: Preferred Stock
-
-A preferred stock pays $5 per share annually forever. If the required return is 8\%, what's it worth?
-
-$$
-PV = \frac{5}{0.08} = \$62.50
-$$
-
-::: {.callout-tip icon=true}
-## Intuition: The Infinite Formula That's Actually Simple
-
-A perpetuity pays **forever**. Sounds complicated, right? But the formula is the *simplest* of all: $PV = C/i$.
-
-**Why so simple?** As payments go further into the future, discounting makes them worth less and less:
-- Payment at year 1: $\frac{5}{1.08} = \$4.63$
-- Payment at year 10: $\frac{5}{1.08^{10}} = \$2.32$
-- Payment at year 50: $\frac{5}{1.08^{50}} = \$0.11$ (almost nothing!)
-- Payment at year 100: Essentially $0
-
-Even though payments go on forever, the total value *converges* to a finite number. Payments far in the future are worth so little that they don't matter.
-
-**Mathematical beauty**: When $n \to \infty$, the term $v^n \to 0$, and the annuity formula $\frac{1-v^n}{i}$ simplifies to $\frac{1}{i}$.
-
-**Real examples**: British consols (government bonds with no maturity date), some preferred stocks, and trust funds that pay out forever.
-:::
-
-## Summary Table: Key Formulas
-
-| Concept | Formula | Use |
-|---------|---------|-----|
-| **Accumulation** | $FV = PV \times (1+i)^t$ | Growing money forward |
-| **Discount** | $PV = FV \times (1+i)^{-t}$ | Bringing money to present |
-| **Discount factor** | $v = \frac{1}{1+i}$ | One-period discounting |
-| **Effective rate** | $(1 + i_m/m)^m - 1$ | Accounting for compounding |
-| **Continuous** | $FV = PV \times e^{rt}$ | Continuous compounding |
-| **Annuity PV** | $C \times \frac{1-v^n}{i}$ | Series of equal payments |
-| **Perpetuity PV** | $\frac{C}{i}$ | Forever payments |
-
-\FloatBarrier
-
-## Practical Insights
-
-::: {.callout-important icon=true}
-## Using the Right Rate
-
-**Always match**:
-
-- **Time period** of cashflows (monthly, annual, etc.)
-- **Compounding frequency** of the rate
-- **Risk level** (risk-free rate vs. risky rate)
-
-Example: For monthly mortgage payments, use monthly interest rate, not annual.
-:::
-
-::: {.callout-warning icon=true}
-## Common Mistakes
-
-1. **Mixing rates**: Using annual rate for monthly cashflows
-2. **Forgetting compounding**: Treating 6\% semi-annual as 6\% annual
-3. **Wrong perspective**: Confusing investor vs. borrower viewpoint
-4. **Sign errors**: Getting cashflow directions backward
-:::
-
-::: {.callout-tip icon=true}
-## Intuition: Interest Rate "Flavors"
-
-Interest rates come in different "flavors" depending on what you're doing:
-
-| Rate Type | Symbol | Direction | Use Case |
-|-----------|--------|-----------|----------|
-| **Interest rate** | $i$ | Growing forward | "How much will I have?" |
-| **Discount rate** | $d$ | Shrinking backward | "What's it worth today?" |
-| **Accumulation factor** | $m(t,t+\tau)$ | Multiplier forward | "What's the growth multiple?" |
-| **Discount factor** | $v(t,t+\tau)$ | Multiplier backward | "What's the present value multiple?" |
-
-**They're all related**: Pick one, and you can derive the others. They're just different ways of measuring the same underlying phenomenon: the time value of money.
-
-**Exam tip**: If you forget a formula, remember the relationships:
-- $m = 1 + i$ (accumulation factor is 1 plus interest rate)
-- $v = 1/(1+i)$ (discount factor is reciprocal of accumulation)
-- $d = 1 - v$ (discount rate measures loss in value)
-:::
-
-## Summary
-
-✅ **Interest rate** $i$ = price of time, quantifies time value of money  
-✅ **Accumulation** (forward) vs. **Discount** (backward) = two directions  
-✅ **Compound interest** = interest on interest (grows exponentially)  
-✅ **Effective rate** accounts for compounding frequency  
-✅ **Continuous compounding** = infinite frequency limit  
-✅ **Annuities** = equal periodic payments (closed-form PV formula)  
-✅ **Perpetuities** = infinite annuities ($PV = C/i$)  
-
-::: {.callout-caution icon=true}
-## References
-
-**Book:** Pearson Corporate Finance 6th Edition, Chapter 5 (Interest Rates), Page 149, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=149)
-
-**Slide:** Financial Mathematics Slides 1-96, Slides 37-93 (Module 2: Financial Laws - Interest, discount, accumulation factors, simple & compound interest), Page 37, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=37)
-:::
-
-## Teacher's Notation: Classical vs. Value Function Approach
-
-::: {.callout-note icon="true"}
-## Two Ways to Teach Interest Rates
-
-Your professor connects interest rates to the **value function** $V(t)$, while classical finance teaches standalone formulas. Both approaches describe the same reality—let's see how they connect.
-:::
-
-### Classical Approach: Standalone Formulas
-
-Traditional finance courses teach these as separate concepts:
-
-**Interest Rate** (growth rate):
-$$
-i = \frac{FV - PV}{PV}
-$$
-
-**Discount Rate** (shrinkage rate):
-$$
-d = \frac{FV - PV}{FV}
-$$
-
-**Accumulation** (forward compounding):
-$$
-FV = PV \times (1+i)^t
-$$
-
-**Discounting** (backward compounding):
-$$
-PV = \frac{FV}{(1+i)^t}
-$$
-
-**The classical view**: These are independent formulas you memorize for different situations. Growing money? Use FV. Valuing future cashflows? Use PV.
-
-### Teacher's Approach: Everything Flows from $V(t)$
-
-Your professor defines interest and discount rates **in terms of the value function**:
-
-**Accumulation factor from value function**:
 $$
 m(t, t+\tau) = \frac{V(t+\tau)}{V(t)}
 $$
 
-**Interest rate from value function**:
+**Relationship to interest rate**:
 $$
-i(t, t+\tau) = \frac{V(t+\tau) - V(t)}{V(t)} = m(t,t+\tau) - 1
+m(t, t+\tau) = 1 + i(t, t+\tau)
+$$
+:::
+
+::: {.callout-tip icon=true}
+## Intuition: Interest Rate vs. Accumulation Factor
+
+- **Interest rate** $i$: Answers "How much *extra* do I get?" (the *gain*)
+- **Accumulation factor** $m$: Answers "What *total multiple* do I get?" (the *multiplier*)
+
+**Example**: If $i = 0.21$, you earn 21% extra → $m = 1.21$, your money multiplies by 1.21.
+
+They're two sides of the same coin:
+- $i$ focuses on the *change* (gain/loss)
+- $m$ focuses on the *ratio* (before/after)
+:::
+
+### Visual: Interest Rate Geometry
+
+```{=latex}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1.2]
+% Value function curve
+\draw[thick,->] (0,0) -- (9,0) node[right] {time};
+\draw[thick,->] (0,0) -- (0,5) node[above] {$V$};
+
+% Draw curve
+\draw[blue!70, very thick, domain=0:8, smooth, samples=50] plot (\x, {1.5*exp(\x*0.15)});
+
+% Mark points
+\filldraw[cyan] (2,{1.5*exp(0.3)}) circle (2pt) node[left] {$V(t)$};
+\filldraw[cyan] (6,{1.5*exp(0.9)}) circle (2pt) node[right] {$V(t+\tau)$};
+
+% Vertical line segments
+\draw[dashed] (2,0) -- (2,{1.5*exp(0.3)}) node[below,yshift=-1.5cm] {$t$};
+\draw[dashed] (6,0) -- (6,{1.5*exp(0.9)}) node[below,yshift=-1.5cm] {$t+\tau$};
+
+% Show difference
+\draw[<->,red,thick] (6.5,{1.5*exp(0.3)}) -- (6.5,{1.5*exp(0.9)});
+\node[right,red] at (6.7,{1.5*exp(0.6)}) {$V(t+\tau) - V(t)$};
+\node[right,red,font=\small] at (6.7,{1.5*exp(0.6)-0.4}) {= Interest $I$};
+
+% Show span
+\draw[<->,orange,thick] (1.7,{1.5*exp(0.3)-0.3}) -- (1.7,0);
+\node[left,orange,font=\small] at (1.5,{0.75*exp(0.3)}) {$V(t)$};
+
+% Labels
+\node[blue!70,font=\small] at (7,4.8) {$V(t) = $ value function};
+
+% Formula box
+\node[fill=yellow!20,draw,rounded corners,font=\small,text width=3cm,align=center] at (4,-2.5) 
+    {$i(t,t+\tau) = \frac{V(t+\tau)-V(t)}{V(t)}$};
+\end{tikzpicture}
+\end{figure}
+```
+
+### Discount Rate: Shrinking Perspective
+
+::: {.callout-note icon=true}
+## Definition: Discount Rate from Value Function
+
+The **discount rate** measures the fractional decrease when moving backward in time:
+
+$$
+d(t, t+\tau) = \frac{V(t+\tau) - V(t)}{V(t+\tau)}
 $$
 
-**Discount factor from value function**:
+**Interpretation**: "What percentage of future value represents the interest component?"
+:::
+
+### Discount Factor: Shrinking Multiplier
+
+::: {.callout-note icon=true}
+## Definition: Discount Factor from Value Function
+
+The **discount factor** measures how much $1 at time $t+\tau$ is worth at time $t$:
+
 $$
 v(t, t+\tau) = \frac{V(t)}{V(t+\tau)} = \frac{1}{m(t,t+\tau)}
 $$
 
-**Discount rate from value function**:
+**Relationship to discount rate**:
 $$
-d(t, t+\tau) = \frac{V(t+\tau) - V(t)}{V(t+\tau)} = 1 - v(t,t+\tau)
+v(t, t+\tau) = 1 - d(t, t+\tau)
 $$
-
-**The value function view**: Interest, discount, accumulation, and discounting are all just **different ways of comparing values at different times**. They're all ratios or differences of $V(t)$ at two time points.
-
-### The Bridge: Same Math, Different Perspective
-
-| Concept | Classical Formula | Teacher's Value Function | Relationship |
-|---------|-------------------|--------------------------|-------------|
-| **Accumulation** | $(1+i)^t$ | $\frac{V(t)}{V(0)}$ | How much $1 at time 0 grows to at time $t$ |
-| **Interest rate** | $i = \frac{FV-PV}{PV}$ | $i = \frac{V(t+\tau)-V(t)}{V(t)}$ | Percentage increase in value |
-| **Discount** | $\frac{1}{(1+i)^t}$ | $\frac{V(0)}{V(t)}$ | How much $1 at time $t$ is worth at time 0 |
-| **Discount rate** | $d = \frac{FV-PV}{FV}$ | $d = \frac{V(t+\tau)-V(t)}{V(t+\tau)}$ | Percentage decrease when discounting |
-
-### Example: Same Problem, Both Languages
-
-**Scenario**: You invest €100 today at 10% annual interest. What's it worth in 2 years?
-
-**Classical approach**:
-$$
-FV = 100 \times (1.10)^2 = 100 \times 1.21 = €121
-$$
-**Interest earned**: $121 - 100 = €21$ → rate = $21/100 = 21\%$ over 2 years
-
-**Value function approach**:
-- Start: $V(0) = 100$
-- End: $V(2) = 121$
-- Accumulation factor: $m(0,2) = V(2)/V(0) = 121/100 = 1.21$
-- Interest rate: $i(0,2) = m(0,2) - 1 = 0.21 = 21\%$
-
-**Same answer!** But the value function approach also gives you:
-- $V(0.5) = 100 \times (1.10)^{0.5} = 104.88$
-- $V(1) = 100 \times (1.10)^{1} = 110.00$
-- $V(1.5) = 100 \times (1.10)^{1.5} = 115.37$
-
-The classical approach gives you snapshots (start and end). The value function gives you a **continuous movie** of how your money grows.
-
-### Why Each Approach Is Useful
-
-::: {.callout-important icon="true"}
-## When to Use Each Approach
-
-**Use Classical Formulas (FV, PV, $i = (FV-PV)/PV$) when:**
-- You need quick, practical calculations
-- You're solving textbook problems
-- You only care about beginning and end values
-- You're communicating with practitioners
-- You want computational efficiency
-
-**Use Value Function Framework ($V(t)$, $m(t,t+\tau)$, $i(t,t+\tau)$) when:**
-- You need to understand *why* formulas work
-- You're analyzing how value evolves continuously over time
-- You're dealing with variable interest rates
-- You want a unified theoretical framework
-- You're comparing different interest rate structures
-- You need mathematical rigor for proofs
-
-**On exams**: Use classical formulas for speed unless the question specifically asks about $V(t)$ or the problem requires tracking value at multiple time points.
 :::
 
-### Intuition: Why Your Professor Uses $V(t)$
+::: {.callout-tip icon=true}
+## Intuition: Discount = Accumulation in Reverse
 
-::: {.callout-tip icon="true"}
-## The Power of the Unified Framework
+Discounting is just **accumulation running backward**:
 
-**Analogy**: Learning interest rates is like learning about distance and speed:
+- **Forward (Accumulation)**: "Grow $1 from today to future" → multiply by $m = V(t+\tau)/V(t)$
+- **Backward (Discount)**: "Shrink $1 from future to today" → multiply by $v = V(t)/V(t+\tau) = 1/m$
 
-**Classical approach**: 
-- Distance formula: $d = vt$
-- Speed formula: $v = d/t$
-- Time formula: $t = d/v$
+They're **inverses**: $m \times v = 1$
 
-Three separate formulas to memorize.
+**Visual analogy**: 
+- Accumulation = telescope 🔭 (magnify the future)
+- Discount = time machine ⏪ (bring the future to present, making it smaller)
+:::
 
-**Value function approach**:
-- One concept: Position function $x(t)$ describes where you are at any time
-- Speed is just: $v = \frac{dx}{dt}$ (rate of change of position)
-- Everything else follows from this
+### The Six Manifestations: Summary
 
-**Similarly**: $V(t)$ is your "position" in financial space. Interest rates are just the "speed" at which your financial position changes. One framework explains everything.
+::: {.callout-important icon=true}
+## All Six Quantities from One Function
+
+Given the value function $V(t)$, we can extract **six related quantities** for any time interval $[t, t+\tau]$:
+
+| Quantity | Formula | Measures | Type | Units |
+|----------|---------|----------|------|-------|
+| **Interest** | $I = V(t+\tau)-V(t)$ | Absolute gain | Amount | Currency (€, $) |
+| **Interest rate** | $i = \frac{V(t+\tau)-V(t)}{V(t)}$ | Fractional growth | Rate | Dimensionless (%) |
+| **Accumulation factor** | $m = \frac{V(t+\tau)}{V(t)}$ | Growth multiplier | Factor | Dimensionless |
+| **Discount** | $D = V(t+\tau)-V(t)$ | Absolute gain | Amount | Currency (€, $) |
+| **Discount rate** | $d = \frac{V(t+\tau)-V(t)}{V(t+\tau)}$ | Fractional shrinkage | Rate | Dimensionless (%) |
+| **Discount factor** | $v = \frac{V(t)}{V(t+\tau)}$ | Shrinkage multiplier | Factor | Dimensionless |
+
+**Note**: $I = D$ (both measure the same absolute difference), but they're used in different contexts (forward vs. backward perspective).
+
+**Key relationships**:
+
+*Absolute to Relative (normalization):*
+
+- $i = \frac{I}{V(t)}$ (interest rate = interest per unit of initial value)
+- $d = \frac{D}{V(t+\tau)}$ (discount rate = discount per unit of future value)
+
+*Between factors and rates:*
+
+- $m = 1 + i$ (accumulation factor = 1 plus interest rate)
+- $v = 1 - d$ (discount factor = 1 minus discount rate)
+
+*Between accumulation and discount:*
+
+- $v = 1/(1+i) = 1/m$ (discount factor = reciprocal of accumulation)
+- $d = i/(1+i)$ (discount rate from interest rate)
+- $i = d/(1-d)$ (interest rate from discount rate)
+
+**The beauty**: Choose *any one* of these six, and you can derive the other five. They're different views of the same underlying reality encoded in $V(t)$.
+:::
+
+### Summary Table: Complete Reference
+
+::: {.callout-important icon=true}
+## Six Manifestations of the Value Function
+
+| Quantity | Symbol | Formula | Units | Question Answered | Type |
+|----------|--------|---------|-------|-------------------|------|
+| **Interest** | $I(t, t+\tau)$ | $V(t+\tau) - V(t)$ | Currency (€, $) | "How many dollars/euros do I gain?" | Absolute |
+| **Interest rate** | $i(t, t+\tau)$ | $\frac{V(t+\tau) - V(t)}{V(t)}$ | Dimensionless (%) | "What percentage return do I earn?" | Relative |
+| **Accumulation factor** | $m(t, t+\tau)$ | $\frac{V(t+\tau)}{V(t)}$ | Dimensionless | "What multiplier grows present to future?" | Factor |
+| **Discount** | $D(t, t+\tau)$ | $V(t+\tau) - V(t)$ | Currency (€, $) | "How much extra is in the future value?" | Absolute |
+| **Discount rate** | $d(t, t+\tau)$ | $\frac{V(t+\tau) - V(t)}{V(t+\tau)}$ | Dimensionless (%) | "What fraction of future value is interest?" | Relative |
+| **Discount factor** | $v(t, t+\tau)$ | $\frac{V(t)}{V(t+\tau)}$ | Dimensionless | "What multiplier shrinks future to present?" | Factor |
+
+**Conversion Formulas:**
+
+| From | To | Formula |
+|------|-----|---------|
+| Interest $I$ | Interest rate $i$ | $i = \frac{I}{V(t)}$ |
+| Interest rate $i$ | Accumulation factor $m$ | $m = 1 + i$ |
+| Interest rate $i$ | Discount rate $d$ | $d = \frac{i}{1+i}$ |
+| Interest rate $i$ | Discount factor $v$ | $v = \frac{1}{1+i}$ |
+| Discount $D$ | Discount rate $d$ | $d = \frac{D}{V(t+\tau)}$ |
+| Discount rate $d$ | Interest rate $i$ | $i = \frac{d}{1-d}$ |
+| Discount rate $d$ | Discount factor $v$ | $v = 1 - d$ |
+| Accumulation factor $m$ | Discount factor $v$ | $v = \frac{1}{m}$ |
+
+**Quick Reference:**
+
+- $I = D$ (numerically identical, different perspectives)
+- $m \times v = 1$ (accumulation and discount factors are reciprocals)
+- $i + d = i \times d$ (relationship: $d = \frac{i}{1+i}$ and $i = \frac{d}{1-d}$)
+- All six can be derived from knowing just $V(t)$ and $V(t+\tau)$
+:::
+
+## Example: All Six Manifestations from $V(t)$
+
+::: {.callout-caution icon=true}
+## References
+
+**Slide:** Financial Mathematics Slides 1-96, Slide 45 (Interest rate example with value function), Page 45, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=45)
+:::
+
+**Given**: A transaction summarized by this value function:
+
+| $t$ | $V(t)$ |
+|-----|--------|
+| 0   | 100    |
+| 1   | 101    |
+| 1.5 | 105    |
+| 2   | 110    |
+| 4   | 111    |
+
+**Calculate all six quantities for the interval $[0, 1]$**:
+
+**1. Interest** (absolute gain in currency):
+$$
+I(0,1) = V(1) - V(0) = 101 - 100 = 1 \text{ euro}
+$$
+*"I gained 1 euro in absolute terms."*
+
+**2. Interest rate** (fractional gain as percentage):
+$$
+i(0,1) = \frac{V(1) - V(0)}{V(0)} = \frac{101 - 100}{100} = \frac{1}{100} = 1\% = 0.01
+$$
+*"I earned a 1% return on my initial investment."*
+
+**Notice**: $i(0,1) = \frac{I(0,1)}{V(0)} = \frac{1}{100}$ → Interest rate normalizes interest by initial value!
+
+**3. Accumulation factor** (growth multiplier):
+$$
+m(0,1) = \frac{V(1)}{V(0)} = \frac{101}{100} = 1.01
+$$
+*"Each euro at time 0 becomes 1.01 euros at time 1."*
+
+**4. Discount** (absolute gain, same as Interest):
+$$
+D(0,1) = V(1) - V(0) = 101 - 100 = 1 \text{ euro}
+$$
+*Note: $D = I$ numerically, but used when discounting from future to present.*
+
+**5. Discount rate** (fractional shrinkage):
+$$
+d(0,1) = \frac{V(1) - V(0)}{V(1)} = \frac{1}{101} \approx 0.0099 = 0.99\%
+$$
+*"The interest represents 0.99% of the future value."*
+
+**6. Discount factor** (shrinkage multiplier):
+$$
+v(0,1) = \frac{V(0)}{V(1)} = \frac{100}{101} \approx 0.9901
+$$
+*"Each euro at time 1 is worth 0.9901 euros at time 0."*
+
+::: {.callout-tip icon=true}
+## Notice the Pattern
+
+**Absolute vs. Relative**:
+- $i = I/V(0) = 1/100 = 0.01$ (interest rate = interest per unit initial value) ✓
+- $d = D/V(1) = 1/101 \approx 0.0099$ (discount rate = discount per unit future value) ✓
+
+**Factor relationships**:
+- $m = 1.01 = 1 + i$ (accumulation factor = 1 plus interest rate) ✓
+- $v = 1/1.01 \approx 0.9901 = 1/m$ (discount factor = reciprocal of accumulation) ✓  
+- $d \approx 0.0099 = i/(1+i) = 0.01/1.01$ (discount rate from interest rate) ✓
+
+All relationships check out! From the value function alone, we extracted **six consistent quantities**.
+:::
+
+**Now for interval $[2, 4]$**:
+
+$$
+i(2,4) = \frac{V(4) - V(2)}{V(2)} = \frac{111-110}{110} = \frac{1}{110} \approx 0.909\%
+$$
+
+$$
+m(2,4) = \frac{111}{110} \approx 1.00909
+$$
+
+**Observation**: Interest rate varies across time intervals! Between years 0-1, the rate is 1%. Between years 2-4, it's only 0.909%. This is why we write $i(t, t+\tau)$ with explicit time dependence.
+
+## Why This Approach Matters
+
+::: {.callout-tip icon=true}
+## Power of the Value Function Framework
+
+**Traditional approach**: Learn interest rates, discount rates, accumulation factors as separate formulas. Memorize relationships.
+
+**Value function approach**: 
+1. Understand $V(t)$ = the master function describing financial growth
+2. Every other quantity is just a **ratio or difference** of $V$ at two time points
+3. All relationships follow automatically from this definition
 
 **Benefits**:
-1. **Deeper understanding**: You see *why* $i$ and $d$ are related, not just that they are
-2. **Handles complexity**: Variable rates, multiple periods, different decompositions all fit naturally
-3. **Mathematical elegance**: One definition ($V(t)$) generates all other concepts
-4. **Exam advantage**: If you understand $V(t)$, you can derive any formula you forget
 
-**Bottom line**: Classical formulas are faster for calculations. Value function is better for understanding. Master both!
+1. **Unified understanding**: One concept ($V(t)$) generates everything else
+2. **Handles complexity naturally**: Variable rates, multiple periods, different structures all fit seamlessly
+3. **Exam superpower**: Forget a formula? Derive it from $V(t)$ on the spot
+4. **Deeper insight**: See *why* formulas work, not just *that* they work
+
+**Bottom line**: Master $V(t)$, and interest rates become different ways of reading the same story.
+:::
+
+::: {.callout-caution icon=true}
+## References
+
+**Book:** Pearson Corporate Finance 6th Edition, Chapter 4-5 (Time Value of Money and Interest Rates), Page 105, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=138)
+
+**Slide:** Financial Mathematics Slides 1-96, Slides 43-46 (Interest and discount rate definitions via value function), Page 43, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=43)
 :::
 
 ---
 
-**Next**: Check out the [Cheat Sheet](cheat_sheet.qmd) for a one-page reference of all key formulas!
+**Next**: Explore [Bonds](bonds.qmd) to see how these concepts apply to fixed-income securities, or check the [Cheat Sheet](cheat_sheet.qmd) for quick formula reference.
