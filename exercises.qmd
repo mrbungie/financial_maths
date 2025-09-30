@@ -527,7 +527,7 @@ Financial mathematics is like learning a language—the more you practice, the m
 
 These exercises draw from concepts across all chapters:
 
-**Book:** Pearson Corporate Finance 6th Edition, Chapters 3-6 (Time Value of Money, Interest Rates, Bonds), Page 103, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=103)
+**Book:** Pearson Corporate Finance 6th Edition, Chapters 3-6 (Time Value of Money, Interest Rates, Bonds), Page 103, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=136)
 
 **Slide:** Financial Mathematics Slides 1-96, Modules 1-2 (Basic Notions & Financial Laws), Page 1, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=1)
 :::

@@ -9,7 +9,7 @@ Interest rates are the **engine** of financial mathematics. They answer the fund
 ::: {.callout-caution icon=true}
 ## References
 
-**Book:** Pearson Corporate Finance 6th Edition, Chapter 4 (Time Value of Money), Page 105, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=105)
+**Book:** Pearson Corporate Finance 6th Edition, Chapter 4 (Time Value of Money), Page 105, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=138)
 
 **Slide:** Financial Mathematics Slides 1-96, Slides 37-42 (Interest and discount rates introduction), Page 37, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=37)
 :::
@@ -179,7 +179,7 @@ $$
 ::: {.callout-caution icon=true}
 ## References
 
-**Book:** Pearson Corporate Finance 6th Edition, Chapter 5 (Interest Rates - Compounding), Page 149, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=149)
+**Book:** Pearson Corporate Finance 6th Edition, Chapter 5 (Interest Rates - Compounding), Page 149, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=182)
 
 **Slide:** Financial Mathematics Slides 1-96, Slides 60-68 (Effective interest rates and compounding), Page 60, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=60)
 :::
@@ -332,7 +332,7 @@ A corporate bond might have:
 ::: {.callout-caution icon=true}
 ## References
 
-**Book:** Pearson Corporate Finance 6th Edition, Chapter 4 (Annuities), Page 118, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=118)
+**Book:** Pearson Corporate Finance 6th Edition, Chapter 4 (Annuities), Page 118, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=151)
 
 **Slide:** Financial Mathematics Slides 1-96, Slides 75-82 (Annuities and perpetuities), Page 75, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=75)
 :::

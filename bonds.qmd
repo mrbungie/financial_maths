@@ -9,7 +9,7 @@ Bonds are one of the most important financial instruments. Think of a bond as a 
 ::: {.callout-caution icon=true}
 ## References
 
-**Book:** Pearson Corporate Finance 6th Edition, Chapter 6 (Valuing Bonds), Page 177, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=177)
+**Book:** Pearson Corporate Finance 6th Edition, Chapter 6 (Valuing Bonds), Page 177, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=210)
 
 **Slide:** Financial Mathematics Slides 1-96, Slides 24-26 (Coupon bonds definition), Page 24, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=24)
 :::
@@ -99,7 +99,7 @@ At maturity (Year 3), you receive both the final coupon ($50) and the face value
 ::: {.callout-caution icon=true}
 ## References
 
-**Book:** Pearson Corporate Finance 6th Edition, Chapter 6 (Bond Pricing), Page 182, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=182)
+**Book:** Pearson Corporate Finance 6th Edition, Chapter 6 (Bond Pricing), Page 182, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=215)
 
 **Slide:** Financial Mathematics Slides 1-96, Slides 27-29 (Clean vs Dirty Price), Page 27, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=27)
 :::
@@ -334,7 +334,7 @@ The seller held the bond for 90/181 ≈ **49.7%** of the coupon period, so they 
 ::: {.callout-caution icon=true}
 ## References
 
-**Book:** Pearson Corporate Finance 6th Edition, Chapter 6 (Valuing Bonds), Page 177, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=177)
+**Book:** Pearson Corporate Finance 6th Edition, Chapter 6 (Valuing Bonds), Page 177, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=210)
 
 **Slide:** Financial Mathematics Slides 1-96, Slides 24-29 (Accrued interest and day count conventions), Page 24, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=24)
 :::

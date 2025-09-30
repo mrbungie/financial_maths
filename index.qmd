@@ -53,7 +53,7 @@ For mistakes to avoid
 ## References
 For source material citations
 
-**Book:** Pearson Corporate Finance 6th Edition, Page 40, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=40)
+**Book:** Pearson Corporate Finance 6th Edition, Page 40, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=73)
 
 **Slide:** Financial Mathematics Slides 1-96, Page 20, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=20)
 :::

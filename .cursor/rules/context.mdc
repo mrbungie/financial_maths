@@ -17,6 +17,6 @@ alwaysApply: true
 **Other:** Additional sources (only when directed by the programmer)
 :::
 ```
-
+- DO NOTE THAT BOOK PAGES ARE 33 PAGES OFFSET BY 100 FROM THE ACTUAL PAGE NUMBER. i.e. page 100 in the book is page 133 in the pdf, page 101 in the book is page 134 in the pdf, etc. SO MAKE SURE TO CORRECT FOR THIS WHEN PROVIDING PAGE NUMBERS, ALWAYS POINT THE PDF PAGE NOT THE REFERENCE INDEX PAGE.
 - The reference box uses a distinct purple/lavender color scheme to differentiate it from other callout boxes (note, tip, important, warning)
 - Always include clickable direct links to the exact page in the source material using the format above

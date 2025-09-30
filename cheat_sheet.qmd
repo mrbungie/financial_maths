@@ -284,7 +284,7 @@ Print this page and keep it handy during problem-solving. Better yet, recreate i
 
 This cheat sheet consolidates material from all chapters:
 
-**Book:** Pearson Corporate Finance 6th Edition, Chapters 3-6 (Part 2: Time, Money, and Interest Rates), Page 103, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=103)
+**Book:** Pearson Corporate Finance 6th Edition, Chapters 3-6 (Part 2: Time, Money, and Interest Rates), Page 103, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=136)
 
 **Slide:** Financial Mathematics Slides 1-96, Complete Modules 1-2 (Basic Notions & Financial Laws), Page 1, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=1)
 :::
