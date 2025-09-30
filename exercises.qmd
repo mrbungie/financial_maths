@@ -30,6 +30,8 @@ Complete the amortization table below by filling in the missing values:
 | 2 | 3,810.52 | **?** | **?** | **?** |
 | 3 | 3,810.52 | **?** | **?** | 0.00 |
 
+\FloatBarrier
+
 **Related Chapter**: [Basic Notions](basic_notions.qmd)
 :::
 
@@ -66,6 +68,8 @@ Complete the amortization table below by filling in the missing values:
 | 1 | 3,810.52 | 700.00 | 3,110.52 | 6,889.48 |
 | 2 | 3,810.52 | 482.26 | 3,328.26 | 3,561.22 |
 | 3 | 3,810.52 | 249.29 | 3,561.23 | 0.00 |
+
+\FloatBarrier
 
 **Key insight**: Notice how interest decreases each year while principal repayment increases—this is typical for fixed-payment loans.
 :::
@@ -241,6 +245,8 @@ $$
 | 2 | $642.81 | After second cashflow + interest |
 | 3 | $694.24 | Final accumulated value |
 
+\FloatBarrier
+
 **Sketch**:
 
 ```
@@ -372,6 +378,8 @@ $$
 | ACT/ACT | 167 | 182 | **$27.53** |
 | ACT/360 | 167 | 180 | **$27.83** |
 | 30/360 | 164 | 180 | **$27.33** |
+
+\FloatBarrier
 
 **Answers**:
 1. **ACT/360 gives the highest** accrued interest ($27.83)
@@ -512,6 +520,16 @@ Congratulations on working through these exercises! Here's what you've practiced
 ::: {.callout-tip}
 ## Keep Practicing!
 Financial mathematics is like learning a language—the more you practice, the more fluent you become. Try to solve at least one problem daily!
+:::
+
+::: {.callout-caution icon=true}
+## References
+
+These exercises draw from concepts across all chapters:
+
+**Book:** Pearson Corporate Finance 6th Edition, Chapters 3-6 (Time Value of Money, Interest Rates, Bonds), Page 103, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=103)
+
+**Slide:** Financial Mathematics Slides 1-96, Modules 1-2 (Basic Notions & Financial Laws), Page 1, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=1)
 :::
 
 ---

@@ -121,6 +121,8 @@ $$
 \end{figure}
 ```
 
+\FloatBarrier
+
 ::: {.callout-tip icon="true"}
 ## Reading the Graph
 
@@ -153,7 +155,13 @@ Let's see how $V(t)$ evolves period by period for a more complex example.
 
 ### Example: 4-Year Investment
 
-**Cashflows**: - $t=0$: −\$1,000 - $t=1$: +\$200 - $t=2$: +\$300 - $t=3$: +\$400 - $t=4$: +\$500
+**Cashflows**:
+
+- $t=0$: −\$1,000
+- $t=1$: +\$200
+- $t=2$: +\$300
+- $t=3$: +\$400
+- $t=4$: +\$500
 
 **Interest rate**: 8% per year
 
@@ -166,7 +174,13 @@ Let's see how $V(t)$ evolves period by period for a more complex example.
 | 2 → 3  | −650.40         | −52.03          | +400     | −302.43         |
 | 3 → 4  | −302.43         | −24.19          | +500     | +173.38         |
 
-**Interpretation**: - We're "in the hole" (negative) through year 3 - Interest accumulates on our negative balance (making it more negative) - Finally, by year 4, we're positive: **+\$173.38**
+\FloatBarrier
+
+**Interpretation**:
+
+- We're "in the hole" (negative) through year 3
+- Interest accumulates on our negative balance (making it more negative)
+- Finally, by year 4, we're positive: **+\$173.38**
 
 ### Cumulative Cashflow Graph
 
@@ -218,6 +232,8 @@ Let's see how $V(t)$ evolves period by period for a more complex example.
 \end{figure}
 ```
 
+\FloatBarrier
+
 ::: {.callout-tip icon="true"}
 ## The "Smoothed Story" Interpretation
 
@@ -257,7 +273,13 @@ It represents the "today value" of the entire cashflow stream.
 
 ### Example: Should We Accept This Investment?
 
-**Investment opportunity**: - Initial cost: \$5,000 - Year 1 return: \$2,000 - Year 2 return: \$2,500 - Year 3 return: \$1,800 - Discount rate: 10%
+**Investment opportunity**:
+
+- Initial cost: \$5,000
+- Year 1 return: \$2,000
+- Year 2 return: \$2,500
+- Year 3 return: \$1,800
+- Discount rate: 10%
 
 **Calculate NPV**:
 $$
@@ -329,6 +351,8 @@ Track $V(t)$ over time to see if your project is on track:
 \end{figure}
 ```
 
+\FloatBarrier
+
 If actual $V(t)$ \> planned $V(t)$, you're ahead of schedule!
 
 ### 2. Comparing Investments
@@ -358,6 +382,14 @@ Two projects with different cashflow patterns:
 ## Key Insight
 
 The value function transforms **discrete cashflows** (jumps) into a **continuous financial narrative** (smooth story). It's the "bank account balance" of the investment at every moment.
+:::
+
+::: {.callout-caution icon=true}
+## References
+
+**Book:** Pearson Corporate Finance 6th Edition, Chapter 3 (Present Value and NPV Decision Rule), Page 74, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=74)
+
+**Slide:** Financial Mathematics Slides 1-96, Slides 33-36 (Value function definition, properties, examples), Page 33, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=33)
 :::
 
 ------------------------------------------------------------------------

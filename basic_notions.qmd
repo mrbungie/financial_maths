@@ -49,17 +49,6 @@ We can represent cashflows in multiple equivalent ways. Let's use a simple examp
 
 ### 2. Timeline Diagram
 
-```{mermaid}
-%%| fig-width: 8
-%%| fig-height: 2
-timeline
-    title Loan Cashflows (Borrower Perspective)
-    0 years : +$1,000 (Received)
-    1 year  : -$1,100 (Repaid)
-```
-
-### 3. Visual Timeline with Arrows
-
 ```{=latex}
 \begin{figure}[h]
 \centering
@@ -81,6 +70,21 @@ timeline
 \end{tikzpicture}
 \end{figure}
 ```
+
+### 3. Visual Timeline with Arrows
+
+::: {.content-visible when-format="html"}
+```{mermaid}
+%%| fig-width: 8
+%%| fig-height: 2
+timeline
+    title Loan Cashflows (Borrower Perspective) - Alternative View
+    0 years : +$1,000 (Received)
+    1 year  : -$1,100 (Repaid)
+```
+:::
+
+\FloatBarrier
 
 ::: {.callout-tip icon="true"}
 ## Reading Timeline Diagrams
@@ -104,6 +108,8 @@ Let's see a more realistic scenario: a 3-year loan of \$10,000 with annual payme
 | 1            | −3,500  | −500     | −3,000    | 7,000               |
 | 2            | −3,650  | −350     | −3,300    | 3,700               |
 | 3            | −3,885  | −185     | −3,700    | 0                   |
+
+\FloatBarrier
 
 ::: {.callout-note icon="true"}
 ## Understanding the Table
@@ -147,6 +153,8 @@ Let's see a more realistic scenario: a 3-year loan of \$10,000 with annual payme
 \end{figure}
 ```
 
+\FloatBarrier
+
 ## Investment vs. Financing Cashflows
 
 Two fundamental patterns emerge in financial mathematics:
@@ -155,33 +163,82 @@ Two fundamental patterns emerge in financial mathematics:
 
 **Typical structure**: Initial outflow, followed by inflows
 
-```{mermaid}
-%%| fig-width: 8
-timeline
-    title Investment Pattern
-    t=0 : −$10,000 (Buy stock)
-    t=1 : +$500 (Dividend)
-    t=2 : +$500 (Dividend)
-    t=3 : +$11,000 (Dividend + Sale)
+```{=latex}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1.0]
+% Time axis
+\draw[thick,->] (0,0) -- (13,0) node[right] {Time};
+\foreach \x/\label in {0/0, 4/1, 8/2, 12/3}
+    \draw (\x,0.1) -- (\x,-0.1) node[below] {\label};
+
+% Initial outflow at t=0
+\draw[->,red!70!black,ultra thick] (0,0.5) -- (0,-1.5);
+\node[above,red!70!black,font=\small] at (0,0.7) {−\$10,000};
+\node[below,red!70!black,font=\tiny] at (0,-1.8) {Buy stock};
+
+% Inflows at t=1,2
+\foreach \x in {4,8} {
+    \draw[->,green!60!black,very thick] (\x,-1) -- (\x,0.5);
+    \node[above,green!60!black,font=\small] at (\x,0.7) {+\$500};
+}
+
+% Final inflow at t=3
+\draw[->,green!60!black,ultra thick] (12,-1.5) -- (12,0.5);
+\node[above,green!60!black,font=\small] at (12,0.9) {+\$11,000};
+\node[below,green!60!black,font=\tiny] at (12,-1.8) {Div + Sale};
+
+% Label
+\node[font=\bfseries] at (6,1.5) {Investment Pattern};
+\end{tikzpicture}
+\end{figure}
 ```
 
-**Examples**: - Buying stocks or bonds - Starting a business - Purchasing rental property
+**Examples**:
+
+- Buying stocks or bonds
+- Starting a business
+- Purchasing rental property
 
 ### Financing Cashflow Pattern
 
 **Typical structure**: Initial inflow, followed by outflows
 
-```{mermaid}
-%%| fig-width: 8
-timeline
-    title Financing Pattern
-    t=0 : +$10,000 (Loan received)
-    t=1 : −$3,500 (Payment)
-    t=2 : −$3,650 (Payment)
-    t=3 : −$3,885 (Payment)
+```{=latex}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1.0]
+% Time axis
+\draw[thick,->] (0,0) -- (13,0) node[right] {Time};
+\foreach \x/\label in {0/0, 4/1, 8/2, 12/3}
+    \draw (\x,0.1) -- (\x,-0.1) node[below] {\label};
+
+% Initial inflow at t=0
+\draw[->,green!60!black,ultra thick] (0,-1.5) -- (0,0.5);
+\node[above,green!60!black,font=\small] at (0,0.9) {+\$10,000};
+\node[below,green!60!black,font=\tiny] at (0,-1.8) {Loan received};
+
+% Outflows at t=1,2,3
+\draw[->,red!70!black,very thick] (4,0.5) -- (4,-1);
+\node[above,red!70!black,font=\small] at (4,0.7) {−\$3,500};
+
+\draw[->,red!70!black,very thick] (8,0.5) -- (8,-1);
+\node[above,red!70!black,font=\small] at (8,0.7) {−\$3,650};
+
+\draw[->,red!70!black,very thick] (12,0.5) -- (12,-1);
+\node[above,red!70!black,font=\small] at (12,0.7) {−\$3,885};
+
+% Label
+\node[font=\bfseries] at (6,1.5) {Financing Pattern};
+\end{tikzpicture}
+\end{figure}
 ```
 
-**Examples**: - Taking a loan - Issuing bonds (from issuer's perspective) - Credit card borrowing
+**Examples**:
+
+- Taking a loan
+- Issuing bonds (from issuer's perspective)
+- Credit card borrowing
 
 ::: {.callout-important icon="true"}
 ## Key Insight
@@ -245,6 +302,8 @@ Let's apply these concepts to a realistic business scenario.
 | 2    | +150,000 | −150,000       |
 | 3    | +250,000 | +100,000       |
 
+\FloatBarrier
+
 ::: {.callout-tip icon="true"}
 ## Intuition: The Cumulative View
 
@@ -265,6 +324,14 @@ Before moving forward, make sure you understand:
 ## Common Pitfall
 
 Don't mix perspectives! If you start from the borrower's viewpoint, stay consistent. Switching midway through a problem causes sign errors.
+:::
+
+::: {.callout-caution icon=true}
+## References
+
+**Book:** Pearson Corporate Finance 6th Edition, Chapter 4 (The Time Value of Money), Page 105, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=105)
+
+**Slide:** Financial Mathematics Slides 1-96, Slides 4-23 (Module 1: Basic Notions - Financial transactions, graphical representation, terminology), Page 4, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=4)
 :::
 
 ------------------------------------------------------------------------

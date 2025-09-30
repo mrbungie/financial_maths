@@ -46,6 +46,8 @@ $$
 | **Perpetuity PV** | $PV = \frac{C}{i}$ | Infinite equal payments |
 | **Growing Perpetuity** | $PV = \frac{C}{i - g}$ | Growth rate $g < i$ |
 
+\FloatBarrier
+
 ---
 
 ## 📊 Interest Rate Conventions
@@ -68,6 +70,8 @@ Where: $r$ = nominal rate, $m$ = compounding periods per year
 | Monthly | 12 | 12.68% effective |
 | Continuous | ∞ | $e^{0.12} - 1 = 12.75\%$ |
 
+\FloatBarrier
+
 ### Continuous Compounding
 
 $$
@@ -83,6 +87,8 @@ $$
 | **ACT/ACT** | Actual days (365/366) | Actual days | US Treasuries |
 | **ACT/360** | 360 days | Actual days | Money markets, loans |
 | **30/360** | 360 days | 30 days/month | Corporate bonds |
+
+\FloatBarrier
 
 ### Accrued Interest
 
@@ -106,15 +112,7 @@ $$
 
 ### Bond Cashflow Pattern
 
-```{mermaid}
-%%| fig-width: 8
-%%| fig-height: 1.5
-timeline
-    title Bond Cashflows (Investor View)
-    t=0 : -Price (Buy)
-    t=1,2,...,n-1 : +Coupons
-    t=n : +Final Coupon + Face Value
-```
+**Timeline**: Initial payment (buy bond) → periodic coupons → final coupon + face value repayment
 
 ---
 
@@ -173,6 +171,8 @@ timeline
 \end{tikzpicture}
 \end{figure}
 ```
+
+\FloatBarrier
 
 ---
 
@@ -277,6 +277,16 @@ Approximation: $i \approx r + \pi$
 ::: {.callout-tip}
 ## 💡 Pro Tip
 Print this page and keep it handy during problem-solving. Better yet, recreate it by hand to reinforce your understanding!
+:::
+
+::: {.callout-caution icon=true}
+## References
+
+This cheat sheet consolidates material from all chapters:
+
+**Book:** Pearson Corporate Finance 6th Edition, Chapters 3-6 (Part 2: Time, Money, and Interest Rates), Page 103, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=103)
+
+**Slide:** Financial Mathematics Slides 1-96, Complete Modules 1-2 (Basic Notions & Financial Laws), Page 1, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=1)
 :::
 
 ---

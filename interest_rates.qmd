@@ -308,7 +308,8 @@ A corporate bond might have:
 - Expected inflation: 3%
 - Default risk premium: 2%
 - Liquidity premium: 1%
-- **Total rate**: 2% + 3% + 2% + 1% = **8%**
+
+**Total rate**: 2% + 3% + 2% + 1% = **8%**
 
 ## Present Value of Annuities
 
@@ -372,6 +373,8 @@ $$
 \end{figure}
 ```
 
+\FloatBarrier
+
 ## Perpetuity: The Infinite Annuity
 
 ::: {.callout-note icon=true}
@@ -407,6 +410,8 @@ $$
 | **Annuity PV** | $C \times \frac{1-v^n}{i}$ | Series of equal payments |
 | **Perpetuity PV** | $\frac{C}{i}$ | Forever payments |
 
+\FloatBarrier
+
 ## Practical Insights
 
 ::: {.callout-important icon=true}
@@ -438,6 +443,14 @@ Example: For monthly mortgage payments, use monthly interest rate, not annual.
 ✅ **Continuous compounding** = infinite frequency limit  
 ✅ **Annuities** = equal periodic payments (closed-form PV formula)  
 ✅ **Perpetuities** = infinite annuities ($PV = C/i$)  
+
+::: {.callout-caution icon=true}
+## References
+
+**Book:** Pearson Corporate Finance 6th Edition, Chapter 5 (Interest Rates), Page 149, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=149)
+
+**Slide:** Financial Mathematics Slides 1-96, Slides 37-93 (Module 2: Financial Laws - Interest, discount, accumulation factors, simple & compound interest), Page 37, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=37)
+:::
 
 ---
 

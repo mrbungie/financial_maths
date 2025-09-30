@@ -49,6 +49,15 @@ For essential formulas you'll use repeatedly
 For mistakes to avoid
 :::
 
+::: {.callout-caution icon=true}
+## References
+For source material citations
+
+**Book:** Pearson Corporate Finance 6th Edition, Page 40, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=40)
+
+**Slide:** Financial Mathematics Slides 1-96, Page 20, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=20)
+:::
+
 ## Getting Started
 
 Begin with [Chapter 1: Basic Notions](basic_notions.qmd) to build your foundation, or jump directly to any chapter that interests you. The [Cheat Sheet](cheat_sheet.qmd) provides a quick reference once you're familiar with the concepts.

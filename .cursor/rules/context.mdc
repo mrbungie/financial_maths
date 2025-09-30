@@ -4,11 +4,19 @@ alwaysApply: true
 
 - Use docs/information to understand the source materials.
 - When writing about a new idea, include a box for references that includes a book and a slide reference. For locating references use docs/resource_index/slides.md and docs/resource_index/book.md. It may be possible something has no source material, in which case you can just point to the source material as "source material not available for this idea".
-- Boxes should be in the way of
-"""
-Book: NAME, PAGE_NUMBER, DIRECT_LINK
-Slide: NAME, PAGE_NUMBER, DIRECT_LINK
-"""
-- They should also contain a direct link to the source material similar to
-https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=40 or
-https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=20
+- Reference boxes should use the purple/lavender callout-caution style and be formatted as:
+
+```
+::: {.callout-caution icon=true}
+## References
+
+**Book:** NAME, Page NUMBER, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=NUMBER)
+
+**Slide:** NAME, Page NUMBER, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=NUMBER)
+
+**Other:** Additional sources (only when directed by the programmer)
+:::
+```
+
+- The reference box uses a distinct purple/lavender color scheme to differentiate it from other callout boxes (note, tip, important, warning)
+- Always include clickable direct links to the exact page in the source material using the format above

@@ -21,6 +21,7 @@ bibliography: references.bib
 format:
   html:
     theme: cosmo
+    css: custom.css
     toc: true
     toc-depth: 3
     number-sections: true
@@ -38,6 +39,18 @@ format:
         \usepackage{amsmath}
         \usepackage{tikz}
         \usetikzlibrary{arrows,positioning,calc,shapes}
+        \usepackage{longtable}
+        \usepackage{booktabs}
+        \usepackage{array}
+        \usepackage{float}
+        \usepackage{needspace}
+        % Keep tables together on one page
+        \usepackage{placeins}
+        % Better spacing for figures
+        \setlength{\intextsep}{12pt plus 2pt minus 2pt}
+        \setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
+        % Prevent tables from breaking across pages
+        \AtBeginEnvironment{longtable}{\needspace{10\baselineskip}}
 
 execute:
   enabled: false

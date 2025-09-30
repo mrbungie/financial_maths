@@ -47,6 +47,8 @@ Let's start with a basic 3-year bond:
 
 **Calculation**: Annual coupon = Face Value × Coupon Rate = $1,000 × 5\% = $50$
 
+\FloatBarrier
+
 ### Timeline Diagram
 
 ```{=latex}
@@ -79,6 +81,8 @@ Let's start with a basic 3-year bond:
 \end{tikzpicture}
 \end{figure}
 ```
+
+\FloatBarrier
 
 ## Clean Price vs. Dirty Price
 
@@ -171,6 +175,8 @@ Let's say you buy a bond 4 months into a 12-month coupon period (4/12 = 1/3 of t
 \end{figure}
 ```
 
+\FloatBarrier
+
 ## Calculating Accrued Interest
 
 ::: {.callout-important icon=true}
@@ -201,6 +207,8 @@ The "days" calculation depends on the **day count convention**:
 | **ACT/ACT** | Actual (365 or 366) | Actual days in period | US Treasury bonds |
 | **ACT/360** | 360 | Actual days in period | Corporate bonds, loans |
 | **30/360** | 360 | Assume 30 days per month | Corporate bonds |
+
+\FloatBarrier
 
 ::: {.callout-warning icon=true}
 ## Common Pitfall
@@ -283,6 +291,8 @@ A **zero-coupon bond** makes no periodic interest payments. Instead, it's sold a
 | 0 | −783.53 | Purchase at discount |
 | 5 | +1,000.00 | Receive face value |
 
+\FloatBarrier
+
 ::: {.callout-tip icon=true}
 ## Intuition: All Interest at Once
 Instead of receiving small interest payments each year, you receive all the interest at maturity in the form of the difference between purchase price and face value ($1,000 − $783.53 = $216.47).
@@ -296,6 +306,8 @@ Instead of receiving small interest payments each year, you receive all the inte
 | **Zero-Coupon** | No | STRIPS | Bought at discount |
 | **Floating-Rate** | Yes, variable | Some corporate | Coupon adjusts with rates |
 | **Callable** | Yes | Municipal bonds | Issuer can repay early |
+
+\FloatBarrier
 
 ## Practical Insights
 
@@ -318,6 +330,14 @@ Instead of receiving small interest payments each year, you receive all the inte
 ✅ **Dirty Price** = actual payment (includes accrued interest)  
 ✅ **Accrued Interest** = seller's compensation for partial period  
 ✅ **Day Count Conventions** = critical for accurate calculations  
+
+::: {.callout-caution icon=true}
+## References
+
+**Book:** Pearson Corporate Finance 6th Edition, Chapter 6 (Valuing Bonds), Page 177, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=177)
+
+**Slide:** Financial Mathematics Slides 1-96, Slides 24-29 (Coupon bonds, accrued vs dirty price), Page 24, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=24)
+:::
 
 ---
 
