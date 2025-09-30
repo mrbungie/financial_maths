@@ -14,7 +14,6 @@ book:
     - value_function.qmd
     - interest_rates.qmd
     - cheat_sheet.qmd
-    - exercises.qmd
 
 bibliography: references.bib
 

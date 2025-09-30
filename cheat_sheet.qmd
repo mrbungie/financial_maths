@@ -12,10 +12,13 @@ This one-page summary contains all essential formulas, conventions, and concepts
 ### Time Value of Money
 
 | Concept | Formula | Variables |
-|---------|---------|-----------|
+|:--------|:--------|:----------|
 | **Future Value** | $FV = PV \times (1+i)^t$ | $PV$ = present value<br>$i$ = interest rate<br>$t$ = time |
+| | | |
 | **Present Value** | $PV = \frac{FV}{(1+i)^t}$ | $FV$ = future value |
+| | | |
 | **Discount Factor** | $v = \frac{1}{1+i}$ or $v^t = \frac{1}{(1+i)^t}$ | $v$ = one-period discount |
+| | | |
 | **Accumulation Factor** | $a(t) = (1+i)^t$ | Growth multiplier |
 
 ### Net Present Value
@@ -40,11 +43,14 @@ $$
 ## 💰 Annuities & Perpetuities
 
 | Type | Formula | Description |
-|------|---------|-------------|
+|:-----|:--------|:------------|
 | **Annuity PV** | $PV = C \times \frac{1 - v^n}{i}$ | $n$ equal payments of $C$ |
-| **Annuity Factor** | $a_{\overline{n}|i} = \frac{1 - v^n}{i}$ | Standard notation |
-| **Perpetuity PV** | $PV = \frac{C}{i}$ | Infinite equal payments |
-| **Growing Perpetuity** | $PV = \frac{C}{i - g}$ | Growth rate $g < i$ |
+| | | |
+| **Annuity Factor** | $a_{\overline{n}|i} = \frac{1 - v^n}{i}$ | Standard notation (where $v = \frac{1}{1+i}$) |
+| | | |
+| **Perpetuity PV** | $PV = \frac{C}{i}$ | Infinite stream of equal payments $C$ forever |
+| | | |
+| **Growing Perpetuity** | $PV = \frac{C}{i - g}$ | Infinite payments growing at rate $g$ (where $g < i$) |
 
 \FloatBarrier
 
@@ -63,11 +69,15 @@ Where: $r$ = nominal rate, $m$ = compounding periods per year
 ### Compounding Frequencies
 
 | Frequency | $m$ | Example (12% nominal) |
-|-----------|-----|-----------------------|
+|:----------|:---:|:----------------------|
 | Annual | 1 | 12.00% effective |
+| | | |
 | Semi-annual | 2 | 12.36% effective |
+| | | |
 | Quarterly | 4 | 12.55% effective |
+| | | |
 | Monthly | 12 | 12.68% effective |
+| | | |
 | Continuous | ∞ | $e^{0.12} - 1 = 12.75\%$ |
 
 \FloatBarrier
@@ -83,9 +93,11 @@ $$
 ## 📅 Day Count Conventions
 
 | Convention | Year | Period Calculation | Usage |
-|------------|------|-------------------|--------|
+|:-----------|:-----|:------------------|:------|
 | **ACT/ACT** | Actual days (365/366) | Actual days | US Treasuries |
+| | | | |
 | **ACT/360** | 360 days | Actual days | Money markets, loans |
+| | | | |
 | **30/360** | 360 days | 30 days/month | Corporate bonds |
 
 \FloatBarrier
@@ -103,11 +115,15 @@ $$
 ### Components
 
 | Term | Definition |
-|------|------------|
+|:-----|:-----------|
 | **Face Value** | Principal repaid at maturity (typically $1,000) |
+| | |
 | **Coupon Rate** | Annual interest rate on face value |
+| | |
 | **Coupon Payment** | $C = \text{Face Value} \times \text{Coupon Rate}$ |
+| | |
 | **Clean Price** | Quoted price (excludes accrued interest) |
+| | |
 | **Dirty Price** | Invoice price = Clean + Accrued Interest |
 
 ### Bond Cashflow Pattern
@@ -121,8 +137,9 @@ $$
 ### Sign Convention
 
 | Direction | Sign | Perspective |
-|-----------|------|-------------|
+|:----------|:-----|:------------|
 | **Inflow** (receive) | **+** (positive) | <span style="color:green">● Green ↑</span> |
+| | | |
 | **Outflow** (pay) | **−** (negative) | <span style="color:red">● Red ↓</span> |
 
 ::: {.callout-warning}
@@ -132,8 +149,9 @@ $$
 ### Cashflow Patterns
 
 | Pattern | Structure | Example |
-|---------|-----------|---------|
+|:--------|:----------|:--------|
 | **Investment** | − then + | Buy stock, then dividends + sale |
+| | | |
 | **Financing** | + then − | Receive loan, then repayments |
 
 ---
@@ -197,11 +215,15 @@ $$
 Quick reference for drawing cashflow diagrams:
 
 | Symbol | Meaning |
-|--------|---------|
+|:-------|:--------|
 | → | Time axis (left to right) |
+| | |
 | <span style="color:green">↑</span> | Inflow (positive cashflow) |
+| | |
 | <span style="color:red">↓</span> | Outflow (negative cashflow) |
+| | |
 | ● | Point in time |
+| | |
 | \|--\| | Time period/interval |
 
 ---
@@ -290,5 +312,3 @@ This cheat sheet consolidates material from all chapters:
 :::
 
 ---
-
-**Ready to Practice?** Head to [Exercises](exercises.qmd) to test your knowledge!

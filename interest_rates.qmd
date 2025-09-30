@@ -310,6 +310,7 @@ i = r_f + \text{inflation} + \text{risk premium} + \text{liquidity premium}
 $$
 
 Where:
+
 - **$r_f$**: Real risk-free rate (time preference)
 - **Inflation**: Compensation for loss of purchasing power
 - **Risk premium**: Compensation for default risk
@@ -442,6 +443,7 @@ $$
 ## Using the Right Rate
 
 **Always match**:
+
 - **Time period** of cashflows (monthly, annual, etc.)
 - **Compounding frequency** of the rate
 - **Risk level** (risk-free rate vs. risky rate)

@@ -10,7 +10,6 @@ This interactive guide transforms dense lecture slides into:
 - **Tables & timelines** for intuitive understanding
 - **Practical examples** from everyday finance scenarios
 - **Comprehensive cheat sheet** for quick reference
-- **Practice exercises** with detailed solutions
 
 ## 🎯 Target Audience
 
@@ -27,7 +26,6 @@ MBA students with varied quantitative backgrounds, particularly those seeking:
 3. **Value Function** - Understanding money over time, NPV
 4. **Interest & Discount Rates** - Accumulation, discount factors, compounding
 5. **Cheat Sheet** - One-page reference for all key formulas
-6. **Exercises** - Practice problems with comprehensive solutions
 
 ## 🚀 Getting Started
 
@@ -78,7 +76,6 @@ class_1/
 ├── value_function.qmd    # Chapter 3: Value function & NPV
 ├── interest_rates.qmd    # Chapter 4: Interest rates & discounting
 ├── cheat_sheet.qmd       # Quick reference guide
-├── exercises.qmd         # Practice problems
 ├── references.bib        # Bibliography (if needed)
 ├── README.md             # This file
 ├── PRD/
@@ -144,8 +141,7 @@ quarto render --to pdf
 
 1. **First time**: Read chapters 1-4 in order
 2. **Review**: Use the cheat sheet for quick reference
-3. **Practice**: Work through exercises with pen and paper
-4. **Stuck?**: Review relevant chapter, then check solution
+3. **Practice**: Work through examples with pen and paper
 
 ### For Instructors
 
@@ -193,8 +189,7 @@ This is a living document! Suggestions for improvement:
 1. **Clarity**: Flag confusing explanations
 2. **Errors**: Report typos or calculation mistakes
 3. **Examples**: Suggest additional real-world scenarios
-4. **Exercises**: Propose new practice problems
-5. **Visuals**: Suggest better diagrams or analogies
+4. **Visuals**: Suggest better diagrams or analogies
 
 ## 📄 License
 
@@ -208,8 +203,7 @@ Based on traditional financial mathematics course materials, reinterpreted with 
 
 For questions or issues:
 - Review the [Cheat Sheet](cheat_sheet.qmd) for quick answers
-- Consult the [Exercises](exercises.qmd) for worked examples
-- Check individual chapters for detailed explanations
+- Check individual chapters for detailed explanations and worked examples
 
 ---
 

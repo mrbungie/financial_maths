@@ -12,7 +12,6 @@ Instead of heavy mathematical notation, we emphasize:
 - 📅 **Tables & timelines** for intuitive understanding
 - 📝 **Practical examples** from everyday finance
 - 🎯 **Cheat sheets** for quick reference
-- 💪 **Exercises** to build confidence
 
 ## Navigation
 
@@ -23,7 +22,6 @@ This guide is organized into focused chapters:
 3. **Value Function** - Understanding money over time
 4. **Interest & Discount Rates** - Accumulation and discount factors
 5. **Cheat Sheet** - One-page reference for all key formulas
-6. **Exercises** - Practice problems with solutions
 
 ## Learning Approach
 
