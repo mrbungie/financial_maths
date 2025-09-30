@@ -249,6 +249,14 @@ Always check which day count convention applies! The same bond can have differen
 
 ### Example Calculation
 
+::: {.callout-caution icon=true}
+## References
+
+**Book:** Pearson Corporate Finance 6th Edition, Chapter 6 (Valuing Bonds), Page 177, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=210)
+
+**Slide:** Financial Mathematics Slides 1-96, Slides 24-29 (Accrued interest and day count conventions), Page 24, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=24)
+:::
+
 **Given**:
 
 - Semi-annual bond (6-month coupons)
@@ -345,15 +353,13 @@ Assume the bond's clean price is quoted at **98.50** (per $100 face value):
 The seller held the bond for 90/181 ≈ **49.7%** of the coupon period, so they receive about half of the $30 coupon payment. You'll collect the full $30 coupon on July 15, but you compensate the seller for the portion they earned.
 :::
 
+## Bond Pricing: Clean vs. Dirty in Action
+
 ::: {.callout-caution icon=true}
 ## References
 
-**Book:** Pearson Corporate Finance 6th Edition, Chapter 6 (Valuing Bonds), Page 177, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=210)
-
-**Slide:** Financial Mathematics Slides 1-96, Slides 24-29 (Accrued interest and day count conventions), Page 24, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=24)
+**Slide:** Financial Mathematics Slides 1-96, Slide 30 (Italian BTP Btp-1mg31 6% example), [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=30)
 :::
-
-## Bond Pricing: Clean vs. Dirty in Action
 
 Let's work through a complete real-world bond transaction. Imagine you're buying an Italian Treasury bond (BTP) from another investor in the secondary market. The bond was issued some time ago and has been paying regular coupons. When you buy it between coupon dates, you need to understand both the **quoted price** (what you see in the market) and the **actual price** (what you'll pay).
 
@@ -501,12 +507,6 @@ You would pay **€118.74**, even though the bond is quoted at €116.36.
 **Why the difference?** The seller held the bond for 146 days (about 79% of the 184-day semi-annual period) and earned €2.38 of interest during that time. Since you'll receive the full €3.00 coupon on 1 November 2025, you compensate them now for the portion they earned. This ensures fair pricing regardless of when the trade occurs within the coupon period.
 
 **Key insight**: Always ask for the **dirty price** when evaluating the true cost of a bond purchase!
-:::
-
-::: {.callout-caution icon=true}
-## References
-
-**Slide:** Financial Mathematics Slides 1-96, Slide 30 (Italian BTP Btp-1mg31 6% example), [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=30)
 :::
 
 ## Zero-Coupon Bonds

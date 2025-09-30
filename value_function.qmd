@@ -1,5 +1,13 @@
 # Value Function
 
+::: {.callout-caution icon=true}
+## References
+
+**Book:** Pearson Corporate Finance 6th Edition, Chapter 3 (Present Value and NPV Decision Rule), Page 74, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=107)
+
+**Slide:** Financial Mathematics Slides 1-96, Slides 33-36 (Value function definition, properties, examples), Page 33, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=33)
+:::
+
 ## Introduction
 
 So far, we've learned to describe cashflows as discrete events (money at specific times). But to truly understand the **financial state** of a project or investment at *any* point in time, we need a continuous view. This is where the **value function** comes in.
@@ -705,14 +713,6 @@ Your professor teaches the Swiss Army knife because:
 ## Key Insight
 
 The value function transforms **discrete cashflows** (jumps) into a **continuous financial narrative** (smooth story). It's the "bank account balance" of the investment at every moment.
-:::
-
-::: {.callout-caution icon=true}
-## References
-
-**Book:** Pearson Corporate Finance 6th Edition, Chapter 3 (Present Value and NPV Decision Rule), Page 74, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=107)
-
-**Slide:** Financial Mathematics Slides 1-96, Slides 33-36 (Value function definition, properties, examples), Page 33, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=33)
 :::
 
 ------------------------------------------------------------------------

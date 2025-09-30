@@ -1,5 +1,13 @@
 # Basic Notions
 
+::: {.callout-caution icon=true}
+## References
+
+**Book:** Pearson Corporate Finance 6th Edition, Chapter 4 (The Time Value of Money), Page 105, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=138)
+
+**Slide:** Financial Mathematics Slides 1-96, Slides 4-23 (Module 1: Basic Notions - Financial transactions, graphical representation, terminology), Page 4, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=4)
+:::
+
 ## Introduction
 
 Financial mathematics is fundamentally about tracking **money flows over time**. Before diving into complex formulas, we need to establish a clear language for describing when money moves, in which direction, and how much.
@@ -1046,14 +1054,6 @@ Before moving forward, make sure you understand:
 ## Common Pitfall
 
 Don't mix perspectives! If you start from the borrower's viewpoint, stay consistent. Switching midway through a problem causes sign errors.
-:::
-
-::: {.callout-caution icon=true}
-## References
-
-**Book:** Pearson Corporate Finance 6th Edition, Chapter 4 (The Time Value of Money), Page 105, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=138)
-
-**Slide:** Financial Mathematics Slides 1-96, Slides 4-23 (Module 1: Basic Notions - Financial transactions, graphical representation, terminology), Page 4, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=4)
 :::
 
 ------------------------------------------------------------------------

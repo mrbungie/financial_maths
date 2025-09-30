@@ -1,5 +1,13 @@
 # Interest & Discount Rates
 
+::: {.callout-caution icon=true}
+## References
+
+**Book:** Pearson Corporate Finance 6th Edition, Chapter 4 (Time Value of Money), Page 105, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=138)
+
+**Slide:** Financial Mathematics Slides 1-96, Slides 43-46 (Interest rate definitions in terms of value function), Page 43, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=43)
+:::
+
 ## 1. From Value Function to Rates
 
 ::: {.callout-note icon=true}
@@ -384,14 +392,6 @@ This is why we write $i(t, t+\tau)$ with explicit time dependence. The rate depe
 5. **Clear separation**: absolute vs relative vs multiplier perspectives
 
 **Bottom line**: Master $V(t)$, and interest rates become different ways of reading the same story.
-:::
-
-::: {.callout-caution icon=true}
-## References
-
-**Book:** Pearson Corporate Finance 6th Edition, Chapter 4 (Time Value of Money), Page 105, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=138)
-
-**Slide:** Financial Mathematics Slides 1-96, Slides 43-46 (Interest rate definitions in terms of value function), Page 43, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=43)
 :::
 
 ---
