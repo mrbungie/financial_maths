@@ -448,6 +448,7 @@ R_k = I_k + C_k
 $$
 
 Where:
+
 - $D_k$ = Outstanding debt at beginning of period $k$
 - $R_k$ = Payment (installment) at end of period $k$
 - $I_k$ = Interest portion
@@ -657,13 +658,20 @@ Two financial transactions are **equivalent** if they have the **same nonzero ca
 ::: {.callout-tip icon=true}
 ## Intuition: Why Equivalence Matters
 
-Adding zeros doesn't change the financial reality! Just like writing "$5.00" vs "$5" means the same amount, extending a cashflow schedule with zeros doesn't change what actually happens. This is useful when:
+Mathematically, adding zeros doesn't change the financial reality — just like writing "$5.00" vs "$5" means the same amount. However, **relevance matters**: reporting cashflows at arbitrary periods only makes sense when it aligns with the operation's natural schedule and lifecycle.
 
-- **Comparing transactions** with different schedules (align them first)
-- **Combining operations** that happen at different times
-- **Standardizing** reporting periods (monthly vs quarterly)
+**When zeros are useful:**
 
-Think of it like a calendar: if nothing happens on June 15th, you can either skip that date entirely or write "$0" — both describe the same financial reality!
+- **Comparing transactions** with different schedules (align them to match periods)
+- **Combining operations** that naturally occur at different times
+- **Standardizing reporting** when operations genuinely span those periods
+
+**When zeros aren't useful:**
+
+- Reporting **finer granularity** than the operation's actual schedule (e.g., monthly reports for a quarterly loan)
+- Extending reports **beyond the operation's lifecycle** (e.g., reporting periods after the loan ends)
+
+Think of it this way: You *can* write "$0" for June 15th if nothing happens then, but it only makes sense to do so if you're actually tracking that date for a reason relevant to the operation itself!
 :::
 
 **Example**: These two representations are equivalent:
