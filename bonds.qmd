@@ -218,54 +218,263 @@ Always check which day count convention applies! The same bond can have differen
 ### Example Calculation
 
 **Given**:
+
 - Semi-annual bond (6-month coupons)
 - Coupon = $30
 - Last coupon date: January 15
 - Purchase date: April 15
 - Convention: ACT/ACT
 
-**Calculation**:
-- Days elapsed: Jan 15 → Apr 15 = 90 days (actual count)
-- Days in period: Jan 15 → Jul 15 = 181 days (actual)
-- Accrued Interest = $30 × (90/181) = **$14.92**
+#### Timeline Visualization
+
+```{=latex}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1.2]
+% Time axis
+\draw[thick,->] (0,0) -- (12,0) node[right] {Time};
+
+% Date markers
+\draw (0,0.1) -- (0,-0.1) node[below,font=\small] {Jan 15};
+\draw (5,0.1) -- (5,-0.1) node[below,font=\small] {Apr 15};
+\draw (10,0.1) -- (10,-0.1) node[below,font=\small] {Jul 15};
+
+% Period labels
+\node[above,font=\small] at (0,0.3) {Last coupon};
+\node[above,font=\small,blue] at (5,0.3) {Purchase};
+\node[above,font=\small] at (10,0.3) {Next coupon};
+
+% Elapsed period (red)
+\draw[red!70,ultra thick] (0,-0.7) -- (5,-0.7);
+\draw[<->,red!70,thick] (0,-1.2) -- (5,-1.2) node[midway,below,font=\small] {90 days elapsed};
+\node[red!70,font=\small] at (2.5,-1.7) {Accrued to seller};
+
+% Remaining period (green)
+\draw[green!60!black,ultra thick] (5,-0.7) -- (10,-0.7);
+\draw[<->,green!60!black,thick] (5,-1.2) -- (10,-1.2) node[midway,below,font=\small] {91 days remaining};
+\node[green!60!black,font=\small] at (7.5,-1.7) {Owned by buyer};
+
+% Total period
+\draw[<->,thick,dashed] (0,1) -- (10,1) node[midway,above,font=\small] {Total: 181 days};
+\end{tikzpicture}
+\end{figure}
+```
+
+\FloatBarrier
+
+#### Step-by-Step Calculation
+
+**Step 1: Count the days**
+
+- Days elapsed: Jan 15 → Apr 15 = **90 days** (actual count)
+- Days in period: Jan 15 → Jul 15 = **181 days** (actual)
+
+**Step 2: Calculate accrued interest**
+
+$$
+\text{Accrued Interest} = \$30 \times \frac{90}{181} = \$30 \times 0.4972 = \$14.92
+$$
+
+**Step 3: Price components**
+
+Assume the bond's clean price is quoted at **98.50** (per $100 face value):
+
+```{=latex}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=0.9]
+% Clean price box
+\draw[thick,fill=blue!20] (0,0) rectangle (3.5,1.8);
+\node[align=center,font=\bfseries] at (1.75,1.2) {Clean Price};
+\node[align=center] at (1.75,0.6) {\$98.50};
+
+% Plus sign
+\node[font=\Huge] at (4.5,0.9) {+};
+
+% Accrued interest box
+\draw[thick,fill=orange!30] (5.5,0) rectangle (9,1.8);
+\node[align=center,font=\bfseries] at (7.25,1.2) {Accrued Interest};
+\node[align=center] at (7.25,0.6) {\$14.92};
+\node[align=center,font=\tiny] at (7.25,0.2) {(90/181 of \$30)};
+
+% Equals sign
+\node[font=\Huge] at (4.5,-1.5) {=};
+
+% Dirty price box (wider)
+\draw[thick,fill=purple!20] (1,-2.8) rectangle (8,-1.2);
+\node[align=center,font=\bfseries\large] at (4.5,-1.7) {Dirty Price (What You Pay)};
+\node[align=center,font=\large] at (4.5,-2.3) {\$113.42};
+\end{tikzpicture}
+\end{figure}
+```
+
+::: {.callout-tip icon=true}
+## Interpretation
+The seller held the bond for 90/181 ≈ **49.7%** of the coupon period, so they receive about half of the $30 coupon payment. You'll collect the full $30 coupon on July 15, but you compensate the seller for the portion they earned.
+:::
+
+::: {.callout-caution icon=true}
+## References
+
+**Book:** Pearson Corporate Finance 6th Edition, Chapter 6 (Valuing Bonds), Page 177, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=177)
+
+**Slide:** Financial Mathematics Slides 1-96, Slides 24-29 (Accrued interest and day count conventions), Page 24, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=24)
+:::
 
 ## Bond Pricing: Clean vs. Dirty in Action
 
-Let's see a complete transaction:
+Let's work through a complete real-world bond transaction. Imagine you're buying an Italian Treasury bond (BTP) from another investor in the secondary market. The bond was issued some time ago and has been paying regular coupons. When you buy it between coupon dates, you need to understand both the **quoted price** (what you see in the market) and the **actual price** (what you'll pay).
+
+This example demonstrates why clean and dirty prices matter in practice—the quoted price doesn't tell the full story!
 
 ### Market Scenario
 
-- **Bond**: 5-year Treasury, 4\% annual coupon, $1,000 face value
-- **Quoted (Clean) Price**: 98.50 (meaning 98.5\% of face value)
-- **Last coupon date**: 3 months ago
-- **Next coupon**: In 9 months
+Consider the Italian treasury bond **"Btp-1mg31 6%"**:
+
+- **Bond**: Italian BTP with maturity 1/5/31
+- **Issued**: Above par at €102.40
+- **Coupon rate**: $i_C = 3\%$ semi-annual (starting 1/11/99)
 - **Convention**: ACT/ACT
+- **Last coupon date**: 1/5/2025
+- **Quote date**: 24 September 2025
+- **Quoted (Clean) Price**: €116.36 on Milan Stock Exchange
 
-### Step 1: Calculate Clean Price in Dollars
+**Question**: How much should we pay for this bond?
+
+### Timeline Visualization
+
+```{=latex}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1.1]
+% Time axis
+\draw[thick,->] (-0.5,0) -- (13,0) node[right] {Time};
+
+% Date markers
+\draw (0,0.1) -- (0,-0.1) node[below,font=\small,align=center] {1 May\\2025};
+\draw (5.5,0.1) -- (5.5,-0.1) node[below,font=\small,align=center] {24 Sep\\2025};
+\draw (12,0.1) -- (12,-0.1) node[below,font=\small,align=center] {1 Nov\\2025};
+
+% Period indicators
+\node[above,font=\small] at (0,0.3) {Last coupon};
+\node[above,font=\small,blue] at (5.5,0.3) {Quote date};
+\node[above,font=\small] at (12,0.3) {Next coupon};
+
+% Elapsed period (red/orange)
+\draw[red!70,ultra thick] (0,-0.8) -- (5.5,-0.8);
+\draw[<->,red!70,thick] (0,-1.3) -- (5.5,-1.3) node[midway,below,font=\small] {146 days};
+\node[red!70,font=\small,align=center] at (2.75,-2) {Seller owned\\Accrued interest};
+
+% Remaining period (green)
+\draw[green!60!black,ultra thick] (5.5,-0.8) -- (12,-0.8);
+\draw[<->,green!60!black,thick] (5.5,-1.3) -- (12,-1.3) node[midway,below,font=\small] {38 days};
+\node[green!60!black,font=\small,align=center] at (8.75,-2) {You will own\\You'll receive coupon};
+
+% Total period
+\draw[<->,thick,dashed] (0,1.2) -- (12,1.2) node[midway,above,font=\small] {184 days (semi-annual period)};
+
+% Coupon amounts
+\draw[->,blue!60,very thick] (0,0.5) -- (0,1.8);
+\node[above,font=\small] at (0,1.9) {\texteuro 3.00};
+
+\draw[->,blue!60,very thick] (12,0.5) -- (12,1.8);
+\node[above,font=\small] at (12,1.9) {\texteuro 3.00};
+\end{tikzpicture}
+\end{figure}
+```
+
+\FloatBarrier
+
+### Step 1: Identify the Clean Price
+
+The clean price is what's quoted on the Milan Stock Exchange:
 
 $$
-\text{Clean Price} = 98.50\% \times \$1,000 = \$985.00
+\text{Clean Price (Q)} = \text{\texteuro} 116.36
 $$
+
+This is what you see in the market quote—but it's **not** what you'll actually pay!
 
 ### Step 2: Calculate Accrued Interest
 
-$$
-\text{Annual Coupon} = 4\% \times \$1,000 = \$40
-$$
+Since the last coupon was paid on 1/5/2025, we need to calculate how many days have elapsed until 24/9/2025:
+
+**Days elapsed**: 1 May → 24 September = **146 days** (actual count)
+
+The semi-annual coupon payment is €3.00 (half of the 6% annual coupon on €100 face value).
+
+Since this is a **semi-annual** bond, the period is approximately 180 days (half a year). Using the ACT/180 approximation:
 
 $$
-\text{Accrued Interest} = \$40 \times \frac{3\text{ months}}{12\text{ months}} = \$40 \times 0.25 = \$10.00
+A = 3 \times \frac{146}{180} = 3 \times 0.8111 = \text{\texteuro} 2.43
+$$
+
+More precisely, using ACT/ACT with actual days in the period (1 May to 1 Nov = 184 days):
+
+$$
+A = 3 \times \frac{146}{184} = 3 \times 0.7935 = \text{\texteuro} 2.38
 $$
 
 ### Step 3: Calculate Dirty Price
 
+The **dirty price** is what you actually pay—it includes both components:
+
 $$
-\text{Dirty Price} = \$985.00 + \$10.00 = \$995.00
+P = Q + A = 116.36 + 2.38 = \text{\texteuro} 118.74
 $$
+
+### Price Components Breakdown
+
+```{=latex}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1.0]
+% Clean price box
+\draw[thick,fill=blue!20] (0,0) rectangle (3.8,2);
+\node[align=center,font=\bfseries] at (1.9,1.5) {Clean Price (Q)};
+\node[align=center,font=\large] at (1.9,0.9) {\texteuro 116.36};
+\node[align=center,font=\tiny] at (1.9,0.4) {(Market quote)};
+
+% Plus sign
+\node[font=\Huge] at (5,1) {+};
+
+% Accrued interest box
+\draw[thick,fill=orange!30] (6.2,0) rectangle (10,2);
+\node[align=center,font=\bfseries] at (8.1,1.5) {Accrued Interest (A)};
+\node[align=center,font=\large] at (8.1,0.9) {\texteuro 2.38};
+\node[align=center,font=\tiny] at (8.1,0.4) {(146/184 of \texteuro 3)};
+
+% Equals sign
+\node[font=\Huge] at (5,-1.8) {=};
+
+% Dirty price box (wider, prominent)
+\draw[thick,fill=purple!25,line width=1.5pt] (1.5,-3.2) rectangle (8.7,-1.4);
+\node[align=center,font=\bfseries\Large] at (5.1,-2) {Dirty Price (P)};
+\node[align=center,font=\Large] at (5.1,-2.7) {\texteuro 118.74};
+
+% Arrow pointing to dirty price
+\draw[->,thick,green!60!black] (11,-2.3) -- (9,-2.3);
+\node[right,green!60!black,font=\small,align=left] at (11,-2.3) {What you\\actually pay};
+\end{tikzpicture}
+\end{figure}
+```
+
+\FloatBarrier
 
 ::: {.callout-tip icon=true}
 ## What You Actually Pay
-You would write a check for **\$995.00**, even though the bond is quoted at "98.50." The difference is the seller's compensation for the 3 months of interest they earned.
+
+You would pay **€118.74**, even though the bond is quoted at €116.36.
+
+**Why the difference?** The seller held the bond for 146 days (about 79% of the 184-day semi-annual period) and earned €2.38 of interest during that time. Since you'll receive the full €3.00 coupon on 1 November 2025, you compensate them now for the portion they earned. This ensures fair pricing regardless of when the trade occurs within the coupon period.
+
+**Key insight**: Always ask for the **dirty price** when evaluating the true cost of a bond purchase!
+:::
+
+::: {.callout-caution icon=true}
+## References
+
+**Slide:** Financial Mathematics Slides 1-96, Slide 30 (Italian BTP Btp-1mg31 6% example), [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=30)
 :::
 
 ## Zero-Coupon Bonds
@@ -330,14 +539,6 @@ Instead of receiving small interest payments each year, you receive all the inte
 ✅ **Dirty Price** = actual payment (includes accrued interest)  
 ✅ **Accrued Interest** = seller's compensation for partial period  
 ✅ **Day Count Conventions** = critical for accurate calculations  
-
-::: {.callout-caution icon=true}
-## References
-
-**Book:** Pearson Corporate Finance 6th Edition, Chapter 6 (Valuing Bonds), Page 177, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=177)
-
-**Slide:** Financial Mathematics Slides 1-96, Slides 24-29 (Coupon bonds, accrued vs dirty price), Page 24, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=24)
-:::
 
 ---
 
