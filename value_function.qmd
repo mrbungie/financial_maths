@@ -597,16 +597,34 @@ $$
 
 ### The Bridge: Connecting Both Approaches
 
-| Classical Formula | Value Function Equivalent | When They're the Same |
-|-------------------|---------------------------|----------------------|
-| **PV** | $V(0)$ | Present value = value function at time 0 |
+| Classical Formula | Value Function Equivalent | Key Distinction |
+|-------------------|---------------------------|-----------------|
+| **PV** | $V(0)$ excluding initial cost | Present value = discounted future cashflows only |
 | **FV** | $V(T)$ | Future value = value function at final time T |
-| **NPV** | $V(0)$ | NPV = value function at decision time (t=0) |
+| **NPV** | $V(0)$ including all cashflows | NPV = Net present value (includes initial investment) |
 
 **Key insight**: The classical formulas are just **special cases** of the value function:
-- PV and NPV are $V(t)$ evaluated at $t=0$
-- FV is $V(t)$ evaluated at $t=T$ (final time)
+- **PV** is typically the present value of *future* cashflows only (excluding initial cost)
+- **NPV** is $V(t)$ evaluated at $t=0$, including *all* cashflows (initial investment + future cashflows)
+- **Relationship**: NPV = -Initial Cost + PV, or equivalently, NPV = $V(0)$ with all cashflows
+- **FV** is $V(t)$ evaluated at $t=T$ (final time)
 - The value function generalizes these to **any** time $t$
+
+::: {.callout-note icon="true"}
+## PV vs NPV: The Key Difference
+
+**PV (Present Value)**: Only the present value of *future* cashflows
+$$
+PV = \frac{C_1}{(1+i)} + \frac{C_2}{(1+i)^2} + \cdots + \frac{C_n}{(1+i)^n}
+$$
+
+**NPV (Net Present Value)**: Includes the initial investment/cost
+$$
+NPV = -C_0 + PV = -C_0 + \frac{C_1}{(1+i)} + \frac{C_2}{(1+i)^2} + \cdots + \frac{C_n}{(1+i)^n}
+$$
+
+The word "Net" means it accounts for the initial outlay. So: **NPV = Net effect = What you get - What you pay**
+:::
 
 ### Example: Same Problem, Two Languages
 
