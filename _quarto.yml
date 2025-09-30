@@ -9,11 +9,11 @@ book:
   date: today
   chapters:
     - index.qmd
+    - slides_to_pages.qmd
     - basic_notions.qmd
     - bonds.qmd
     - value_function.qmd
     - interest_rates.qmd
-    - slides_to_pages.qmd
 
 bibliography: references.bib
 

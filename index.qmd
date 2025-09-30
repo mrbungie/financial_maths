@@ -17,11 +17,11 @@ Instead of heavy mathematical notation, we emphasize:
 
 This guide is organized into focused chapters:
 
-1. **Basic Notions** - Cashflows, timelines, and sign conventions
-2. **Bonds** - Coupon bonds, accrued interest, clean vs dirty prices
-3. **Value Function** - Understanding money over time
-4. **Interest & Discount Rates** - Accumulation and discount factors
-5. **Slides to Pages** - Reverse index mapping slides to book chapters
+1. **Slides to Pages** - Reverse index mapping slides to book chapters
+2. **Basic Notions** - Cashflows, timelines, and sign conventions
+3. **Bonds** - Coupon bonds, accrued interest, clean vs dirty prices
+4. **Value Function** - Understanding money over time
+5. **Interest & Discount Rates** - Accumulation and discount factors
 
 ## Learning Approach
 
