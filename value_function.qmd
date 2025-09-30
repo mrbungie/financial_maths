@@ -1,6 +1,6 @@
 # Value Function
 
-## Introduction
+## Introduction {#value-function-introduction}
 
 Suppose we have a financial transaction on two dates. The fundamental idea is that two parties agree to exchange money at different points in time, creating an equivalence between amounts at different dates.
 
@@ -39,6 +39,8 @@ We can represent this transaction in several ways:
 | 1    | $S + I$   |
 
 This means that, strictly speaking, the counterparts have agreed to consider the sum $S$ at time 0 **equivalent** to the sum $S + I$ at time 1.
+
+<span id="concrete-example-a-simple-loan"></span>
 
 ::: {.callout-tip icon="true"}
 ## Concrete Example: A Simple Loan
@@ -129,6 +131,8 @@ The value function tells us the **monetary value** of the financial contract at 
 
 **Key insight**: The value function is NOT the cash you physically hold. It's the **economic value** of your position in the contract at any given moment.
 :::
+
+<span id="understanding-interest-and-interest-rates"></span>
 
 ::: {.callout-note icon="true"}
 ## Understanding Interest and Interest Rates
