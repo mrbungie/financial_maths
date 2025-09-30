@@ -21,7 +21,7 @@ This guide is organized into focused chapters:
 2. **Bonds** - Coupon bonds, accrued interest, clean vs dirty prices
 3. **Value Function** - Understanding money over time
 4. **Interest & Discount Rates** - Accumulation and discount factors
-5. **Cheat Sheet** - One-page reference for all key formulas
+5. **Slides to Pages** - Reverse index mapping slides to book chapters
 
 ## Learning Approach
 
@@ -58,6 +58,6 @@ For source material citations
 
 ## Getting Started
 
-Begin with [Chapter 1: Basic Notions](basic_notions.qmd) to build your foundation, or jump directly to any chapter that interests you. The [Cheat Sheet](cheat_sheet.qmd) provides a quick reference once you're familiar with the concepts.
+Begin with [Chapter 1: Basic Notions](basic_notions.qmd) to build your foundation, or jump directly to any chapter that interests you. The [Slides to Pages Index](slides_to_pages.qmd) helps you navigate from course slides to the corresponding book sections.
 
 Let's dive in! 🚀

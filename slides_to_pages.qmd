@@ -1,0 +1,182 @@
+# Reverse Index: Slides to Book Pages {.unnumbered}
+
+::: {.callout-note icon=false}
+## 📑 Quick Navigation Guide
+This reverse index maps the course slides (pages 1-49) to the corresponding pages in this book. Use this to quickly find where each slide topic is explained in more detail.
+:::
+
+---
+
+## How to Use This Index
+
+**Format**: Slide Number → **Book Chapter** (section or topic)
+
+**Example**: Slide 5 → **Basic Notions** (Cashflow representations)
+
+---
+
+## Slides 1-3: Introduction & Course Outline
+
+| Slide(s) | Topic | Book Location |
+|:---------|:------|:--------------|
+| 1-3 | Title pages, course structure | **Welcome** (index.qmd) |
+
+---
+
+## Slides 4-32: Module 1 — Basic Notions
+
+### Financial Transactions (Slides 4-13)
+
+| Slide(s) | Topic | Book Location |
+|:---------|:------|:--------------|
+| 4 | Financial transactions: example (1) | **Basic Notions** (Cashflows: The Building Blocks) |
+| 5 | Financial transactions (1) - Definition | **Basic Notions** (Cashflows: The Building Blocks) |
+| 6 | Financial transactions (2) - Time Value of Money | **Basic Notions** (Cashflows: The Building Blocks) |
+| 7 | Financial transactions (3) - Zero-coupon bond | **Basic Notions** (Cashflows: The Building Blocks) |
+| 8 | Financial transactions (4) - Interests in two-period operation | **Basic Notions** (Comprehensive Example: Quarterly Loan Operation) |
+| 9 | Financial transactions (5) - Four-period investment/borrowing | **Basic Notions** (Comprehensive Example: Quarterly Loan Operation) |
+| 10-12 | Financial transactions (6-8) - Four-period decomposition, interests | **Basic Notions** (Comprehensive Example: Quarterly Loan Operation) |
+| 13 | Financial transactions (9) - Period rates | **Basic Notions** (Comprehensive Example: Quarterly Loan Operation) |
+
+### Notation & Conventions (Slides 14-20)
+
+| Slide(s) | Topic | Book Location |
+|:---------|:------|:--------------|
+| 14-15 | Notation (1-2) | **Basic Notions** (Financial Transaction Notation) |
+| 16-17 | Conventions on time representation (1-2) | **Basic Notions** (Time Conventions and Periods) |
+| 18 | General notation | **Basic Notions** (Financial Transaction Notation) |
+| 19-20 | Graphical & table representation | **Basic Notions** (Cashflow Representations) |
+
+### Terminology & Patterns (Slides 21-23)
+
+| Slide(s) | Topic | Book Location |
+|:---------|:------|:--------------|
+| 21 | Terminology - Investment | **Basic Notions** (Investment vs. Financing Patterns) |
+| 22 | Terminology - Financing | **Basic Notions** (Investment vs. Financing Patterns) |
+| 23 | Terminology - Spot/Forward, Long/Short | **Basic Notions** (Financial Transaction Notation) |
+
+### Coupon Bonds (Slides 24-29)
+
+| Slide(s) | Topic | Book Location |
+|:---------|:------|:--------------|
+| 24-28 | Coupon bonds (1-5) | **Bonds** (complete chapter) |
+| 29 | Accrued vs dirty price (example) | **Bonds** (Accrued Interest and Dirty Price section) |
+
+### Sum of Transactions (Slides 30-32)
+
+| Slide(s) | Topic | Book Location |
+|:---------|:------|:--------------|
+| 30-32 | Sum of financial transactions (1-3) | **Basic Notions** (Combining Transactions section) |
+
+---
+
+## Slides 33-49: Module 2 — Financial Laws
+
+### Value Function (Slides 33-36)
+
+| Slide(s) | Topic | Book Location |
+|:---------|:------|:--------------|
+| 33-34 | Value function (definition + graphical) | **Value Function** (The Core Concept) |
+| 35-36 | Value function: example & properties | **Value Function** (Value Function and Cash Flows: A Detailed Example) |
+| 35 | NPV formula and decision rule | **Value Function** (Net Present Value section) |
+
+### Interest, Discount, Accumulation (Slides 37-49)
+
+| Slide(s) | Topic | Book Location |
+|:---------|:------|:--------------|
+| 37-38 | Interest, discount, accumulation (intro) | **Interest & Discount Rates** (From Value Function to Rates) |
+| 39-41 | Interest definitions (rates, factors) | **Interest & Discount Rates** (The Six Manifestations) |
+| 42-44 | Value function examples | **Value Function** (Comparing Two Decompositions) |
+| 45-47 | Discount rate & factor, example with ZCB | **Interest & Discount Rates** (The Six Manifestations - Discount section) |
+| 48-49 | Application of accumulation factor | **Interest & Discount Rates** (Accumulation Factor section) |
+
+---
+
+## Quick Reference by Chapter
+
+### [Welcome](index.qmd)
+**Slides covered**: 1-3
+
+### [Basic Notions](basic_notions.qmd)
+**Slides covered**: 4-23, 30-32
+
+**Key topics**:
+
+- Cashflows and sign conventions (Slides 4-7)
+- Financial transaction examples (Slides 8-13)
+- Notation and time representation (Slides 14-20)
+- Investment vs. Financing patterns (Slides 21-22)
+- Terminology and conventions (Slide 23)
+- Combining transactions (Slides 30-32)
+
+### [Bonds](bonds.qmd)
+**Slides covered**: 24-29
+
+**Key topics**:
+
+- Coupon bond structure (Slides 24-28)
+- Accrued interest and dirty price (Slide 29)
+
+### [Value Function](value_function.qmd)
+**Slides covered**: 33-36, 42-44
+
+**Key topics**:
+
+- Value function definition (Slides 33-34)
+- Value function examples and properties (Slides 35-36)
+- NPV formula and decision rule (Slide 35)
+- Value function decomposition examples (Slides 42-44)
+
+### [Interest & Discount Rates](interest_rates.qmd)
+**Slides covered**: 37-41, 45-49
+
+**Key topics**:
+
+- Interest, discount, accumulation intro (Slides 37-38)
+- The six manifestations (Slides 39-41)
+- Discount rates and factors (Slides 45-47)
+- Accumulation factor applications (Slides 48-49)
+
+---
+
+## By Topic
+
+### Cashflows & Notation
+**Slides**: 4-7, 14-20 → **Basic Notions** chapter
+
+### Financial Operations
+**Slides**: 8-13, 21-23, 30-32 → **Basic Notions** chapter
+
+### Bonds
+**Slides**: 24-29 → **Bonds** chapter
+
+### Value Function
+**Slides**: 33-36, 42-44 → **Value Function** chapter
+
+### Interest & Discount
+**Slides**: 37-41, 45-49 → **Interest & Discount Rates** chapter
+
+---
+
+::: {.callout-tip}
+## 💡 Pro Tip
+When reviewing slides, use this index to jump directly to the relevant book section for:
+
+- **Detailed explanations** with additional examples
+- **Visual diagrams** and intuitive interpretations  
+- **Common pitfalls** and practical tips
+- **Reference links** to original source materials
+:::
+
+::: {.callout-caution icon=true}
+## References
+
+This reverse index maps content from:
+
+**Slide:** Financial Mathematics Slides 1-96, Pages 1-49, [Direct Link](https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=1)
+
+To chapters in this book covering the same material with expanded explanations, examples, and visual aids.
+:::
+
+---
+

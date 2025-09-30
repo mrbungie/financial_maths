@@ -13,7 +13,7 @@ book:
     - bonds.qmd
     - value_function.qmd
     - interest_rates.qmd
-    - cheat_sheet.qmd
+    - slides_to_pages.qmd
 
 bibliography: references.bib
 
