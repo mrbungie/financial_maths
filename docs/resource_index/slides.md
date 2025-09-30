@@ -9,6 +9,7 @@ Module 1 – Basic Notions
 
 4: What does financial mean?
 5: Financial transactions (1) – Definition.
+6: Financial transactions (2) – Example
 7: Financial transactions (2) – Time Value of Money.
 8: Financial transactions (3) – Zero-coupon bond.
 9: Financial transactions (4) – Interests in two-period operation.
