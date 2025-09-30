@@ -10,5 +10,5 @@ Book: NAME, PAGE_NUMBER, DIRECT_LINK
 Slide: NAME, PAGE_NUMBER, DIRECT_LINK
 """
 - They should also contain a direct link to the source material similar to
-https://cdn.jsdelivr.net/gh/mrbungie/financial_mathematics/main/resources/books/pearson_corporate_finance_6th.pdf#page=524 or
-https://cdn.jsdelivr.net/gh/mrbungie/financial_mathematics@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=20
+https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/books/pearson_corporate_finance_6th.pdf#page=40 or
+https://cdn.jsdelivr.net/gh/mrbungie/financial_maths@main/resources/slideshows/25_09_30_FinancialMathematics_Slides_1_96.pdf#page=20
