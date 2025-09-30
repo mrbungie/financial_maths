@@ -37,6 +37,18 @@ V(t) = \text{value at time } t \text{ of everything that has happened and will h
 $$
 :::
 
+::: {.callout-tip icon="true"}
+## Intuition: Your Investment's "Bank Balance"
+
+Think of $V(t)$ as the balance in a virtual bank account that tracks your investment:
+
+- At $t=0$: You make your initial investment → $V(0)$ shows starting balance
+- As time passes: Interest accrues, payments come in/go out → $V(t)$ shows current "net worth"
+- At maturity: All payments are settled → $V(T)$ shows final accumulated value
+
+**Key insight**: Unlike your actual cashflows (which only happen at specific times), $V(t)$ exists at *every* moment in time. It's a smooth, continuous function that tells you "if I liquidated everything right now, what would I have?"
+:::
+
 ### Two Perspectives on $V(t)$
 
 1.  **Backward-looking**: What happened before $t$, accumulated to time $t$
@@ -346,6 +358,19 @@ Comparing the two decompositions:
 **Same cashflows, different interest rate structures** lead to different value functions!
 :::
 
+::: {.callout-tip icon="true"}
+## Intuition: Why Different Value Functions?
+
+Imagine two credit cards with the same minimum payments but different interest structures:
+
+- **Card 1** (Decomposition 1): Charges steady 4-14% interest across all periods → predictable debt growth
+- **Card 2** (Decomposition 2): Charges low 1-2% initially, then BAM! 46% in the final period → balloon debt
+
+Both have identical payment schedules, but the *timing* of when interest compounds creates vastly different financial realities. This is why reading the fine print matters—the payment schedule alone doesn't tell the whole story!
+
+**Financial lesson**: Two loans with identical cashflows can have completely different "financial health trajectories" depending on how interest is structured over time.
+:::
+
 ## The Value Function Formula
 
 ::: {.callout-important icon="true"}
@@ -366,7 +391,25 @@ Where:
 NOTE: $\sum$ means summation. You can read more about that in the maths cheat sheet.
 :::
 
-**In words**: \> Value at time $t$ = (Everything before $t$, grown with interest) + (Everything after $t$, discounted)
+**In words**: Value at time $t$ = (Everything before $t$, grown with interest) + (Everything after $t$, discounted)
+
+::: {.callout-tip icon="true"}
+## Intuition: The Value Function Formula
+
+The value function formula has two "modes":
+
+**🔭 Looking backward** (first sum): "I already received/paid these amounts. If I'd invested them at rate $i$, they'd be worth..." → Accumulate past cashflows forward
+
+**🔬 Looking forward** (second sum): "I know I'll receive/pay these amounts later. In today's money, they're worth..." → Discount future cashflows backward
+
+**At any time $t$, you stand at the dividing line**: everything behind you has been growing with interest, everything ahead of you needs to be discounted. The sum gives you your current financial position.
+
+**Example**: Standing at year 2 of a 5-year project:
+
+- Years 0-2 cashflows: Already happened → accumulate to year 2
+- Years 3-5 cashflows: Still coming → discount to year 2
+- Your position at year 2 = sum of both
+:::
 
 ## Net Present Value (NPV)
 
@@ -422,6 +465,19 @@ $$
 $$
 
 **Decision**: **Accept!** NPV = $236.72$ \> 0, so the project adds value.
+
+::: {.callout-tip icon="true"}
+## Intuition: Why NPV = V(0)?
+
+NPV is just a special name for the value function at time zero:
+
+- **V(0)**: "What's my financial position *right now* if I commit to this entire project?"
+- **NPV**: Same question, different name, used specifically for investment decisions
+
+Think of it as a "today snapshot" of the entire project's worth. If NPV > 0, the project is worth more than it costs today → good deal! If NPV < 0, you're paying more than it's worth → bad deal.
+
+**Why time zero?** Because that's when you make the decision. You need to know: "If I start this project today, does it create or destroy value?"
+:::
 
 ## Value Function Properties
 
@@ -499,6 +555,121 @@ Two projects with different cashflow patterns:
 **At 10% discount rate**: - $\text{NPV}_A = -1000 + 1200/1.10 = 90.91$ - $\text{NPV}_B = -1000 + 1300/1.10^2 = 74.38$
 
 **Conclusion**: Project A is better (higher NPV).
+
+## Teacher's Notation: Bridging Two Worlds
+
+::: {.callout-note icon="true"}
+## Two Ways to Think About Financial Mathematics
+
+Your professor uses **value function notation** $V(t)$, while most textbooks use **classical formulas** (PV, FV, NPV). They're saying the same thing, just in different languages. Here's how they connect:
+:::
+
+### Classical Approach (Traditional Finance)
+
+In most finance courses, you learn these standalone formulas:
+
+**Present Value:**
+$$
+PV = \frac{C_1}{(1+i)} + \frac{C_2}{(1+i)^2} + \cdots + \frac{C_n}{(1+i)^n}
+$$
+
+**Future Value:**
+$$
+FV = C_0 \cdot (1+i)^n
+$$
+
+**Net Present Value:**
+$$
+NPV = -C_0 + \frac{C_1}{(1+i)} + \frac{C_2}{(1+i)^2} + \cdots + \frac{C_n}{(1+i)^n}
+$$
+
+**The classical view**: You have separate formulas for moving money forward (FV) or backward (PV). NPV is a special application of PV for investment decisions.
+
+### Teacher's Approach (Value Function)
+
+Your professor introduces **one unified framework** that encompasses all of these:
+
+$$
+V(t) = \sum_{t_i \leq t} C_i \cdot (1+i)^{t-t_i} + \sum_{t_j > t} \frac{C_j}{(1+i)^{t_j - t}}
+$$
+
+**The value function view**: At any time $t$, you can compute the "value" by accumulating past cashflows forward and discounting future cashflows backward.
+
+### The Bridge: Connecting Both Approaches
+
+| Classical Formula | Value Function Equivalent | When They're the Same |
+|-------------------|---------------------------|----------------------|
+| **PV** | $V(0)$ | Present value = value function at time 0 |
+| **FV** | $V(T)$ | Future value = value function at final time T |
+| **NPV** | $V(0)$ | NPV = value function at decision time (t=0) |
+
+**Key insight**: The classical formulas are just **special cases** of the value function:
+- PV and NPV are $V(t)$ evaluated at $t=0$
+- FV is $V(t)$ evaluated at $t=T$ (final time)
+- The value function generalizes these to **any** time $t$
+
+### Example: Same Problem, Two Languages
+
+**Scenario**: Invest \$1,000 today, receive \$1,200 in 2 years at 10% interest.
+
+**Classical approach** (compute NPV):
+$$
+NPV = -1000 + \frac{1200}{(1.10)^2} = -1000 + 991.74 = -\$8.26
+$$
+**Decision**: Reject (NPV < 0)
+
+**Value function approach** (compute $V(0)$):
+$$
+V(0) = -1000 \cdot (1.10)^{0} + \frac{1200}{(1.10)^2} = -1000 + 991.74 = -\$8.26
+$$
+**Decision**: Reject ($V(0) < 0$)
+
+**Same answer!** But the value function also tells you the value at other times:
+- $V(1) = -1000 \cdot (1.10)^1 + \frac{1200}{(1.10)^1} = -1100 + 1090.91 = -\$9.09$
+- $V(2) = -1000 \cdot (1.10)^2 + 1200 = -1210 + 1200 = -\$10.00$
+
+The classical approach only tells you "reject it." The value function tells you "reject it, *and here's how badly you'd be doing at each point in time*."
+
+### Why Each Approach Is Useful
+
+::: {.callout-important icon="true"}
+## When to Use Each Approach
+
+**Use Classical Formulas (PV/FV/NPV) when:**
+- You only need a single "yes/no" investment decision
+- You're working with standard textbook problems
+- You're communicating with practitioners who use traditional finance language
+- You need quick calculations
+
+**Use Value Function $V(t)$ when:**
+- You need to track financial position over time
+- You're comparing different interest rate structures
+- You want to understand *how* value evolves, not just the final decision
+- You're dealing with complex, multi-period scenarios
+- You need a unified framework that handles all time periods consistently
+
+**Best of both worlds**: Understand the value function conceptually, but recognize that PV/FV/NPV are just convenient shortcuts for specific time points!
+:::
+
+### Intuition: Why Your Professor Uses $V(t)$
+
+::: {.callout-tip icon="true"}
+## The Power of Abstraction
+
+Think of it like this:
+
+**Classical approach**: You have separate tools—a hammer (PV), a screwdriver (FV), and pliers (NPV). Each tool works for specific jobs.
+
+**Value function approach**: You have a Swiss Army knife ($V(t)$) that contains all the tools. Want PV? Use the knife at $t=0$. Want FV? Use it at $t=T$. Want to check your position midway? Use it at $t=5$.
+
+Your professor teaches the Swiss Army knife because:
+1. **Generality**: One framework explains everything
+2. **Flexibility**: Works at *any* time, not just beginning/end
+3. **Insight**: Shows *how* value changes over time, not just snapshots
+4. **Rigor**: More mathematically elegant and precise
+
+**Practical tip**: On exams, use whichever approach is faster. For decision problems, NPV is quick. For understanding *why* something works, $V(t)$ provides deeper insight.
+:::
 
 ## Summary
 
