@@ -965,19 +965,36 @@ Splitting by date is like **cutting your financial timeline with scissors**. Use
 **Example**: You sell a rental property mid-year. You get the rent payments before the sale date; the buyer gets payments after. This split helps determine the fair sale price!
 :::
 
-**Example**: Split transaction $\mathbf{x}''/\mathbf{t}'' = \{10, -4, -4, -4\} / \{0, 1, 2, 3\}$ at $t^* = 1.5$
+::: {.callout-note icon=true}
+## Definition: Notation
+
+- $t^*$ = reference date (the split point in time)
+- $\mathbf{x}/\mathbf{t}$ = sub-transaction containing cashflows at times $\leq t^*$
+- $\mathbf{x}'/\mathbf{t}'$ = sub-transaction containing cashflows at times $> t^*$
+:::
+
+**Example**: 
+$$
+\mathbf{x}''/\mathbf{t}'' = \{10, -4, -4, -4\} / \{0, 1, 2, 3\}; \quad t^* = 1.5
+$$
+$$
+\Longrightarrow \mathbf{x}/\mathbf{t} = \{10, -4\} / \{0, 1\} \quad \mathbf{x}'/\mathbf{t}' = \{-4, -4\} / \{2, 3\}
+$$
 
 **Before $t^*$** (times $\leq 1.5$):
 $$
-\mathbf{x}_{\text{before}}/\mathbf{t}_{\text{before}} = \{10, -4\} / \{0, 1\}
+\mathbf{x}/\mathbf{t} = \{10, -4\} / \{0, 1\}
 $$
 
 **After $t^*$** (times $> 1.5$):
 $$
-\mathbf{x}_{\text{after}}/\mathbf{t}_{\text{after}} = \{-4, -4\} / \{2, 3\}
+\mathbf{x}'/\mathbf{t}' = \{-4, -4\} / \{2, 3\}
 $$
 
-**Verification**: $\mathbf{x}_{\text{before}}/\mathbf{t}_{\text{before}} \oplus \mathbf{x}_{\text{after}}/\mathbf{t}_{\text{after}} = \mathbf{x}''/\mathbf{t}''$ ✓
+**Verification**: 
+$$
+\mathbf{x}/\mathbf{t} \oplus \mathbf{x}'/\mathbf{t}' = \mathbf{x}''/\mathbf{t}''
+$$
 
 **Table representation**:
 
@@ -1065,7 +1082,20 @@ Decomposing by sign is like **having two separate jars**: one for income, one fo
 **Example**: A small business owner splits revenues (inflows) from costs (outflows) to quickly see: "Am I making more than I'm spending?" Each jar tells a different story, but together they show the complete picture!
 :::
 
-**Example**: Same transaction $\{10, -4, -4, -4\} / \{0, 1, 2, 3\}$
+::: {.callout-note icon=true}
+## Definition: Notation
+
+- $\mathbf{a}/\mathbf{t}$ = sub-transaction containing all positive cashflows (inflows/assets)
+- $\mathbf{l}/\mathbf{t}'$ = sub-transaction containing all negative cashflows (outflows/liabilities)
+:::
+
+**Example**: 
+$$
+\mathbf{x}''/\mathbf{t}'' = \{10, -4, -4, -4\} / \{0, 1, 2, 3\}
+$$
+$$
+\Longrightarrow \mathbf{a}/\mathbf{t} = \{10\} / \{0\} \quad \mathbf{l}/\mathbf{t}' = \{-4, -4, -4\} / \{1, 2, 3\}
+$$
 
 **Inflows** (positive):
 $$
@@ -1077,7 +1107,10 @@ $$
 \mathbf{l}/\mathbf{t}' = \{-4, -4, -4\} / \{1, 2, 3\}
 $$
 
-**Verification**: $\mathbf{a}/\mathbf{t} \oplus \mathbf{l}/\mathbf{t}' = \{10, -4, -4, -4\} / \{0, 1, 2, 3\}$ ✓
+**Verification**: 
+$$
+\mathbf{a}/\mathbf{t} \oplus \mathbf{l}/\mathbf{t}' = \mathbf{x}''/\mathbf{t}''
+$$
 
 **Table summary**:
 
